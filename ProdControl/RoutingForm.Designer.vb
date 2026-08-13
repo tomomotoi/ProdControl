@@ -23,6 +23,7 @@ Partial Class RoutingForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoutingForm))
         Me.OperationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
         Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -121,7 +122,6 @@ Partial Class RoutingForm
         '
         Me.spContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.spContainer.Location = New System.Drawing.Point(0, 0)
-        Me.spContainer.Margin = New System.Windows.Forms.Padding(6)
         Me.spContainer.Name = "spContainer"
         Me.spContainer.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -132,9 +132,9 @@ Partial Class RoutingForm
         'spContainer.Panel2
         '
         Me.spContainer.Panel2.Controls.Add(Me.dgView)
-        Me.spContainer.Size = New System.Drawing.Size(1244, 804)
-        Me.spContainer.SplitterDistance = 323
-        Me.spContainer.SplitterWidth = 15
+        Me.spContainer.Size = New System.Drawing.Size(622, 418)
+        Me.spContainer.SplitterDistance = 167
+        Me.spContainer.SplitterWidth = 8
         Me.spContainer.TabIndex = 11
         '
         'Panel1
@@ -162,37 +162,37 @@ Partial Class RoutingForm
         Me.Panel1.Controls.Add(Me.cbArt)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(6)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1244, 323)
+        Me.Panel1.Size = New System.Drawing.Size(622, 167)
         Me.Panel1.TabIndex = 1
         '
         'lbRowsAmount
         '
         Me.lbRowsAmount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbRowsAmount.AutoSize = True
-        Me.lbRowsAmount.Location = New System.Drawing.Point(21, 292)
+        Me.lbRowsAmount.Location = New System.Drawing.Point(10, 151)
+        Me.lbRowsAmount.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbRowsAmount.Name = "lbRowsAmount"
-        Me.lbRowsAmount.Size = New System.Drawing.Size(241, 25)
+        Me.lbRowsAmount.Size = New System.Drawing.Size(123, 13)
         Me.lbRowsAmount.TabIndex = 22
         Me.lbRowsAmount.Text = "Количество записей: 0"
         '
         'txCost
         '
         Me.txCost.Enabled = False
-        Me.txCost.Location = New System.Drawing.Point(26, 228)
-        Me.txCost.Margin = New System.Windows.Forms.Padding(4)
+        Me.txCost.Location = New System.Drawing.Point(13, 119)
+        Me.txCost.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txCost.Name = "txCost"
-        Me.txCost.Size = New System.Drawing.Size(258, 31)
+        Me.txCost.Size = New System.Drawing.Size(131, 20)
         Me.txCost.TabIndex = 21
         '
         'labelCost
         '
         Me.labelCost.AutoSize = True
-        Me.labelCost.Location = New System.Drawing.Point(20, 193)
-        Me.labelCost.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelCost.Location = New System.Drawing.Point(10, 100)
+        Me.labelCost.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelCost.Name = "labelCost"
-        Me.labelCost.Size = New System.Drawing.Size(108, 25)
+        Me.labelCost.Size = New System.Drawing.Size(56, 13)
         Me.labelCost.TabIndex = 20
         Me.labelCost.Text = "Расценка"
         '
@@ -203,10 +203,9 @@ Partial Class RoutingForm
         Me.cbDopCost.DataSource = Me.CoefficientsBindingSource
         Me.cbDopCost.DisplayMember = "coefficient_value"
         Me.cbDopCost.FormattingEnabled = True
-        Me.cbDopCost.Location = New System.Drawing.Point(300, 137)
-        Me.cbDopCost.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbDopCost.Location = New System.Drawing.Point(150, 71)
         Me.cbDopCost.Name = "cbDopCost"
-        Me.cbDopCost.Size = New System.Drawing.Size(216, 33)
+        Me.cbDopCost.Size = New System.Drawing.Size(110, 21)
         Me.cbDopCost.TabIndex = 17
         Me.cbDopCost.ValueMember = "coefficient_id"
         '
@@ -222,10 +221,9 @@ Partial Class RoutingForm
         '
         'btnSeachArt
         '
-        Me.btnSeachArt.Location = New System.Drawing.Point(300, 48)
-        Me.btnSeachArt.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnSeachArt.Location = New System.Drawing.Point(150, 25)
         Me.btnSeachArt.Name = "btnSeachArt"
-        Me.btnSeachArt.Size = New System.Drawing.Size(150, 44)
+        Me.btnSeachArt.Size = New System.Drawing.Size(75, 23)
         Me.btnSeachArt.TabIndex = 16
         Me.btnSeachArt.Text = "Найти"
         Me.btnSeachArt.UseVisualStyleBackColor = True
@@ -233,70 +231,63 @@ Partial Class RoutingForm
         'lbLevel
         '
         Me.lbLevel.AutoSize = True
-        Me.lbLevel.Location = New System.Drawing.Point(745, 106)
-        Me.lbLevel.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbLevel.Location = New System.Drawing.Point(372, 55)
         Me.lbLevel.Name = "lbLevel"
-        Me.lbLevel.Size = New System.Drawing.Size(84, 25)
+        Me.lbLevel.Size = New System.Drawing.Size(44, 13)
         Me.lbLevel.TabIndex = 15
         Me.lbLevel.Text = "Разряд"
         '
         'lbTimeRate
         '
         Me.lbTimeRate.AutoSize = True
-        Me.lbTimeRate.Location = New System.Drawing.Point(531, 106)
-        Me.lbTimeRate.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbTimeRate.Location = New System.Drawing.Point(266, 55)
         Me.lbTimeRate.Name = "lbTimeRate"
-        Me.lbTimeRate.Size = New System.Drawing.Size(170, 25)
+        Me.lbTimeRate.Size = New System.Drawing.Size(88, 13)
         Me.lbTimeRate.TabIndex = 14
         Me.lbTimeRate.Text = "Норма времени"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1007, 106)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label1.Location = New System.Drawing.Point(504, 55)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(203, 25)
+        Me.Label1.Size = New System.Drawing.Size(105, 13)
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "Время выполнения"
         '
         'lbDocCost
         '
         Me.lbDocCost.AutoSize = True
-        Me.lbDocCost.Location = New System.Drawing.Point(295, 106)
-        Me.lbDocCost.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbDocCost.Location = New System.Drawing.Point(148, 55)
         Me.lbDocCost.Name = "lbDocCost"
-        Me.lbDocCost.Size = New System.Drawing.Size(146, 25)
+        Me.lbDocCost.Size = New System.Drawing.Size(76, 13)
         Me.lbDocCost.TabIndex = 12
         Me.lbDocCost.Text = "Доп. затраты"
         '
         'lbOperation
         '
         Me.lbOperation.AutoSize = True
-        Me.lbOperation.Location = New System.Drawing.Point(20, 106)
-        Me.lbOperation.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbOperation.Location = New System.Drawing.Point(10, 55)
         Me.lbOperation.Name = "lbOperation"
-        Me.lbOperation.Size = New System.Drawing.Size(111, 25)
+        Me.lbOperation.Size = New System.Drawing.Size(57, 13)
         Me.lbOperation.TabIndex = 11
         Me.lbOperation.Text = "Операция"
         '
         'lbArticul
         '
         Me.lbArticul.AutoSize = True
-        Me.lbArticul.Location = New System.Drawing.Point(21, 19)
-        Me.lbArticul.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbArticul.Location = New System.Drawing.Point(10, 10)
         Me.lbArticul.Name = "lbArticul"
-        Me.lbArticul.Size = New System.Drawing.Size(94, 25)
+        Me.lbArticul.Size = New System.Drawing.Size(48, 13)
         Me.lbArticul.TabIndex = 10
         Me.lbArticul.Text = "Артикул"
         '
         'btCancel
         '
         Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btCancel.Location = New System.Drawing.Point(1078, 273)
-        Me.btCancel.Margin = New System.Windows.Forms.Padding(6)
+        Me.btCancel.Location = New System.Drawing.Point(539, 141)
         Me.btCancel.Name = "btCancel"
-        Me.btCancel.Size = New System.Drawing.Size(150, 44)
+        Me.btCancel.Size = New System.Drawing.Size(75, 23)
         Me.btCancel.TabIndex = 9
         Me.btCancel.Text = "Отменить"
         Me.btCancel.UseVisualStyleBackColor = True
@@ -304,10 +295,9 @@ Partial Class RoutingForm
         'btSave
         '
         Me.btSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btSave.Location = New System.Drawing.Point(914, 273)
-        Me.btSave.Margin = New System.Windows.Forms.Padding(6)
+        Me.btSave.Location = New System.Drawing.Point(457, 141)
         Me.btSave.Name = "btSave"
-        Me.btSave.Size = New System.Drawing.Size(150, 44)
+        Me.btSave.Size = New System.Drawing.Size(75, 23)
         Me.btSave.TabIndex = 8
         Me.btSave.Text = "Сохранить"
         Me.btSave.UseVisualStyleBackColor = True
@@ -315,10 +305,9 @@ Partial Class RoutingForm
         'btnDel
         '
         Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnDel.Location = New System.Drawing.Point(750, 273)
-        Me.btnDel.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnDel.Location = New System.Drawing.Point(375, 141)
         Me.btnDel.Name = "btnDel"
-        Me.btnDel.Size = New System.Drawing.Size(150, 44)
+        Me.btnDel.Size = New System.Drawing.Size(75, 23)
         Me.btnDel.TabIndex = 7
         Me.btnDel.Text = "Удалить"
         Me.btnDel.UseVisualStyleBackColor = True
@@ -326,10 +315,9 @@ Partial Class RoutingForm
         'btnAdd
         '
         Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnAdd.Location = New System.Drawing.Point(586, 273)
-        Me.btnAdd.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnAdd.Location = New System.Drawing.Point(293, 141)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(150, 44)
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 6
         Me.btnAdd.Text = "Добавить"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -338,27 +326,24 @@ Partial Class RoutingForm
         '
         Me.cbLevel.FormattingEnabled = True
         Me.cbLevel.Items.AddRange(New Object() {"", "1", "2", "3", "4", "5"})
-        Me.cbLevel.Location = New System.Drawing.Point(750, 137)
-        Me.cbLevel.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbLevel.Location = New System.Drawing.Point(375, 71)
         Me.cbLevel.Name = "cbLevel"
-        Me.cbLevel.Size = New System.Drawing.Size(238, 33)
+        Me.cbLevel.Size = New System.Drawing.Size(121, 21)
         Me.cbLevel.TabIndex = 5
         '
         'txRate
         '
-        Me.txRate.Location = New System.Drawing.Point(536, 139)
-        Me.txRate.Margin = New System.Windows.Forms.Padding(6)
+        Me.txRate.Location = New System.Drawing.Point(268, 72)
         Me.txRate.Name = "txRate"
-        Me.txRate.Size = New System.Drawing.Size(196, 31)
+        Me.txRate.Size = New System.Drawing.Size(100, 20)
         Me.txRate.TabIndex = 4
         '
         'txExecTime
         '
         Me.txExecTime.Enabled = False
-        Me.txExecTime.Location = New System.Drawing.Point(1012, 137)
-        Me.txExecTime.Margin = New System.Windows.Forms.Padding(6)
+        Me.txExecTime.Location = New System.Drawing.Point(506, 71)
         Me.txExecTime.Name = "txExecTime"
-        Me.txExecTime.Size = New System.Drawing.Size(216, 31)
+        Me.txExecTime.Size = New System.Drawing.Size(110, 20)
         Me.txExecTime.TabIndex = 3
         '
         'cbOperation
@@ -368,10 +353,9 @@ Partial Class RoutingForm
         Me.cbOperation.DataSource = Me.OperationBindingSource
         Me.cbOperation.DisplayMember = "OperationName"
         Me.cbOperation.FormattingEnabled = True
-        Me.cbOperation.Location = New System.Drawing.Point(26, 137)
-        Me.cbOperation.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbOperation.Location = New System.Drawing.Point(13, 71)
         Me.cbOperation.Name = "cbOperation"
-        Me.cbOperation.Size = New System.Drawing.Size(258, 33)
+        Me.cbOperation.Size = New System.Drawing.Size(131, 21)
         Me.cbOperation.TabIndex = 1
         Me.cbOperation.ValueMember = "OperationID"
         '
@@ -382,10 +366,9 @@ Partial Class RoutingForm
         Me.cbArt.DataSource = Me.ArticulBindingSource
         Me.cbArt.DisplayMember = "ArticulName"
         Me.cbArt.FormattingEnabled = True
-        Me.cbArt.Location = New System.Drawing.Point(26, 50)
-        Me.cbArt.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbArt.Location = New System.Drawing.Point(13, 26)
         Me.cbArt.Name = "cbArt"
-        Me.cbArt.Size = New System.Drawing.Size(258, 33)
+        Me.cbArt.Size = New System.Drawing.Size(131, 21)
         Me.cbArt.TabIndex = 0
         Me.cbArt.ValueMember = "ArticulID"
         '
@@ -395,10 +378,9 @@ Partial Class RoutingForm
         Me.dgView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.routingID, Me.ArtID, Me.Operation, Me.DopCost, Me.ExecTime, Me.RateExec, Me.Level, Me.Cost, Me.isNew, Me.isChanged})
         Me.dgView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgView.Location = New System.Drawing.Point(0, 0)
-        Me.dgView.Margin = New System.Windows.Forms.Padding(6)
         Me.dgView.Name = "dgView"
         Me.dgView.RowHeadersWidth = 82
-        Me.dgView.Size = New System.Drawing.Size(1244, 466)
+        Me.dgView.Size = New System.Drawing.Size(622, 243)
         Me.dgView.TabIndex = 2
         '
         'routingID
@@ -515,11 +497,11 @@ Partial Class RoutingForm
         '
         'RoutingForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1244, 804)
+        Me.ClientSize = New System.Drawing.Size(622, 418)
         Me.Controls.Add(Me.spContainer)
-        Me.Margin = New System.Windows.Forms.Padding(6)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "RoutingForm"
         Me.Text = "Тех. карта"
         CType(Me.OperationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

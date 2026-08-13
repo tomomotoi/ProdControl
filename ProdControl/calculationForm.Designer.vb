@@ -23,6 +23,7 @@ Partial Class calculationForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(calculationForm))
         Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
         Me.dlgSave = New System.Windows.Forms.SaveFileDialog()
@@ -89,11 +90,11 @@ Partial Class calculationForm
         Me.dbGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dbGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmployeeIDDataGridViewTextBoxColumn, Me.EmployeeNameDataGridViewTextBoxColumn, Me.EmployeeNumberDataGridViewTextBoxColumn, Me.PositionIDDataGridViewTextBoxColumn, Me.PositionLevelIDDataGridViewTextBoxColumn, Me.salary, Me.timerate, Me.TimeExecution})
         Me.dbGrid.DataSource = Me.EmployeeBindingSource
-        Me.dbGrid.Location = New System.Drawing.Point(1, 0)
-        Me.dbGrid.Margin = New System.Windows.Forms.Padding(30)
+        Me.dbGrid.Location = New System.Drawing.Point(0, 0)
+        Me.dbGrid.Margin = New System.Windows.Forms.Padding(15, 16, 15, 16)
         Me.dbGrid.Name = "dbGrid"
         Me.dbGrid.RowHeadersWidth = 82
-        Me.dbGrid.Size = New System.Drawing.Size(1383, 743)
+        Me.dbGrid.Size = New System.Drawing.Size(692, 386)
         Me.dbGrid.TabIndex = 1
         '
         'EmployeeIDDataGridViewTextBoxColumn
@@ -163,10 +164,9 @@ Partial Class calculationForm
         'btExport
         '
         Me.btExport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btExport.Location = New System.Drawing.Point(860, 774)
-        Me.btExport.Margin = New System.Windows.Forms.Padding(6)
+        Me.btExport.Location = New System.Drawing.Point(430, 402)
         Me.btExport.Name = "btExport"
-        Me.btExport.Size = New System.Drawing.Size(150, 44)
+        Me.btExport.Size = New System.Drawing.Size(75, 23)
         Me.btExport.TabIndex = 15
         Me.btExport.Text = "Выгрузить"
         Me.btExport.UseVisualStyleBackColor = True
@@ -175,10 +175,9 @@ Partial Class calculationForm
         '
         Me.cbDateRange.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cbDateRange.AutoSize = True
-        Me.cbDateRange.Location = New System.Drawing.Point(39, 829)
-        Me.cbDateRange.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbDateRange.Location = New System.Drawing.Point(20, 429)
         Me.cbDateRange.Name = "cbDateRange"
-        Me.cbDateRange.Size = New System.Drawing.Size(150, 29)
+        Me.cbDateRange.Size = New System.Drawing.Size(80, 17)
         Me.cbDateRange.TabIndex = 14
         Me.cbDateRange.Text = "За Период"
         Me.cbDateRange.UseVisualStyleBackColor = True
@@ -186,10 +185,9 @@ Partial Class calculationForm
         'btnCalculate
         '
         Me.btnCalculate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCalculate.Location = New System.Drawing.Point(1022, 774)
-        Me.btnCalculate.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnCalculate.Location = New System.Drawing.Point(511, 402)
         Me.btnCalculate.Name = "btnCalculate"
-        Me.btnCalculate.Size = New System.Drawing.Size(150, 44)
+        Me.btnCalculate.Size = New System.Drawing.Size(75, 23)
         Me.btnCalculate.TabIndex = 13
         Me.btnCalculate.Text = "Рассчитать"
         Me.btnCalculate.UseVisualStyleBackColor = True
@@ -198,10 +196,9 @@ Partial Class calculationForm
         '
         Me.lbTill.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbTill.AutoSize = True
-        Me.lbTill.Location = New System.Drawing.Point(450, 785)
-        Me.lbTill.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbTill.Location = New System.Drawing.Point(225, 408)
         Me.lbTill.Name = "lbTill"
-        Me.lbTill.Size = New System.Drawing.Size(39, 25)
+        Me.lbTill.Size = New System.Drawing.Size(21, 13)
         Me.lbTill.TabIndex = 12
         Me.lbTill.Text = "По"
         Me.lbTill.Visible = False
@@ -210,10 +207,9 @@ Partial Class calculationForm
         '
         Me.lbFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbFrom.AutoSize = True
-        Me.lbFrom.Location = New System.Drawing.Point(34, 786)
-        Me.lbFrom.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbFrom.Location = New System.Drawing.Point(17, 409)
         Me.lbFrom.Name = "lbFrom"
-        Me.lbFrom.Size = New System.Drawing.Size(148, 25)
+        Me.lbFrom.Size = New System.Drawing.Size(76, 13)
         Me.lbFrom.TabIndex = 11
         Me.lbFrom.Text = "Дата тетради"
         '
@@ -221,10 +217,9 @@ Partial Class calculationForm
         '
         Me.dtTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtTo.Location = New System.Drawing.Point(501, 780)
-        Me.dtTo.Margin = New System.Windows.Forms.Padding(6)
+        Me.dtTo.Location = New System.Drawing.Point(250, 406)
         Me.dtTo.Name = "dtTo"
-        Me.dtTo.Size = New System.Drawing.Size(192, 31)
+        Me.dtTo.Size = New System.Drawing.Size(98, 20)
         Me.dtTo.TabIndex = 10
         Me.dtTo.Visible = False
         '
@@ -232,29 +227,27 @@ Partial Class calculationForm
         '
         Me.dtFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFrom.Location = New System.Drawing.Point(198, 780)
-        Me.dtFrom.Margin = New System.Windows.Forms.Padding(6)
+        Me.dtFrom.Location = New System.Drawing.Point(99, 406)
         Me.dtFrom.Name = "dtFrom"
-        Me.dtFrom.Size = New System.Drawing.Size(240, 31)
+        Me.dtFrom.Size = New System.Drawing.Size(122, 20)
         Me.dtFrom.TabIndex = 9
         Me.dtFrom.Value = New Date(2019, 7, 6, 22, 46, 33, 0)
         '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(1184, 775)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(6)
+        Me.Button1.Location = New System.Drawing.Point(592, 403)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(200, 44)
+        Me.Button1.Size = New System.Drawing.Size(100, 23)
         Me.Button1.TabIndex = 8
         Me.Button1.Text = "Закрыть"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'calculationForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1386, 902)
+        Me.ClientSize = New System.Drawing.Size(693, 469)
         Me.Controls.Add(Me.btExport)
         Me.Controls.Add(Me.cbDateRange)
         Me.Controls.Add(Me.btnCalculate)
@@ -264,7 +257,7 @@ Partial Class calculationForm
         Me.Controls.Add(Me.dtFrom)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.dbGrid)
-        Me.Margin = New System.Windows.Forms.Padding(6)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "calculationForm"
         Me.Text = "Расчет"
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

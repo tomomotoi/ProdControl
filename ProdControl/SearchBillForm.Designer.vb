@@ -23,6 +23,7 @@ Partial Class SearchBillForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SearchBillForm))
         Me.dgView = New System.Windows.Forms.DataGridView()
         Me.LogId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmployeeName = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -78,13 +79,13 @@ Partial Class SearchBillForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LogId, Me.EmployeeName, Me.OperationName, Me.ArticulName, Me.DateExecution, Me.TimeExecution, Me.Count, Me.DocumentNumber, Me.workDay, Me.isChanged})
-        Me.dgView.Location = New System.Drawing.Point(12, 260)
-        Me.dgView.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgView.Location = New System.Drawing.Point(6, 135)
+        Me.dgView.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dgView.Name = "dgView"
         Me.dgView.ReadOnly = True
         Me.dgView.RowHeadersWidth = 82
         Me.dgView.RowTemplate.Height = 33
-        Me.dgView.Size = New System.Drawing.Size(1255, 584)
+        Me.dgView.Size = New System.Drawing.Size(628, 304)
         Me.dgView.TabIndex = 0
         '
         'LogId
@@ -94,7 +95,7 @@ Partial Class SearchBillForm
         Me.LogId.MinimumWidth = 10
         Me.LogId.Name = "LogId"
         Me.LogId.ReadOnly = True
-        Me.LogId.Width = 110
+        Me.LogId.Width = 59
         '
         'EmployeeName
         '
@@ -216,10 +217,10 @@ Partial Class SearchBillForm
         Me.cbEmployee.DataSource = Me.EmployeeBindingSource
         Me.cbEmployee.DisplayMember = "EmployeeName"
         Me.cbEmployee.FormattingEnabled = True
-        Me.cbEmployee.Location = New System.Drawing.Point(12, 63)
-        Me.cbEmployee.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbEmployee.Location = New System.Drawing.Point(6, 33)
+        Me.cbEmployee.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbEmployee.Name = "cbEmployee"
-        Me.cbEmployee.Size = New System.Drawing.Size(356, 33)
+        Me.cbEmployee.Size = New System.Drawing.Size(180, 21)
         Me.cbEmployee.TabIndex = 1
         Me.cbEmployee.ValueMember = "EmployeeID"
         '
@@ -230,40 +231,40 @@ Partial Class SearchBillForm
         Me.cbArticul.DataSource = Me.ArticulBindingSource
         Me.cbArticul.DisplayMember = "ArticulName"
         Me.cbArticul.FormattingEnabled = True
-        Me.cbArticul.Location = New System.Drawing.Point(12, 150)
-        Me.cbArticul.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbArticul.Location = New System.Drawing.Point(6, 78)
+        Me.cbArticul.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbArticul.Name = "cbArticul"
-        Me.cbArticul.Size = New System.Drawing.Size(356, 33)
+        Me.cbArticul.Size = New System.Drawing.Size(180, 21)
         Me.cbArticul.TabIndex = 2
         Me.cbArticul.ValueMember = "ArticulID"
         '
         'labelEmployee
         '
         Me.labelEmployee.AutoSize = True
-        Me.labelEmployee.Location = New System.Drawing.Point(12, 25)
-        Me.labelEmployee.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelEmployee.Location = New System.Drawing.Point(6, 13)
+        Me.labelEmployee.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelEmployee.Name = "labelEmployee"
-        Me.labelEmployee.Size = New System.Drawing.Size(125, 25)
+        Me.labelEmployee.Size = New System.Drawing.Size(63, 13)
         Me.labelEmployee.TabIndex = 3
         Me.labelEmployee.Text = "Сотрудник:"
         '
         'labelArticul
         '
         Me.labelArticul.AutoSize = True
-        Me.labelArticul.Location = New System.Drawing.Point(12, 113)
-        Me.labelArticul.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelArticul.Location = New System.Drawing.Point(6, 59)
+        Me.labelArticul.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelArticul.Name = "labelArticul"
-        Me.labelArticul.Size = New System.Drawing.Size(100, 25)
+        Me.labelArticul.Size = New System.Drawing.Size(51, 13)
         Me.labelArticul.TabIndex = 4
         Me.labelArticul.Text = "Артикул:"
         '
         'btnSearch
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Location = New System.Drawing.Point(1097, 208)
-        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearch.Location = New System.Drawing.Point(548, 108)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(170, 44)
+        Me.btnSearch.Size = New System.Drawing.Size(85, 23)
         Me.btnSearch.TabIndex = 5
         Me.btnSearch.Text = "Найти"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -271,10 +272,10 @@ Partial Class SearchBillForm
         'btnSearchAll
         '
         Me.btnSearchAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearchAll.Location = New System.Drawing.Point(919, 210)
-        Me.btnSearchAll.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearchAll.Location = New System.Drawing.Point(460, 109)
+        Me.btnSearchAll.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnSearchAll.Name = "btnSearchAll"
-        Me.btnSearchAll.Size = New System.Drawing.Size(170, 42)
+        Me.btnSearchAll.Size = New System.Drawing.Size(85, 22)
         Me.btnSearchAll.TabIndex = 6
         Me.btnSearchAll.Text = "Найти все"
         Me.btnSearchAll.UseVisualStyleBackColor = True
@@ -282,10 +283,10 @@ Partial Class SearchBillForm
         'chckbxByPeriod
         '
         Me.chckbxByPeriod.AutoSize = True
-        Me.chckbxByPeriod.Location = New System.Drawing.Point(748, 65)
-        Me.chckbxByPeriod.Margin = New System.Windows.Forms.Padding(4)
+        Me.chckbxByPeriod.Location = New System.Drawing.Point(374, 34)
+        Me.chckbxByPeriod.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chckbxByPeriod.Name = "chckbxByPeriod"
-        Me.chckbxByPeriod.Size = New System.Drawing.Size(147, 29)
+        Me.chckbxByPeriod.Size = New System.Drawing.Size(78, 17)
         Me.chckbxByPeriod.TabIndex = 8
         Me.chckbxByPeriod.Text = "За период"
         Me.chckbxByPeriod.UseVisualStyleBackColor = True
@@ -301,10 +302,10 @@ Partial Class SearchBillForm
         'labelDocNum
         '
         Me.labelDocNum.AutoSize = True
-        Me.labelDocNum.Location = New System.Drawing.Point(12, 25)
-        Me.labelDocNum.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelDocNum.Location = New System.Drawing.Point(6, 13)
+        Me.labelDocNum.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDocNum.Name = "labelDocNum"
-        Me.labelDocNum.Size = New System.Drawing.Size(194, 25)
+        Me.labelDocNum.Size = New System.Drawing.Size(100, 13)
         Me.labelDocNum.TabIndex = 10
         Me.labelDocNum.Text = "Номер квитанции:"
         Me.labelDocNum.Visible = False
@@ -312,10 +313,10 @@ Partial Class SearchBillForm
         'txDocNum
         '
         Me.txDocNum.Enabled = False
-        Me.txDocNum.Location = New System.Drawing.Point(12, 63)
-        Me.txDocNum.Margin = New System.Windows.Forms.Padding(4)
+        Me.txDocNum.Location = New System.Drawing.Point(6, 33)
+        Me.txDocNum.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txDocNum.Name = "txDocNum"
-        Me.txDocNum.Size = New System.Drawing.Size(356, 31)
+        Me.txDocNum.Size = New System.Drawing.Size(180, 20)
         Me.txDocNum.TabIndex = 11
         Me.txDocNum.Visible = False
         '
@@ -327,10 +328,10 @@ Partial Class SearchBillForm
         '
         Me.btnDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDelete.Enabled = False
-        Me.btnDelete.Location = New System.Drawing.Point(917, 852)
-        Me.btnDelete.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDelete.Location = New System.Drawing.Point(458, 443)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(172, 48)
+        Me.btnDelete.Size = New System.Drawing.Size(86, 25)
         Me.btnDelete.TabIndex = 12
         Me.btnDelete.Text = "Удалить"
         Me.btnDelete.UseVisualStyleBackColor = True
@@ -339,10 +340,10 @@ Partial Class SearchBillForm
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(1095, 852)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSave.Location = New System.Drawing.Point(548, 443)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(172, 48)
+        Me.btnSave.Size = New System.Drawing.Size(86, 25)
         Me.btnSave.TabIndex = 13
         Me.btnSave.Text = "Сохранить"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -360,39 +361,39 @@ Partial Class SearchBillForm
         '
         Me.cbFilter.FormattingEnabled = True
         Me.cbFilter.Items.AddRange(New Object() {"По сотруднику", "По артикулу", "Сотрудник + артикул", "По номеру квитанции"})
-        Me.cbFilter.Location = New System.Drawing.Point(400, 63)
-        Me.cbFilter.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbFilter.Location = New System.Drawing.Point(200, 33)
+        Me.cbFilter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbFilter.Name = "cbFilter"
-        Me.cbFilter.Size = New System.Drawing.Size(318, 33)
+        Me.cbFilter.Size = New System.Drawing.Size(161, 21)
         Me.cbFilter.TabIndex = 14
         '
         'labelFilter
         '
         Me.labelFilter.AutoSize = True
-        Me.labelFilter.Location = New System.Drawing.Point(396, 25)
-        Me.labelFilter.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelFilter.Location = New System.Drawing.Point(198, 13)
+        Me.labelFilter.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelFilter.Name = "labelFilter"
-        Me.labelFilter.Size = New System.Drawing.Size(93, 25)
+        Me.labelFilter.Size = New System.Drawing.Size(50, 13)
         Me.labelFilter.TabIndex = 15
         Me.labelFilter.Text = "Фильтр:"
         '
         'datePickerFrom
         '
         Me.datePickerFrom.Enabled = False
-        Me.datePickerFrom.Location = New System.Drawing.Point(905, 65)
-        Me.datePickerFrom.Margin = New System.Windows.Forms.Padding(4)
+        Me.datePickerFrom.Location = New System.Drawing.Point(452, 34)
+        Me.datePickerFrom.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.datePickerFrom.Name = "datePickerFrom"
-        Me.datePickerFrom.Size = New System.Drawing.Size(362, 31)
+        Me.datePickerFrom.Size = New System.Drawing.Size(183, 20)
         Me.datePickerFrom.TabIndex = 16
         Me.datePickerFrom.Visible = False
         '
         'labelDateFrom
         '
         Me.labelDateFrom.AutoSize = True
-        Me.labelDateFrom.Location = New System.Drawing.Point(899, 25)
-        Me.labelDateFrom.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelDateFrom.Location = New System.Drawing.Point(450, 13)
+        Me.labelDateFrom.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDateFrom.Name = "labelDateFrom"
-        Me.labelDateFrom.Size = New System.Drawing.Size(85, 25)
+        Me.labelDateFrom.Size = New System.Drawing.Size(45, 13)
         Me.labelDateFrom.TabIndex = 17
         Me.labelDateFrom.Text = "Дата с:"
         Me.labelDateFrom.Visible = False
@@ -400,10 +401,10 @@ Partial Class SearchBillForm
         'labelDateTo
         '
         Me.labelDateTo.AutoSize = True
-        Me.labelDateTo.Location = New System.Drawing.Point(899, 112)
-        Me.labelDateTo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelDateTo.Location = New System.Drawing.Point(450, 58)
+        Me.labelDateTo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDateTo.Name = "labelDateTo"
-        Me.labelDateTo.Size = New System.Drawing.Size(98, 25)
+        Me.labelDateTo.Size = New System.Drawing.Size(51, 13)
         Me.labelDateTo.TabIndex = 19
         Me.labelDateTo.Text = "Дата по:"
         Me.labelDateTo.Visible = False
@@ -411,10 +412,10 @@ Partial Class SearchBillForm
         'datePickerTo
         '
         Me.datePickerTo.Enabled = False
-        Me.datePickerTo.Location = New System.Drawing.Point(905, 152)
-        Me.datePickerTo.Margin = New System.Windows.Forms.Padding(4)
+        Me.datePickerTo.Location = New System.Drawing.Point(452, 79)
+        Me.datePickerTo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.datePickerTo.Name = "datePickerTo"
-        Me.datePickerTo.Size = New System.Drawing.Size(362, 31)
+        Me.datePickerTo.Size = New System.Drawing.Size(183, 20)
         Me.datePickerTo.TabIndex = 18
         Me.datePickerTo.Visible = False
         '
@@ -422,18 +423,19 @@ Partial Class SearchBillForm
         '
         Me.chckbxEditingMode.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.chckbxEditingMode.AutoSize = True
-        Me.chckbxEditingMode.Location = New System.Drawing.Point(12, 851)
+        Me.chckbxEditingMode.Location = New System.Drawing.Point(6, 441)
+        Me.chckbxEditingMode.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chckbxEditingMode.Name = "chckbxEditingMode"
-        Me.chckbxEditingMode.Size = New System.Drawing.Size(281, 29)
+        Me.chckbxEditingMode.Size = New System.Drawing.Size(147, 17)
         Me.chckbxEditingMode.TabIndex = 20
         Me.chckbxEditingMode.Text = "Режим редактирования"
         Me.chckbxEditingMode.UseVisualStyleBackColor = True
         '
         'SearchBillForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1280, 909)
+        Me.ClientSize = New System.Drawing.Size(640, 473)
         Me.Controls.Add(Me.chckbxEditingMode)
         Me.Controls.Add(Me.labelDateTo)
         Me.Controls.Add(Me.datePickerTo)
@@ -453,7 +455,8 @@ Partial Class SearchBillForm
         Me.Controls.Add(Me.cbArticul)
         Me.Controls.Add(Me.cbEmployee)
         Me.Controls.Add(Me.dgView)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "SearchBillForm"
         Me.Text = "Найти накладную"
         CType(Me.dgView, System.ComponentModel.ISupportInitialize).EndInit()

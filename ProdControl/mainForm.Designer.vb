@@ -22,6 +22,7 @@ Partial Class mainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainForm))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.НакладныеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.НоваяToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -32,6 +33,7 @@ Partial Class mainForm
         Me.ТехкартаToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ПроверкаРасценокРаботToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.СотрудникиToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.КоэффициентыДопЗатратToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОтчетыToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.НормаВыроботкиToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОтчетПоСотрудникуToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,18 +46,20 @@ Partial Class mainForm
         Me.СоздатьКопиюБДToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОчиститьАрхивКопийБДToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OperationLogTableAdapter1 = New ProdControl.DBSetTableAdapters.OperationLogTableAdapter()
-        Me.КоэффициентыДопЗатратToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ТехкартаВязаниеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ДеталиИзделийToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ОборудованиеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.НакладныеToolStripMenuItem, Me.ОсновныеДанныеToolStripMenuItem, Me.ОтчетыToolStripMenuItem, Me.ВыходToolStripMenuItem, Me.УтилитыToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1776, 42)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(3, 1, 0, 1)
+        Me.MenuStrip1.Size = New System.Drawing.Size(888, 24)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -63,146 +67,164 @@ Partial Class mainForm
         '
         Me.НакладныеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.НоваяToolStripMenuItem, Me.НайтиToolStripMenuItem})
         Me.НакладныеToolStripMenuItem.Name = "НакладныеToolStripMenuItem"
-        Me.НакладныеToolStripMenuItem.Size = New System.Drawing.Size(158, 38)
+        Me.НакладныеToolStripMenuItem.Size = New System.Drawing.Size(81, 22)
         Me.НакладныеToolStripMenuItem.Text = "Накладные"
         '
         'НоваяToolStripMenuItem
         '
         Me.НоваяToolStripMenuItem.Name = "НоваяToolStripMenuItem"
-        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(217, 44)
+        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.НоваяToolStripMenuItem.Text = "Новая"
         '
         'НайтиToolStripMenuItem
         '
         Me.НайтиToolStripMenuItem.Name = "НайтиToolStripMenuItem"
-        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(217, 44)
+        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.НайтиToolStripMenuItem.Text = "Найти"
         '
         'ОсновныеДанныеToolStripMenuItem
         '
-        Me.ОсновныеДанныеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.АртикулToolStripMenuItem, Me.ОперацияToolStripMenuItem, Me.ТехкартаToolStripMenuItem, Me.ПроверкаРасценокРаботToolStripMenuItem, Me.СотрудникиToolStripMenuItem, Me.КоэффициентыДопЗатратToolStripMenuItem})
+        Me.ОсновныеДанныеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.АртикулToolStripMenuItem, Me.ОперацияToolStripMenuItem, Me.ТехкартаToolStripMenuItem, Me.ТехкартаВязаниеToolStripMenuItem, Me.ПроверкаРасценокРаботToolStripMenuItem, Me.СотрудникиToolStripMenuItem, Me.КоэффициентыДопЗатратToolStripMenuItem, Me.ДеталиИзделийToolStripMenuItem, Me.ОборудованиеToolStripMenuItem})
         Me.ОсновныеДанныеToolStripMenuItem.Name = "ОсновныеДанныеToolStripMenuItem"
-        Me.ОсновныеДанныеToolStripMenuItem.Size = New System.Drawing.Size(239, 38)
+        Me.ОсновныеДанныеToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
         Me.ОсновныеДанныеToolStripMenuItem.Text = "Основные данные"
         '
         'АртикулToolStripMenuItem
         '
         Me.АртикулToolStripMenuItem.Name = "АртикулToolStripMenuItem"
-        Me.АртикулToolStripMenuItem.Size = New System.Drawing.Size(445, 44)
+        Me.АртикулToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.АртикулToolStripMenuItem.Text = "Артикул"
         '
         'ОперацияToolStripMenuItem
         '
         Me.ОперацияToolStripMenuItem.Name = "ОперацияToolStripMenuItem"
-        Me.ОперацияToolStripMenuItem.Size = New System.Drawing.Size(445, 44)
+        Me.ОперацияToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.ОперацияToolStripMenuItem.Text = "Операция"
         '
         'ТехкартаToolStripMenuItem
         '
         Me.ТехкартаToolStripMenuItem.Name = "ТехкартаToolStripMenuItem"
-        Me.ТехкартаToolStripMenuItem.Size = New System.Drawing.Size(445, 44)
+        Me.ТехкартаToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.ТехкартаToolStripMenuItem.Text = "Тех.карта"
         '
         'ПроверкаРасценокРаботToolStripMenuItem
         '
         Me.ПроверкаРасценокРаботToolStripMenuItem.Name = "ПроверкаРасценокРаботToolStripMenuItem"
-        Me.ПроверкаРасценокРаботToolStripMenuItem.Size = New System.Drawing.Size(445, 44)
+        Me.ПроверкаРасценокРаботToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.ПроверкаРасценокРаботToolStripMenuItem.Text = "Проверка расценок работ"
         '
         'СотрудникиToolStripMenuItem
         '
         Me.СотрудникиToolStripMenuItem.Name = "СотрудникиToolStripMenuItem"
-        Me.СотрудникиToolStripMenuItem.Size = New System.Drawing.Size(445, 44)
+        Me.СотрудникиToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.СотрудникиToolStripMenuItem.Text = "Сотрудники"
+        '
+        'КоэффициентыДопЗатратToolStripMenuItem
+        '
+        Me.КоэффициентыДопЗатратToolStripMenuItem.Name = "КоэффициентыДопЗатратToolStripMenuItem"
+        Me.КоэффициентыДопЗатратToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.КоэффициентыДопЗатратToolStripMenuItem.Text = "Коэффициенты доп. затрат"
         '
         'ОтчетыToolStripMenuItem
         '
         Me.ОтчетыToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.НормаВыроботкиToolStripMenuItem, Me.ОтчетПоСотрудникуToolStripMenuItem})
         Me.ОтчетыToolStripMenuItem.Name = "ОтчетыToolStripMenuItem"
-        Me.ОтчетыToolStripMenuItem.Size = New System.Drawing.Size(117, 38)
+        Me.ОтчетыToolStripMenuItem.Size = New System.Drawing.Size(60, 22)
         Me.ОтчетыToolStripMenuItem.Text = "Отчеты"
         '
         'НормаВыроботкиToolStripMenuItem
         '
         Me.НормаВыроботкиToolStripMenuItem.Name = "НормаВыроботкиToolStripMenuItem"
-        Me.НормаВыроботкиToolStripMenuItem.Size = New System.Drawing.Size(382, 44)
+        Me.НормаВыроботкиToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.НормаВыроботкиToolStripMenuItem.Text = "Норма выработки"
         '
         'ОтчетПоСотрудникуToolStripMenuItem
         '
         Me.ОтчетПоСотрудникуToolStripMenuItem.Name = "ОтчетПоСотрудникуToolStripMenuItem"
-        Me.ОтчетПоСотрудникуToolStripMenuItem.Size = New System.Drawing.Size(382, 44)
+        Me.ОтчетПоСотрудникуToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ОтчетПоСотрудникуToolStripMenuItem.Text = "Отчет по сотруднику"
         '
         'ВыходToolStripMenuItem
         '
         Me.ВыходToolStripMenuItem.Name = "ВыходToolStripMenuItem"
-        Me.ВыходToolStripMenuItem.Size = New System.Drawing.Size(104, 38)
+        Me.ВыходToolStripMenuItem.Size = New System.Drawing.Size(53, 22)
         Me.ВыходToolStripMenuItem.Text = "Выход"
         '
         'УтилитыToolStripMenuItem
         '
         Me.УтилитыToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ОчисткаТаблицыOperationLogToolStripMenuItem, Me.ВосстановитьБДИзАрхиваToolStripMenuItem, Me.СоздатьКопиюБДToolStripMenuItem, Me.ОчиститьАрхивКопийБДToolStripMenuItem})
         Me.УтилитыToolStripMenuItem.Name = "УтилитыToolStripMenuItem"
-        Me.УтилитыToolStripMenuItem.Size = New System.Drawing.Size(127, 38)
+        Me.УтилитыToolStripMenuItem.Size = New System.Drawing.Size(66, 22)
         Me.УтилитыToolStripMenuItem.Text = "Утилиты"
         '
         'ОчисткаТаблицыOperationLogToolStripMenuItem
         '
         Me.ОчисткаТаблицыOperationLogToolStripMenuItem.Name = "ОчисткаТаблицыOperationLogToolStripMenuItem"
-        Me.ОчисткаТаблицыOperationLogToolStripMenuItem.Size = New System.Drawing.Size(494, 44)
+        Me.ОчисткаТаблицыOperationLogToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
         Me.ОчисткаТаблицыOperationLogToolStripMenuItem.Text = "Очистка таблицы OperationLog"
         '
         'ВосстановитьБДИзАрхиваToolStripMenuItem
         '
         Me.ВосстановитьБДИзАрхиваToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ВыбратьФайлToolStripMenuItem, Me.АвтоToolStripMenuItem})
         Me.ВосстановитьБДИзАрхиваToolStripMenuItem.Name = "ВосстановитьБДИзАрхиваToolStripMenuItem"
-        Me.ВосстановитьБДИзАрхиваToolStripMenuItem.Size = New System.Drawing.Size(494, 44)
+        Me.ВосстановитьБДИзАрхиваToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
         Me.ВосстановитьБДИзАрхиваToolStripMenuItem.Text = "Восстановить БД из архива"
         '
         'ВыбратьФайлToolStripMenuItem
         '
         Me.ВыбратьФайлToolStripMenuItem.Name = "ВыбратьФайлToolStripMenuItem"
-        Me.ВыбратьФайлToolStripMenuItem.Size = New System.Drawing.Size(319, 44)
+        Me.ВыбратьФайлToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.ВыбратьФайлToolStripMenuItem.Text = "Выбрать файл..."
         '
         'АвтоToolStripMenuItem
         '
         Me.АвтоToolStripMenuItem.Name = "АвтоToolStripMenuItem"
-        Me.АвтоToolStripMenuItem.Size = New System.Drawing.Size(319, 44)
+        Me.АвтоToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.АвтоToolStripMenuItem.Text = "Авто"
         '
         'СоздатьКопиюБДToolStripMenuItem
         '
         Me.СоздатьКопиюБДToolStripMenuItem.Name = "СоздатьКопиюБДToolStripMenuItem"
-        Me.СоздатьКопиюБДToolStripMenuItem.Size = New System.Drawing.Size(494, 44)
+        Me.СоздатьКопиюБДToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
         Me.СоздатьКопиюБДToolStripMenuItem.Text = "Создать копию БД"
         '
         'ОчиститьАрхивКопийБДToolStripMenuItem
         '
         Me.ОчиститьАрхивКопийБДToolStripMenuItem.Name = "ОчиститьАрхивКопийБДToolStripMenuItem"
-        Me.ОчиститьАрхивКопийБДToolStripMenuItem.Size = New System.Drawing.Size(494, 44)
+        Me.ОчиститьАрхивКопийБДToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
         Me.ОчиститьАрхивКопийБДToolStripMenuItem.Text = "Очистить архив копий БД"
         '
         'OperationLogTableAdapter1
         '
         Me.OperationLogTableAdapter1.ClearBeforeFill = True
         '
-        'КоэффициентыДопЗатратToolStripMenuItem
+        'ТехкартаВязаниеToolStripMenuItem
         '
-        Me.КоэффициентыДопЗатратToolStripMenuItem.Name = "КоэффициентыДопЗатратToolStripMenuItem"
-        Me.КоэффициентыДопЗатратToolStripMenuItem.Size = New System.Drawing.Size(445, 44)
-        Me.КоэффициентыДопЗатратToolStripMenuItem.Text = "Коэффициенты доп. затрат"
+        Me.ТехкартаВязаниеToolStripMenuItem.Name = "ТехкартаВязаниеToolStripMenuItem"
+        Me.ТехкартаВязаниеToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.ТехкартаВязаниеToolStripMenuItem.Text = "Тех.карта (Вязание)"
+        '
+        'ДеталиИзделийToolStripMenuItem
+        '
+        Me.ДеталиИзделийToolStripMenuItem.Name = "ДеталиИзделийToolStripMenuItem"
+        Me.ДеталиИзделийToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.ДеталиИзделийToolStripMenuItem.Text = "Детали изделий"
+        '
+        'ОборудованиеToolStripMenuItem
+        '
+        Me.ОборудованиеToolStripMenuItem.Name = "ОборудованиеToolStripMenuItem"
+        Me.ОборудованиеToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.ОборудованиеToolStripMenuItem.Text = "Оборудование"
         '
         'mainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1776, 750)
+        Me.ClientSize = New System.Drawing.Size(888, 390)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "mainForm"
         Me.Text = "Главное окно"
         Me.MenuStrip1.ResumeLayout(False)
@@ -234,4 +256,7 @@ Partial Class mainForm
     Friend WithEvents ОчиститьАрхивКопийБДToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents СотрудникиToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents КоэффициентыДопЗатратToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ТехкартаВязаниеToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ДеталиИзделийToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ОборудованиеToolStripMenuItem As ToolStripMenuItem
 End Class

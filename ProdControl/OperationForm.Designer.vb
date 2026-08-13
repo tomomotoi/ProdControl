@@ -23,6 +23,7 @@ Partial Class OperationForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OperationForm))
         Me.txNewOperationName = New System.Windows.Forms.TextBox()
         Me.cbProfession = New System.Windows.Forms.ComboBox()
         Me.PositionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -49,9 +50,10 @@ Partial Class OperationForm
         '
         'txNewOperationName
         '
-        Me.txNewOperationName.Location = New System.Drawing.Point(12, 63)
+        Me.txNewOperationName.Location = New System.Drawing.Point(6, 33)
+        Me.txNewOperationName.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txNewOperationName.Name = "txNewOperationName"
-        Me.txNewOperationName.Size = New System.Drawing.Size(381, 31)
+        Me.txNewOperationName.Size = New System.Drawing.Size(192, 20)
         Me.txNewOperationName.TabIndex = 0
         '
         'cbProfession
@@ -59,9 +61,10 @@ Partial Class OperationForm
         Me.cbProfession.DataSource = Me.PositionBindingSource
         Me.cbProfession.DisplayMember = "PositionName"
         Me.cbProfession.FormattingEnabled = True
-        Me.cbProfession.Location = New System.Drawing.Point(428, 63)
+        Me.cbProfession.Location = New System.Drawing.Point(214, 33)
+        Me.cbProfession.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbProfession.Name = "cbProfession"
-        Me.cbProfession.Size = New System.Drawing.Size(359, 33)
+        Me.cbProfession.Size = New System.Drawing.Size(182, 21)
         Me.cbProfession.TabIndex = 1
         Me.cbProfession.ValueMember = "PositionID"
         '
@@ -79,9 +82,10 @@ Partial Class OperationForm
         '
         Me.btnAddOperation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddOperation.Location = New System.Drawing.Point(10, 808)
+        Me.btnAddOperation.Location = New System.Drawing.Point(5, 420)
+        Me.btnAddOperation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnAddOperation.Name = "btnAddOperation"
-        Me.btnAddOperation.Size = New System.Drawing.Size(775, 46)
+        Me.btnAddOperation.Size = New System.Drawing.Size(388, 24)
         Me.btnAddOperation.TabIndex = 2
         Me.btnAddOperation.Text = "Добавить"
         Me.btnAddOperation.UseVisualStyleBackColor = True
@@ -89,18 +93,20 @@ Partial Class OperationForm
         'labelOperationName
         '
         Me.labelOperationName.AutoSize = True
-        Me.labelOperationName.Location = New System.Drawing.Point(7, 21)
+        Me.labelOperationName.Location = New System.Drawing.Point(4, 11)
+        Me.labelOperationName.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelOperationName.Name = "labelOperationName"
-        Me.labelOperationName.Size = New System.Drawing.Size(282, 25)
+        Me.labelOperationName.Size = New System.Drawing.Size(144, 13)
         Me.labelOperationName.TabIndex = 3
         Me.labelOperationName.Text = "Название новой операции:"
         '
         'labelProfession
         '
         Me.labelProfession.AutoSize = True
-        Me.labelProfession.Location = New System.Drawing.Point(423, 21)
+        Me.labelProfession.Location = New System.Drawing.Point(212, 11)
+        Me.labelProfession.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelProfession.Name = "labelProfession"
-        Me.labelProfession.Size = New System.Drawing.Size(131, 25)
+        Me.labelProfession.Size = New System.Drawing.Size(68, 13)
         Me.labelProfession.TabIndex = 4
         Me.labelProfession.Text = "Профессия:"
         '
@@ -117,10 +123,10 @@ Partial Class OperationForm
         Me.lbExistingOperations.DisplayMember = "OperationName"
         Me.lbExistingOperations.FormattingEnabled = True
         Me.lbExistingOperations.HorizontalScrollbar = True
-        Me.lbExistingOperations.ItemHeight = 25
-        Me.lbExistingOperations.Location = New System.Drawing.Point(10, 252)
+        Me.lbExistingOperations.Location = New System.Drawing.Point(5, 131)
+        Me.lbExistingOperations.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.lbExistingOperations.Name = "lbExistingOperations"
-        Me.lbExistingOperations.Size = New System.Drawing.Size(774, 454)
+        Me.lbExistingOperations.Size = New System.Drawing.Size(389, 238)
         Me.lbExistingOperations.TabIndex = 5
         Me.lbExistingOperations.ValueMember = "OperationID"
         '
@@ -137,9 +143,10 @@ Partial Class OperationForm
         'labelExistingOperations
         '
         Me.labelExistingOperations.AutoSize = True
-        Me.labelExistingOperations.Location = New System.Drawing.Point(6, 214)
+        Me.labelExistingOperations.Location = New System.Drawing.Point(3, 111)
+        Me.labelExistingOperations.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelExistingOperations.Name = "labelExistingOperations"
-        Me.labelExistingOperations.Size = New System.Drawing.Size(349, 25)
+        Me.labelExistingOperations.Size = New System.Drawing.Size(177, 13)
         Me.labelExistingOperations.TabIndex = 6
         Me.labelExistingOperations.Text = "Список существующих операций:"
         '
@@ -151,9 +158,10 @@ Partial Class OperationForm
         '
         Me.btnDeleteOperation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDeleteOperation.Location = New System.Drawing.Point(11, 860)
+        Me.btnDeleteOperation.Location = New System.Drawing.Point(6, 447)
+        Me.btnDeleteOperation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnDeleteOperation.Name = "btnDeleteOperation"
-        Me.btnDeleteOperation.Size = New System.Drawing.Size(775, 46)
+        Me.btnDeleteOperation.Size = New System.Drawing.Size(388, 24)
         Me.btnDeleteOperation.TabIndex = 7
         Me.btnDeleteOperation.Text = "Удалить"
         Me.btnDeleteOperation.UseVisualStyleBackColor = True
@@ -161,43 +169,47 @@ Partial Class OperationForm
         'labelSearchOperation
         '
         Me.labelSearchOperation.AutoSize = True
-        Me.labelSearchOperation.Location = New System.Drawing.Point(7, 115)
+        Me.labelSearchOperation.Location = New System.Drawing.Point(4, 60)
+        Me.labelSearchOperation.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelSearchOperation.Name = "labelSearchOperation"
-        Me.labelSearchOperation.Size = New System.Drawing.Size(181, 25)
+        Me.labelSearchOperation.Size = New System.Drawing.Size(93, 13)
         Me.labelSearchOperation.TabIndex = 8
         Me.labelSearchOperation.Text = "Поиск операции:"
         '
         'txSearchOperation
         '
-        Me.txSearchOperation.Location = New System.Drawing.Point(12, 154)
+        Me.txSearchOperation.Location = New System.Drawing.Point(6, 80)
+        Me.txSearchOperation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txSearchOperation.Name = "txSearchOperation"
-        Me.txSearchOperation.Size = New System.Drawing.Size(381, 31)
+        Me.txSearchOperation.Size = New System.Drawing.Size(192, 20)
         Me.txSearchOperation.TabIndex = 9
         '
         'labelExistingOperationProfession
         '
         Me.labelExistingOperationProfession.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.labelExistingOperationProfession.AutoSize = True
-        Me.labelExistingOperationProfession.Location = New System.Drawing.Point(7, 724)
+        Me.labelExistingOperationProfession.Location = New System.Drawing.Point(4, 376)
+        Me.labelExistingOperationProfession.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelExistingOperationProfession.Name = "labelExistingOperationProfession"
-        Me.labelExistingOperationProfession.Size = New System.Drawing.Size(390, 25)
+        Me.labelExistingOperationProfession.Size = New System.Drawing.Size(199, 13)
         Me.labelExistingOperationProfession.TabIndex = 10
         Me.labelExistingOperationProfession.Text = "Профессия существующей операции:"
         '
         'txExistingOperationProfession
         '
         Me.txExistingOperationProfession.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txExistingOperationProfession.Location = New System.Drawing.Point(10, 752)
+        Me.txExistingOperationProfession.Location = New System.Drawing.Point(5, 391)
+        Me.txExistingOperationProfession.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txExistingOperationProfession.Name = "txExistingOperationProfession"
         Me.txExistingOperationProfession.ReadOnly = True
-        Me.txExistingOperationProfession.Size = New System.Drawing.Size(383, 31)
+        Me.txExistingOperationProfession.Size = New System.Drawing.Size(194, 20)
         Me.txExistingOperationProfession.TabIndex = 11
         '
         'OperationForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(799, 918)
+        Me.ClientSize = New System.Drawing.Size(400, 477)
         Me.Controls.Add(Me.txExistingOperationProfession)
         Me.Controls.Add(Me.labelExistingOperationProfession)
         Me.Controls.Add(Me.txSearchOperation)
@@ -210,6 +222,8 @@ Partial Class OperationForm
         Me.Controls.Add(Me.btnAddOperation)
         Me.Controls.Add(Me.cbProfession)
         Me.Controls.Add(Me.txNewOperationName)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "OperationForm"
         Me.Text = "Операция"
         CType(Me.PositionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

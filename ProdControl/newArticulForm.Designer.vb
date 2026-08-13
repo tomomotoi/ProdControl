@@ -22,6 +22,7 @@ Partial Class newArticulForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(newArticulForm))
         Me.txtArt = New System.Windows.Forms.TextBox()
         Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.lbArt = New System.Windows.Forms.Label()
@@ -103,6 +104,7 @@ Partial Class newArticulForm
         Me.Controls.Add(Me.lbArt)
         Me.Controls.Add(Me.txtDesc)
         Me.Controls.Add(Me.txtArt)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "newArticulForm"
         Me.Text = "Артикул"
         CType(Me.DBSet, System.ComponentModel.ISupportInitialize).EndInit()

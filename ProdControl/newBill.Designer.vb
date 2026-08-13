@@ -23,6 +23,7 @@ Partial Class newBill
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(newBill))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -119,19 +120,17 @@ Partial Class newBill
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 794)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(6)
+        Me.Panel1.Location = New System.Drawing.Point(0, 413)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1697, 77)
+        Me.Panel1.Size = New System.Drawing.Size(848, 40)
         Me.Panel1.TabIndex = 0
         '
         'btnDelete
         '
         Me.btnDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDelete.Location = New System.Drawing.Point(1208, 17)
-        Me.btnDelete.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnDelete.Location = New System.Drawing.Point(604, 9)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(150, 44)
+        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
         Me.btnDelete.TabIndex = 3
         Me.btnDelete.Text = "Удалить"
         Me.btnDelete.UseVisualStyleBackColor = True
@@ -140,20 +139,18 @@ Partial Class newBill
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Button3.Location = New System.Drawing.Point(1532, 17)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(6)
+        Me.Button3.Location = New System.Drawing.Point(766, 9)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(150, 44)
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 2
         Me.Button3.Text = "Закрыть"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(900, 17)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(6)
+        Me.Button2.Location = New System.Drawing.Point(450, 9)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(260, 44)
+        Me.Button2.Size = New System.Drawing.Size(130, 23)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "Сохранить и Добавить"
         Me.Button2.UseVisualStyleBackColor = True
@@ -162,10 +159,9 @@ Partial Class newBill
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(1370, 17)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(6)
+        Me.Button1.Location = New System.Drawing.Point(685, 9)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(150, 44)
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Сохранить"
         Me.Button1.UseVisualStyleBackColor = True
@@ -177,9 +173,8 @@ Partial Class newBill
         Me.Panel2.Controls.Add(Me.pnlTop)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(6)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1697, 794)
+        Me.Panel2.Size = New System.Drawing.Size(848, 413)
         Me.Panel2.TabIndex = 1
         '
         'dgOperationLog
@@ -190,11 +185,10 @@ Partial Class newBill
         Me.dgOperationLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgOperationLog.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cEmployeeID, Me.EmployeeName, Me.LogNumber, Me.LogDate, Me.ArticulID, Me.ArticulName, Me.ExecutionTime, Me.CogCount, Me.OperationID, Me.OperationName, Me.workDay})
         Me.dgOperationLog.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.dgOperationLog.Location = New System.Drawing.Point(6, 327)
-        Me.dgOperationLog.Margin = New System.Windows.Forms.Padding(6)
+        Me.dgOperationLog.Location = New System.Drawing.Point(3, 170)
         Me.dgOperationLog.Name = "dgOperationLog"
         Me.dgOperationLog.RowHeadersWidth = 82
-        Me.dgOperationLog.Size = New System.Drawing.Size(1687, 456)
+        Me.dgOperationLog.Size = New System.Drawing.Size(844, 237)
         Me.dgOperationLog.TabIndex = 2
         '
         'cEmployeeID
@@ -292,18 +286,18 @@ Partial Class newBill
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsMenuEdit, Me.tsDelete})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(253, 80)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(155, 48)
         '
         'tsMenuEdit
         '
         Me.tsMenuEdit.Name = "tsMenuEdit"
-        Me.tsMenuEdit.Size = New System.Drawing.Size(252, 38)
+        Me.tsMenuEdit.Size = New System.Drawing.Size(154, 22)
         Me.tsMenuEdit.Text = "Редактировать"
         '
         'tsDelete
         '
         Me.tsDelete.Name = "tsDelete"
-        Me.tsDelete.Size = New System.Drawing.Size(252, 38)
+        Me.tsDelete.Size = New System.Drawing.Size(154, 22)
         Me.tsDelete.Text = "Удалить"
         '
         'pnlTop
@@ -332,19 +326,17 @@ Partial Class newBill
         Me.pnlTop.Controls.Add(Me.elnEmpNumber)
         Me.pnlTop.Controls.Add(Me.lbEmployee)
         Me.pnlTop.Controls.Add(Me.cbEmployee)
-        Me.pnlTop.Location = New System.Drawing.Point(7, 0)
-        Me.pnlTop.Margin = New System.Windows.Forms.Padding(6)
+        Me.pnlTop.Location = New System.Drawing.Point(4, 0)
         Me.pnlTop.Name = "pnlTop"
-        Me.pnlTop.Size = New System.Drawing.Size(1686, 315)
+        Me.pnlTop.Size = New System.Drawing.Size(843, 164)
         Me.pnlTop.TabIndex = 1
         '
         'btnCalculateExecutionTime
         '
         Me.btnCalculateExecutionTime.Enabled = False
-        Me.btnCalculateExecutionTime.Location = New System.Drawing.Point(1057, 221)
-        Me.btnCalculateExecutionTime.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnCalculateExecutionTime.Location = New System.Drawing.Point(528, 115)
         Me.btnCalculateExecutionTime.Name = "btnCalculateExecutionTime"
-        Me.btnCalculateExecutionTime.Size = New System.Drawing.Size(234, 43)
+        Me.btnCalculateExecutionTime.Size = New System.Drawing.Size(117, 22)
         Me.btnCalculateExecutionTime.TabIndex = 24
         Me.btnCalculateExecutionTime.Text = "Рассчитать время"
         Me.btnCalculateExecutionTime.UseVisualStyleBackColor = True
@@ -352,10 +344,9 @@ Partial Class newBill
         'labelTypeOfNonRateSituation
         '
         Me.labelTypeOfNonRateSituation.AutoSize = True
-        Me.labelTypeOfNonRateSituation.Location = New System.Drawing.Point(587, 224)
-        Me.labelTypeOfNonRateSituation.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.labelTypeOfNonRateSituation.Location = New System.Drawing.Point(294, 116)
         Me.labelTypeOfNonRateSituation.Name = "labelTypeOfNonRateSituation"
-        Me.labelTypeOfNonRateSituation.Size = New System.Drawing.Size(147, 25)
+        Me.labelTypeOfNonRateSituation.Size = New System.Drawing.Size(75, 13)
         Me.labelTypeOfNonRateSituation.TabIndex = 23
         Me.labelTypeOfNonRateSituation.Text = "Тип ситуации"
         '
@@ -365,9 +356,10 @@ Partial Class newBill
         Me.cbTypeOfNonRateSituation.DisplayMember = "idle_operation_name"
         Me.cbTypeOfNonRateSituation.Enabled = False
         Me.cbTypeOfNonRateSituation.FormattingEnabled = True
-        Me.cbTypeOfNonRateSituation.Location = New System.Drawing.Point(747, 221)
+        Me.cbTypeOfNonRateSituation.Location = New System.Drawing.Point(374, 115)
+        Me.cbTypeOfNonRateSituation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbTypeOfNonRateSituation.Name = "cbTypeOfNonRateSituation"
-        Me.cbTypeOfNonRateSituation.Size = New System.Drawing.Size(290, 33)
+        Me.cbTypeOfNonRateSituation.Size = New System.Drawing.Size(147, 21)
         Me.cbTypeOfNonRateSituation.TabIndex = 22
         Me.cbTypeOfNonRateSituation.ValueMember = "idle_operation_id"
         '
@@ -384,65 +376,58 @@ Partial Class newBill
         'lbWorkDay
         '
         Me.lbWorkDay.AutoSize = True
-        Me.lbWorkDay.Location = New System.Drawing.Point(1075, 22)
-        Me.lbWorkDay.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbWorkDay.Location = New System.Drawing.Point(538, 11)
         Me.lbWorkDay.Name = "lbWorkDay"
-        Me.lbWorkDay.Size = New System.Drawing.Size(150, 25)
+        Me.lbWorkDay.Size = New System.Drawing.Size(76, 13)
         Me.lbWorkDay.TabIndex = 20
         Me.lbWorkDay.Text = "Рабочий день"
         '
         'tbWorkday
         '
-        Me.tbWorkday.Location = New System.Drawing.Point(1235, 16)
-        Me.tbWorkday.Margin = New System.Windows.Forms.Padding(6)
+        Me.tbWorkday.Location = New System.Drawing.Point(618, 8)
         Me.tbWorkday.Name = "tbWorkday"
-        Me.tbWorkday.Size = New System.Drawing.Size(92, 31)
+        Me.tbWorkday.Size = New System.Drawing.Size(48, 20)
         Me.tbWorkday.TabIndex = 8
         '
         'диДщпТгь
         '
         Me.диДщпТгь.AutoSize = True
-        Me.диДщпТгь.Location = New System.Drawing.Point(1, 22)
-        Me.диДщпТгь.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.диДщпТгь.Location = New System.Drawing.Point(0, 11)
         Me.диДщпТгь.Name = "диДщпТгь"
-        Me.диДщпТгь.Size = New System.Drawing.Size(188, 25)
+        Me.диДщпТгь.Size = New System.Drawing.Size(97, 13)
         Me.диДщпТгь.TabIndex = 18
         Me.диДщпТгь.Text = "Номер квитанции"
         '
         'tbLogNum
         '
-        Me.tbLogNum.Location = New System.Drawing.Point(207, 16)
-        Me.tbLogNum.Margin = New System.Windows.Forms.Padding(6)
+        Me.tbLogNum.Location = New System.Drawing.Point(104, 8)
         Me.tbLogNum.Name = "tbLogNum"
-        Me.tbLogNum.Size = New System.Drawing.Size(372, 31)
+        Me.tbLogNum.Size = New System.Drawing.Size(188, 20)
         Me.tbLogNum.TabIndex = 0
         '
         'lbCount
         '
         Me.lbCount.AutoSize = True
-        Me.lbCount.Location = New System.Drawing.Point(609, 75)
-        Me.lbCount.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbCount.Location = New System.Drawing.Point(304, 39)
         Me.lbCount.Name = "lbCount"
-        Me.lbCount.Size = New System.Drawing.Size(129, 25)
+        Me.lbCount.Size = New System.Drawing.Size(66, 13)
         Me.lbCount.TabIndex = 16
         Me.lbCount.Text = "Количество"
         '
         'lbExecutionTime
         '
         Me.lbExecutionTime.AutoSize = True
-        Me.lbExecutionTime.Location = New System.Drawing.Point(531, 173)
-        Me.lbExecutionTime.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbExecutionTime.Location = New System.Drawing.Point(266, 90)
         Me.lbExecutionTime.Name = "lbExecutionTime"
-        Me.lbExecutionTime.Size = New System.Drawing.Size(203, 25)
+        Me.lbExecutionTime.Size = New System.Drawing.Size(105, 13)
         Me.lbExecutionTime.TabIndex = 15
         Me.lbExecutionTime.Text = "Время выполнения"
         '
         'tbCount
         '
-        Me.tbCount.Location = New System.Drawing.Point(747, 68)
-        Me.tbCount.Margin = New System.Windows.Forms.Padding(6)
+        Me.tbCount.Location = New System.Drawing.Point(374, 35)
         Me.tbCount.Name = "tbCount"
-        Me.tbCount.Size = New System.Drawing.Size(290, 31)
+        Me.tbCount.Size = New System.Drawing.Size(147, 20)
         Me.tbCount.TabIndex = 3
         '
         'cbOperation
@@ -452,10 +437,9 @@ Partial Class newBill
         Me.cbOperation.DataSource = Me.OperationBindingSource3
         Me.cbOperation.DisplayMember = "OperationName"
         Me.cbOperation.FormattingEnabled = True
-        Me.cbOperation.Location = New System.Drawing.Point(747, 116)
-        Me.cbOperation.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbOperation.Location = New System.Drawing.Point(374, 60)
         Me.cbOperation.Name = "cbOperation"
-        Me.cbOperation.Size = New System.Drawing.Size(290, 33)
+        Me.cbOperation.Size = New System.Drawing.Size(147, 21)
         Me.cbOperation.TabIndex = 5
         Me.cbOperation.ValueMember = "Operation.OperationID"
         '
@@ -468,10 +452,9 @@ Partial Class newBill
         'btnInsert
         '
         Me.btnInsert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnInsert.Location = New System.Drawing.Point(1525, 254)
-        Me.btnInsert.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnInsert.Location = New System.Drawing.Point(762, 132)
         Me.btnInsert.Name = "btnInsert"
-        Me.btnInsert.Size = New System.Drawing.Size(150, 44)
+        Me.btnInsert.Size = New System.Drawing.Size(75, 23)
         Me.btnInsert.TabIndex = 12
         Me.btnInsert.Text = "Вставить"
         Me.btnInsert.UseVisualStyleBackColor = True
@@ -479,29 +462,26 @@ Partial Class newBill
         'lbOperation
         '
         Me.lbOperation.AutoSize = True
-        Me.lbOperation.Location = New System.Drawing.Point(617, 122)
-        Me.lbOperation.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbOperation.Location = New System.Drawing.Point(308, 63)
         Me.lbOperation.Name = "lbOperation"
-        Me.lbOperation.Size = New System.Drawing.Size(111, 25)
+        Me.lbOperation.Size = New System.Drawing.Size(57, 13)
         Me.lbOperation.TabIndex = 11
         Me.lbOperation.Text = "Операция"
         '
         'tbOperationTime
         '
         Me.tbOperationTime.Enabled = False
-        Me.tbOperationTime.Location = New System.Drawing.Point(747, 168)
-        Me.tbOperationTime.Margin = New System.Windows.Forms.Padding(6)
+        Me.tbOperationTime.Location = New System.Drawing.Point(374, 87)
         Me.tbOperationTime.Name = "tbOperationTime"
-        Me.tbOperationTime.Size = New System.Drawing.Size(290, 31)
+        Me.tbOperationTime.Size = New System.Drawing.Size(147, 20)
         Me.tbOperationTime.TabIndex = 7
         '
         'cbIsStandard
         '
         Me.cbIsStandard.AutoSize = True
-        Me.cbIsStandard.Location = New System.Drawing.Point(1057, 173)
-        Me.cbIsStandard.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbIsStandard.Location = New System.Drawing.Point(528, 90)
         Me.cbIsStandard.Name = "cbIsStandard"
-        Me.cbIsStandard.Size = New System.Drawing.Size(234, 29)
+        Me.cbIsStandard.Size = New System.Drawing.Size(123, 17)
         Me.cbIsStandard.TabIndex = 6
         Me.cbIsStandard.Text = "Не нормированная"
         Me.cbIsStandard.UseVisualStyleBackColor = True
@@ -509,30 +489,27 @@ Partial Class newBill
         'dtPickerOpDate
         '
         Me.dtPickerOpDate.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.dtPickerOpDate.Location = New System.Drawing.Point(747, 16)
-        Me.dtPickerOpDate.Margin = New System.Windows.Forms.Padding(6)
+        Me.dtPickerOpDate.Location = New System.Drawing.Point(374, 8)
         Me.dtPickerOpDate.Name = "dtPickerOpDate"
-        Me.dtPickerOpDate.Size = New System.Drawing.Size(294, 31)
+        Me.dtPickerOpDate.Size = New System.Drawing.Size(149, 20)
         Me.dtPickerOpDate.TabIndex = 1
         Me.dtPickerOpDate.Value = New Date(2019, 7, 4, 14, 54, 35, 0)
         '
         'lbDate
         '
         Me.lbDate.AutoSize = True
-        Me.lbDate.Location = New System.Drawing.Point(617, 22)
-        Me.lbDate.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbDate.Location = New System.Drawing.Point(308, 11)
         Me.lbDate.Name = "lbDate"
-        Me.lbDate.Size = New System.Drawing.Size(62, 25)
+        Me.lbDate.Size = New System.Drawing.Size(33, 13)
         Me.lbDate.TabIndex = 5
         Me.lbDate.Text = "Дата"
         '
         'lbArticul
         '
         Me.lbArticul.AutoSize = True
-        Me.lbArticul.Location = New System.Drawing.Point(99, 72)
-        Me.lbArticul.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbArticul.Location = New System.Drawing.Point(50, 37)
         Me.lbArticul.Name = "lbArticul"
-        Me.lbArticul.Size = New System.Drawing.Size(94, 25)
+        Me.lbArticul.Size = New System.Drawing.Size(48, 13)
         Me.lbArticul.TabIndex = 4
         Me.lbArticul.Text = "Артикул"
         '
@@ -543,10 +520,9 @@ Partial Class newBill
         Me.cbArticul.DataSource = Me.ArticulBindingSource2
         Me.cbArticul.DisplayMember = "ArticulName"
         Me.cbArticul.FormattingEnabled = True
-        Me.cbArticul.Location = New System.Drawing.Point(207, 66)
-        Me.cbArticul.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbArticul.Location = New System.Drawing.Point(104, 34)
         Me.cbArticul.Name = "cbArticul"
-        Me.cbArticul.Size = New System.Drawing.Size(372, 33)
+        Me.cbArticul.Size = New System.Drawing.Size(188, 21)
         Me.cbArticul.TabIndex = 2
         Me.cbArticul.ValueMember = "ArticulID"
         '
@@ -558,19 +534,17 @@ Partial Class newBill
         'elnEmpNumber
         '
         Me.elnEmpNumber.AutoSize = True
-        Me.elnEmpNumber.Location = New System.Drawing.Point(517, 129)
-        Me.elnEmpNumber.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.elnEmpNumber.Location = New System.Drawing.Point(258, 67)
         Me.elnEmpNumber.Name = "elnEmpNumber"
-        Me.elnEmpNumber.Size = New System.Drawing.Size(0, 25)
+        Me.elnEmpNumber.Size = New System.Drawing.Size(0, 13)
         Me.elnEmpNumber.TabIndex = 2
         '
         'lbEmployee
         '
         Me.lbEmployee.AutoSize = True
-        Me.lbEmployee.Location = New System.Drawing.Point(75, 122)
-        Me.lbEmployee.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbEmployee.Location = New System.Drawing.Point(38, 63)
         Me.lbEmployee.Name = "lbEmployee"
-        Me.lbEmployee.Size = New System.Drawing.Size(119, 25)
+        Me.lbEmployee.Size = New System.Drawing.Size(60, 13)
         Me.lbEmployee.TabIndex = 1
         Me.lbEmployee.Text = "Сотрудник"
         '
@@ -581,10 +555,9 @@ Partial Class newBill
         Me.cbEmployee.DataSource = Me.EmployeeBindingSource1
         Me.cbEmployee.DisplayMember = "EmployeeName"
         Me.cbEmployee.FormattingEnabled = True
-        Me.cbEmployee.Location = New System.Drawing.Point(207, 116)
-        Me.cbEmployee.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbEmployee.Location = New System.Drawing.Point(104, 60)
         Me.cbEmployee.Name = "cbEmployee"
-        Me.cbEmployee.Size = New System.Drawing.Size(372, 33)
+        Me.cbEmployee.Size = New System.Drawing.Size(188, 21)
         Me.cbEmployee.TabIndex = 4
         Me.cbEmployee.ValueMember = "EmployeeID"
         '
@@ -667,13 +640,13 @@ Partial Class newBill
         'newBill
         '
         Me.AcceptButton = Me.Button1
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Button3
-        Me.ClientSize = New System.Drawing.Size(1697, 871)
+        Me.ClientSize = New System.Drawing.Size(848, 453)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(6)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "newBill"
         Me.Text = "Новая Накладная"
         Me.Panel1.ResumeLayout(False)

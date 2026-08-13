@@ -24,6 +24,7 @@ Partial Class ReportViewer
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReportViewer))
         Me.ReportEmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -79,19 +80,17 @@ Partial Class ReportViewer
         Me.Panel1.Controls.Add(Me.dtpFrom)
         Me.Panel1.Controls.Add(Me.btnLoadReport)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 708)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Panel1.Location = New System.Drawing.Point(0, 368)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(2000, 127)
+        Me.Panel1.Size = New System.Drawing.Size(962, 66)
         Me.Panel1.TabIndex = 1
         '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(1835, 39)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Button1.Location = New System.Drawing.Point(880, 20)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(150, 44)
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 7
         Me.Button1.Text = "Назад"
         Me.Button1.UseVisualStyleBackColor = True
@@ -99,46 +98,41 @@ Partial Class ReportViewer
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(507, 49)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label3.Location = New System.Drawing.Point(254, 25)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(36, 25)
+        Me.Label3.Size = New System.Drawing.Size(19, 13)
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "до"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(104, 50)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label2.Location = New System.Drawing.Point(52, 26)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(115, 25)
+        Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Период от"
         '
         'dtpTo
         '
-        Me.dtpTo.Location = New System.Drawing.Point(555, 45)
-        Me.dtpTo.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.dtpTo.Location = New System.Drawing.Point(278, 23)
         Me.dtpTo.Name = "dtpTo"
-        Me.dtpTo.Size = New System.Drawing.Size(286, 31)
+        Me.dtpTo.Size = New System.Drawing.Size(145, 20)
         Me.dtpTo.TabIndex = 3
         '
         'dtpFrom
         '
-        Me.dtpFrom.Location = New System.Drawing.Point(234, 44)
-        Me.dtpFrom.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.dtpFrom.Location = New System.Drawing.Point(117, 23)
         Me.dtpFrom.Name = "dtpFrom"
-        Me.dtpFrom.Size = New System.Drawing.Size(252, 31)
+        Me.dtpFrom.Size = New System.Drawing.Size(128, 20)
         Me.dtpFrom.TabIndex = 2
         '
         'btnLoadReport
         '
         Me.btnLoadReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnLoadReport.Location = New System.Drawing.Point(1673, 39)
-        Me.btnLoadReport.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.btnLoadReport.Location = New System.Drawing.Point(798, 20)
         Me.btnLoadReport.Name = "btnLoadReport"
-        Me.btnLoadReport.Size = New System.Drawing.Size(150, 44)
+        Me.btnLoadReport.Size = New System.Drawing.Size(75, 23)
         Me.btnLoadReport.TabIndex = 0
         Me.btnLoadReport.Text = "Отчет"
         Me.btnLoadReport.UseVisualStyleBackColor = True
@@ -163,9 +157,8 @@ Partial Class ReportViewer
         Me.panelEmployee.Controls.Add(Me.dgvEmployee)
         Me.panelEmployee.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelEmployee.Location = New System.Drawing.Point(0, 0)
-        Me.panelEmployee.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.panelEmployee.Name = "panelEmployee"
-        Me.panelEmployee.Size = New System.Drawing.Size(2000, 708)
+        Me.panelEmployee.Size = New System.Drawing.Size(962, 368)
         Me.panelEmployee.TabIndex = 2
         '
         'dgvEmployee
@@ -178,11 +171,10 @@ Partial Class ReportViewer
         Me.dgvEmployee.DataSource = Me.EmployeeBindingSource2
         Me.dgvEmployee.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvEmployee.Location = New System.Drawing.Point(0, 0)
-        Me.dgvEmployee.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.dgvEmployee.Name = "dgvEmployee"
         Me.dgvEmployee.ReadOnly = True
         Me.dgvEmployee.RowHeadersWidth = 82
-        Me.dgvEmployee.Size = New System.Drawing.Size(2000, 708)
+        Me.dgvEmployee.Size = New System.Drawing.Size(962, 368)
         Me.dgvEmployee.TabIndex = 0
         '
         'EmployeeIDDataGridViewTextBoxColumn
@@ -223,9 +215,8 @@ Partial Class ReportViewer
         Me.panelReport.Controls.Add(Me.ReportByEmployeeViewer)
         Me.panelReport.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelReport.Location = New System.Drawing.Point(0, 0)
-        Me.panelReport.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.panelReport.Name = "panelReport"
-        Me.panelReport.Size = New System.Drawing.Size(2000, 708)
+        Me.panelReport.Size = New System.Drawing.Size(962, 368)
         Me.panelReport.TabIndex = 3
         Me.panelReport.Visible = False
         '
@@ -237,9 +228,8 @@ Partial Class ReportViewer
         Me.ReportByEmployeeViewer.LocalReport.DataSources.Add(ReportDataSource1)
         Me.ReportByEmployeeViewer.LocalReport.ReportEmbeddedResource = "ProdControl.ReportEmployee.rdlc"
         Me.ReportByEmployeeViewer.Location = New System.Drawing.Point(0, 0)
-        Me.ReportByEmployeeViewer.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.ReportByEmployeeViewer.Name = "ReportByEmployeeViewer"
-        Me.ReportByEmployeeViewer.Size = New System.Drawing.Size(2000, 708)
+        Me.ReportByEmployeeViewer.Size = New System.Drawing.Size(962, 368)
         Me.ReportByEmployeeViewer.TabIndex = 1
         '
         'ReportEmployeeTableAdapter
@@ -257,13 +247,13 @@ Partial Class ReportViewer
         '
         'ReportViewer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(2000, 835)
+        Me.ClientSize = New System.Drawing.Size(962, 434)
         Me.Controls.Add(Me.panelReport)
         Me.Controls.Add(Me.panelEmployee)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ReportViewer"
         Me.Text = "ReportViewer"
         CType(Me.ReportEmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

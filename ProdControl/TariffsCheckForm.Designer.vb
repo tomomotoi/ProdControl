@@ -23,6 +23,7 @@ Partial Class TariffsCheckForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TariffsCheckForm))
         Me.lbSelectedArticuls = New System.Windows.Forms.ListBox()
         Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
         Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -50,12 +51,12 @@ Partial Class TariffsCheckForm
         Me.lbSelectedArticuls.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbSelectedArticuls.ItemHeight = 25
-        Me.lbSelectedArticuls.Location = New System.Drawing.Point(392, 79)
+        Me.lbSelectedArticuls.Location = New System.Drawing.Point(196, 41)
+        Me.lbSelectedArticuls.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.lbSelectedArticuls.Name = "lbSelectedArticuls"
         Me.lbSelectedArticuls.ScrollAlwaysVisible = True
         Me.lbSelectedArticuls.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.lbSelectedArticuls.Size = New System.Drawing.Size(396, 204)
+        Me.lbSelectedArticuls.Size = New System.Drawing.Size(200, 108)
         Me.lbSelectedArticuls.TabIndex = 0
         '
         'OperationDBDataSet1
@@ -76,9 +77,10 @@ Partial Class TariffsCheckForm
         '
         Me.btnCheckTariffs.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCheckTariffs.Location = New System.Drawing.Point(12, 389)
+        Me.btnCheckTariffs.Location = New System.Drawing.Point(6, 202)
+        Me.btnCheckTariffs.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnCheckTariffs.Name = "btnCheckTariffs"
-        Me.btnCheckTariffs.Size = New System.Drawing.Size(776, 49)
+        Me.btnCheckTariffs.Size = New System.Drawing.Size(388, 25)
         Me.btnCheckTariffs.TabIndex = 1
         Me.btnCheckTariffs.Text = "Проверить расценки"
         Me.btnCheckTariffs.UseVisualStyleBackColor = True
@@ -90,17 +92,19 @@ Partial Class TariffsCheckForm
         Me.cbArticul.DataSource = Me.ArticulBindingSource
         Me.cbArticul.DisplayMember = "ArticulName"
         Me.cbArticul.FormattingEnabled = True
-        Me.cbArticul.Location = New System.Drawing.Point(12, 79)
+        Me.cbArticul.Location = New System.Drawing.Point(6, 41)
+        Me.cbArticul.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbArticul.Name = "cbArticul"
-        Me.cbArticul.Size = New System.Drawing.Size(374, 33)
+        Me.cbArticul.Size = New System.Drawing.Size(189, 21)
         Me.cbArticul.TabIndex = 2
         Me.cbArticul.ValueMember = "ArticulID"
         '
         'btnSelectArticul
         '
-        Me.btnSelectArticul.Location = New System.Drawing.Point(12, 128)
+        Me.btnSelectArticul.Location = New System.Drawing.Point(6, 67)
+        Me.btnSelectArticul.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnSelectArticul.Name = "btnSelectArticul"
-        Me.btnSelectArticul.Size = New System.Drawing.Size(374, 48)
+        Me.btnSelectArticul.Size = New System.Drawing.Size(187, 25)
         Me.btnSelectArticul.TabIndex = 3
         Me.btnSelectArticul.Text = "Выбрать"
         Me.btnSelectArticul.UseVisualStyleBackColor = True
@@ -109,9 +113,10 @@ Partial Class TariffsCheckForm
         '
         Me.btnRemoveFromList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRemoveFromList.Location = New System.Drawing.Point(392, 290)
+        Me.btnRemoveFromList.Location = New System.Drawing.Point(196, 151)
+        Me.btnRemoveFromList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnRemoveFromList.Name = "btnRemoveFromList"
-        Me.btnRemoveFromList.Size = New System.Drawing.Size(396, 44)
+        Me.btnRemoveFromList.Size = New System.Drawing.Size(198, 23)
         Me.btnRemoveFromList.TabIndex = 4
         Me.btnRemoveFromList.Text = "Удалить из списка"
         Me.btnRemoveFromList.UseVisualStyleBackColor = True
@@ -119,9 +124,10 @@ Partial Class TariffsCheckForm
         'chckbxSelectAll
         '
         Me.chckbxSelectAll.AutoSize = True
-        Me.chckbxSelectAll.Location = New System.Drawing.Point(12, 194)
+        Me.chckbxSelectAll.Location = New System.Drawing.Point(6, 101)
+        Me.chckbxSelectAll.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chckbxSelectAll.Name = "chckbxSelectAll"
-        Me.chckbxSelectAll.Size = New System.Drawing.Size(170, 29)
+        Me.chckbxSelectAll.Size = New System.Drawing.Size(91, 17)
         Me.chckbxSelectAll.TabIndex = 5
         Me.chckbxSelectAll.Text = "Выбрать все"
         Me.chckbxSelectAll.UseVisualStyleBackColor = True
@@ -130,9 +136,10 @@ Partial Class TariffsCheckForm
         '
         Me.btnClearList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnClearList.Location = New System.Drawing.Point(392, 339)
+        Me.btnClearList.Location = New System.Drawing.Point(196, 176)
+        Me.btnClearList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnClearList.Name = "btnClearList"
-        Me.btnClearList.Size = New System.Drawing.Size(396, 44)
+        Me.btnClearList.Size = New System.Drawing.Size(198, 23)
         Me.btnClearList.TabIndex = 6
         Me.btnClearList.Text = "Очистить список"
         Me.btnClearList.UseVisualStyleBackColor = True
@@ -140,18 +147,20 @@ Partial Class TariffsCheckForm
         'labelArticul
         '
         Me.labelArticul.AutoSize = True
-        Me.labelArticul.Location = New System.Drawing.Point(12, 39)
+        Me.labelArticul.Location = New System.Drawing.Point(6, 20)
+        Me.labelArticul.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelArticul.Name = "labelArticul"
-        Me.labelArticul.Size = New System.Drawing.Size(100, 25)
+        Me.labelArticul.Size = New System.Drawing.Size(51, 13)
         Me.labelArticul.TabIndex = 7
         Me.labelArticul.Text = "Артикул:"
         '
         'labelSelectedArticuls
         '
         Me.labelSelectedArticuls.AutoSize = True
-        Me.labelSelectedArticuls.Location = New System.Drawing.Point(387, 39)
+        Me.labelSelectedArticuls.Location = New System.Drawing.Point(194, 20)
+        Me.labelSelectedArticuls.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelSelectedArticuls.Name = "labelSelectedArticuls"
-        Me.labelSelectedArticuls.Size = New System.Drawing.Size(235, 25)
+        Me.labelSelectedArticuls.Size = New System.Drawing.Size(120, 13)
         Me.labelSelectedArticuls.TabIndex = 8
         Me.labelSelectedArticuls.Text = "Выбранные артикулы:"
         '
@@ -171,9 +180,9 @@ Partial Class TariffsCheckForm
         '
         'TariffsCheckForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(400, 234)
         Me.Controls.Add(Me.labelSelectedArticuls)
         Me.Controls.Add(Me.labelArticul)
         Me.Controls.Add(Me.btnClearList)
@@ -183,6 +192,8 @@ Partial Class TariffsCheckForm
         Me.Controls.Add(Me.cbArticul)
         Me.Controls.Add(Me.btnCheckTariffs)
         Me.Controls.Add(Me.lbSelectedArticuls)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "TariffsCheckForm"
         Me.Text = "Проверка расценок"
         CType(Me.OperationDBDataSet1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -123,7 +123,15 @@
     <Compile Include="EmployeesForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainForm.vb" />
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="mainForm.Designer.vb">
       <DependentUpon>mainForm.vb</DependentUpon>
       <SubType>Form</SubType>
@@ -405,6 +413,7 @@
     <Content Include="OperationDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\icons\money.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
