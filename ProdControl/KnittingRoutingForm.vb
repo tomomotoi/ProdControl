@@ -232,4 +232,28 @@
             MessageBox.Show("Ошибка при добавлении строки в таблицу: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
+        Try
+            ' Проверяем, есть ли выбранная строка и не является ли она служебной строкой для добавления
+            If dataGridRouting.CurrentRow Is Nothing OrElse dataGridRouting.CurrentRow.IsNewRow Then
+                MessageBox.Show("Выберите строку для удаления!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            ' Запрос подтверждения у пользователя
+            Dim result As DialogResult = MessageBox.Show("Вы действительно хотите удалить выбранную строку?",
+                                                         "Подтверждение удаления",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question)
+
+            ' Если пользователь подтвердил удаление
+            If result = DialogResult.Yes Then
+                dataGridRouting.Rows.Remove(dataGridRouting.CurrentRow)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Ошибка при удалении строки: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class
