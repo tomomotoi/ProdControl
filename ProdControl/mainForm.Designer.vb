@@ -31,9 +31,12 @@ Partial Class mainForm
         Me.АртикулToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОперацияToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ТехкартаToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ТехкартаВязаниеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ПроверкаРасценокРаботToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.СотрудникиToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.КоэффициентыДопЗатратToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ДеталиИзделийToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ОборудованиеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОтчетыToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.НормаВыроботкиToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОтчетПоСотрудникуToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -46,9 +49,6 @@ Partial Class mainForm
         Me.СоздатьКопиюБДToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОчиститьАрхивКопийБДToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OperationLogTableAdapter1 = New ProdControl.DBSetTableAdapters.OperationLogTableAdapter()
-        Me.ТехкартаВязаниеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ДеталиИзделийToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ОборудованиеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -73,13 +73,13 @@ Partial Class mainForm
         'НоваяToolStripMenuItem
         '
         Me.НоваяToolStripMenuItem.Name = "НоваяToolStripMenuItem"
-        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
         Me.НоваяToolStripMenuItem.Text = "Новая"
         '
         'НайтиToolStripMenuItem
         '
         Me.НайтиToolStripMenuItem.Name = "НайтиToolStripMenuItem"
-        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
         Me.НайтиToolStripMenuItem.Text = "Найти"
         '
         'ОсновныеДанныеToolStripMenuItem
@@ -107,6 +107,12 @@ Partial Class mainForm
         Me.ТехкартаToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.ТехкартаToolStripMenuItem.Text = "Тех.карта"
         '
+        'ТехкартаВязаниеToolStripMenuItem
+        '
+        Me.ТехкартаВязаниеToolStripMenuItem.Name = "ТехкартаВязаниеToolStripMenuItem"
+        Me.ТехкартаВязаниеToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.ТехкартаВязаниеToolStripMenuItem.Text = "Тех.карта (Вязание)"
+        '
         'ПроверкаРасценокРаботToolStripMenuItem
         '
         Me.ПроверкаРасценокРаботToolStripMenuItem.Name = "ПроверкаРасценокРаботToolStripMenuItem"
@@ -124,6 +130,18 @@ Partial Class mainForm
         Me.КоэффициентыДопЗатратToolStripMenuItem.Name = "КоэффициентыДопЗатратToolStripMenuItem"
         Me.КоэффициентыДопЗатратToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
         Me.КоэффициентыДопЗатратToolStripMenuItem.Text = "Коэффициенты доп. затрат"
+        '
+        'ДеталиИзделийToolStripMenuItem
+        '
+        Me.ДеталиИзделийToolStripMenuItem.Name = "ДеталиИзделийToolStripMenuItem"
+        Me.ДеталиИзделийToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.ДеталиИзделийToolStripMenuItem.Text = "Детали изделий"
+        '
+        'ОборудованиеToolStripMenuItem
+        '
+        Me.ОборудованиеToolStripMenuItem.Name = "ОборудованиеToolStripMenuItem"
+        Me.ОборудованиеToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
+        Me.ОборудованиеToolStripMenuItem.Text = "Оборудование"
         '
         'ОтчетыToolStripMenuItem
         '
@@ -197,24 +215,6 @@ Partial Class mainForm
         'OperationLogTableAdapter1
         '
         Me.OperationLogTableAdapter1.ClearBeforeFill = True
-        '
-        'ТехкартаВязаниеToolStripMenuItem
-        '
-        Me.ТехкартаВязаниеToolStripMenuItem.Name = "ТехкартаВязаниеToolStripMenuItem"
-        Me.ТехкартаВязаниеToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
-        Me.ТехкартаВязаниеToolStripMenuItem.Text = "Тех.карта (Вязание)"
-        '
-        'ДеталиИзделийToolStripMenuItem
-        '
-        Me.ДеталиИзделийToolStripMenuItem.Name = "ДеталиИзделийToolStripMenuItem"
-        Me.ДеталиИзделийToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
-        Me.ДеталиИзделийToolStripMenuItem.Text = "Детали изделий"
-        '
-        'ОборудованиеToolStripMenuItem
-        '
-        Me.ОборудованиеToolStripMenuItem.Name = "ОборудованиеToolStripMenuItem"
-        Me.ОборудованиеToolStripMenuItem.Size = New System.Drawing.Size(223, 22)
-        Me.ОборудованиеToolStripMenuItem.Text = "Оборудование"
         '
         'mainForm
         '

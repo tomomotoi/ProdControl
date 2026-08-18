@@ -303,4 +303,10 @@ Public Class mainForm
         coefficientsForm.MdiParent = Me
         coefficientsForm.Show()
     End Sub
+
+    Private Sub ТехкартаВязаниеToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ТехкартаВязаниеToolStripMenuItem.Click
+        Dim coefficientsForm = New KnittingRoutingForm()
+        coefficientsForm.MdiParent = Me
+        coefficientsForm.Show()
+    End Sub
 End Class

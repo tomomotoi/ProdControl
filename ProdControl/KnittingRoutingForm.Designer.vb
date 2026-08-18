@@ -40,6 +40,7 @@ Partial Class KnittingRoutingForm
         Me.KnittingMachinesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LabelKnittingMachine = New System.Windows.Forms.Label()
         Me.cbCoeff2 = New System.Windows.Forms.ComboBox()
+        Me.CoefficientsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbCoeff1 = New System.Windows.Forms.ComboBox()
         Me.LabelAdditionalCoefficient = New System.Windows.Forms.Label()
         Me.LabelWithCoefficient = New System.Windows.Forms.Label()
@@ -53,13 +54,20 @@ Partial Class KnittingRoutingForm
         Me.ArticulTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ArticulTableAdapter()
         Me.ClothingPartsTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ClothingPartsTableAdapter()
         Me.KnittingMachinesTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.KnittingMachinesTableAdapter()
-        Me.CoefficientsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CoefficientsTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.CoefficientsTableAdapter()
+        Me.CoefficientsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.dataGridRouting = New System.Windows.Forms.DataGridView()
+        Me.btCancel = New System.Windows.Forms.Button()
+        Me.btSave = New System.Windows.Forms.Button()
+        Me.btnDel = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
         CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KnittingMachinesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CoefficientsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CoefficientsBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dataGridRouting, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnSeachArt
@@ -191,7 +199,7 @@ Partial Class KnittingRoutingForm
         '
         'cbCoeff2
         '
-        Me.cbCoeff2.DataSource = Me.CoefficientsBindingSource
+        Me.cbCoeff2.DataSource = Me.CoefficientsBindingSource1
         Me.cbCoeff2.DisplayMember = "coefficient_value"
         Me.cbCoeff2.FormattingEnabled = True
         Me.cbCoeff2.Location = New System.Drawing.Point(500, 72)
@@ -199,6 +207,11 @@ Partial Class KnittingRoutingForm
         Me.cbCoeff2.Size = New System.Drawing.Size(56, 21)
         Me.cbCoeff2.TabIndex = 31
         Me.cbCoeff2.ValueMember = "coefficient_id"
+        '
+        'CoefficientsBindingSource
+        '
+        Me.CoefficientsBindingSource.DataMember = "Coefficients"
+        Me.CoefficientsBindingSource.DataSource = Me.OperationDBDataSet0
         '
         'cbCoeff1
         '
@@ -299,20 +312,73 @@ Partial Class KnittingRoutingForm
         '
         Me.KnittingMachinesTableAdapter.ClearBeforeFill = True
         '
-        'CoefficientsBindingSource
-        '
-        Me.CoefficientsBindingSource.DataMember = "Coefficients"
-        Me.CoefficientsBindingSource.DataSource = Me.OperationDBDataSet0
-        '
         'CoefficientsTableAdapter
         '
         Me.CoefficientsTableAdapter.ClearBeforeFill = True
+        '
+        'CoefficientsBindingSource1
+        '
+        Me.CoefficientsBindingSource1.DataMember = "Coefficients"
+        Me.CoefficientsBindingSource1.DataSource = Me.OperationDBDataSet0
+        '
+        'dataGridRouting
+        '
+        Me.dataGridRouting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dataGridRouting.Location = New System.Drawing.Point(12, 194)
+        Me.dataGridRouting.Name = "dataGridRouting"
+        Me.dataGridRouting.Size = New System.Drawing.Size(776, 244)
+        Me.dataGridRouting.TabIndex = 43
+        '
+        'btCancel
+        '
+        Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btCancel.Location = New System.Drawing.Point(713, 165)
+        Me.btCancel.Name = "btCancel"
+        Me.btCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btCancel.TabIndex = 47
+        Me.btCancel.Text = "Отменить"
+        Me.btCancel.UseVisualStyleBackColor = True
+        '
+        'btSave
+        '
+        Me.btSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btSave.Location = New System.Drawing.Point(631, 165)
+        Me.btSave.Name = "btSave"
+        Me.btSave.Size = New System.Drawing.Size(75, 23)
+        Me.btSave.TabIndex = 46
+        Me.btSave.Text = "Сохранить"
+        Me.btSave.UseVisualStyleBackColor = True
+        '
+        'btnDel
+        '
+        Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnDel.Location = New System.Drawing.Point(549, 165)
+        Me.btnDel.Name = "btnDel"
+        Me.btnDel.Size = New System.Drawing.Size(75, 23)
+        Me.btnDel.TabIndex = 45
+        Me.btnDel.Text = "Удалить"
+        Me.btnDel.UseVisualStyleBackColor = True
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnAdd.Location = New System.Drawing.Point(467, 165)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.TabIndex = 44
+        Me.btnAdd.Text = "Добавить"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'KnittingRoutingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btCancel)
+        Me.Controls.Add(Me.btSave)
+        Me.Controls.Add(Me.btnDel)
+        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.dataGridRouting)
         Me.Controls.Add(Me.tbTotal)
         Me.Controls.Add(Me.LabelTotal)
         Me.Controls.Add(Me.tbWithKit)
@@ -343,6 +409,8 @@ Partial Class KnittingRoutingForm
         CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.KnittingMachinesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CoefficientsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CoefficientsBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dataGridRouting, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -379,4 +447,10 @@ Partial Class KnittingRoutingForm
     Friend WithEvents KnittingMachinesTableAdapter As OperationDBDataSet0TableAdapters.KnittingMachinesTableAdapter
     Friend WithEvents CoefficientsBindingSource As BindingSource
     Friend WithEvents CoefficientsTableAdapter As OperationDBDataSet0TableAdapters.CoefficientsTableAdapter
+    Friend WithEvents CoefficientsBindingSource1 As BindingSource
+    Friend WithEvents dataGridRouting As DataGridView
+    Friend WithEvents btCancel As Button
+    Friend WithEvents btSave As Button
+    Friend WithEvents btnDel As Button
+    Friend WithEvents btnAdd As Button
 End Class

@@ -437,6 +437,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\icons\money.png" />
+    <Content Include="КОД_СПРАВКА.txt" />
+    <Content Include="ПОЛНОЕ_РЕШЕНИЕ.txt" />
+    <Content Include="РЕШЕНИЕ.txt" />
+    <Content Include="СТАТУС_ПРОЕКТА.txt" />
+    <Content Include="ФАЙЛЫ_ИЗМЕНЕНЫ.txt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
