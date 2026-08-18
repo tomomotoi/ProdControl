@@ -61,6 +61,15 @@ Partial Class KnittingRoutingForm
         Me.btSave = New System.Windows.Forms.Button()
         Me.btnDel = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
+        Me.PartColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MachineColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ModelPartAmountColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MachineCarriageAmountColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Coeff1Column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Coeff2Column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvgValueColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WithCoefficientColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WithKitColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -324,6 +333,7 @@ Partial Class KnittingRoutingForm
         'dataGridRouting
         '
         Me.dataGridRouting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dataGridRouting.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PartColumn, Me.MachineColumn, Me.ModelPartAmountColumn, Me.MachineCarriageAmountColumn, Me.Coeff1Column, Me.Coeff2Column, Me.AvgValueColumn, Me.WithCoefficientColumn, Me.WithKitColumn})
         Me.dataGridRouting.Location = New System.Drawing.Point(12, 194)
         Me.dataGridRouting.Name = "dataGridRouting"
         Me.dataGridRouting.Size = New System.Drawing.Size(776, 244)
@@ -368,6 +378,67 @@ Partial Class KnittingRoutingForm
         Me.btnAdd.TabIndex = 44
         Me.btnAdd.Text = "Добавить"
         Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'PartColumn
+        '
+        Me.PartColumn.HeaderText = "Деталь"
+        Me.PartColumn.Name = "PartColumn"
+        Me.PartColumn.ReadOnly = True
+        '
+        'MachineColumn
+        '
+        Me.MachineColumn.HeaderText = "Оборудование"
+        Me.MachineColumn.Name = "MachineColumn"
+        Me.MachineColumn.ReadOnly = True
+        '
+        'ModelPartAmountColumn
+        '
+        Me.ModelPartAmountColumn.HeaderText = "М"
+        Me.ModelPartAmountColumn.Name = "ModelPartAmountColumn"
+        Me.ModelPartAmountColumn.ReadOnly = True
+        Me.ModelPartAmountColumn.Width = 20
+        '
+        'MachineCarriageAmountColumn
+        '
+        Me.MachineCarriageAmountColumn.HeaderText = "П"
+        Me.MachineCarriageAmountColumn.Name = "MachineCarriageAmountColumn"
+        Me.MachineCarriageAmountColumn.ReadOnly = True
+        Me.MachineCarriageAmountColumn.Width = 20
+        '
+        'Coeff1Column
+        '
+        Me.Coeff1Column.HeaderText = "Коэф. доп. 1"
+        Me.Coeff1Column.Name = "Coeff1Column"
+        Me.Coeff1Column.ReadOnly = True
+        Me.Coeff1Column.Width = 30
+        '
+        'Coeff2Column
+        '
+        Me.Coeff2Column.HeaderText = "Коэф. доп. 2"
+        Me.Coeff2Column.Name = "Coeff2Column"
+        Me.Coeff2Column.ReadOnly = True
+        Me.Coeff2Column.Width = 30
+        '
+        'AvgValueColumn
+        '
+        Me.AvgValueColumn.HeaderText = "Средн. зн."
+        Me.AvgValueColumn.Name = "AvgValueColumn"
+        Me.AvgValueColumn.ReadOnly = True
+        Me.AvgValueColumn.Width = 65
+        '
+        'WithCoefficientColumn
+        '
+        Me.WithCoefficientColumn.HeaderText = "С коэфф."
+        Me.WithCoefficientColumn.Name = "WithCoefficientColumn"
+        Me.WithCoefficientColumn.ReadOnly = True
+        Me.WithCoefficientColumn.Width = 65
+        '
+        'WithKitColumn
+        '
+        Me.WithKitColumn.HeaderText = "С компл."
+        Me.WithKitColumn.Name = "WithKitColumn"
+        Me.WithKitColumn.ReadOnly = True
+        Me.WithKitColumn.Width = 65
         '
         'KnittingRoutingForm
         '
@@ -453,4 +524,13 @@ Partial Class KnittingRoutingForm
     Friend WithEvents btSave As Button
     Friend WithEvents btnDel As Button
     Friend WithEvents btnAdd As Button
+    Friend WithEvents PartColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MachineColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ModelPartAmountColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MachineCarriageAmountColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Coeff1Column As DataGridViewTextBoxColumn
+    Friend WithEvents Coeff2Column As DataGridViewTextBoxColumn
+    Friend WithEvents AvgValueColumn As DataGridViewTextBoxColumn
+    Friend WithEvents WithCoefficientColumn As DataGridViewTextBoxColumn
+    Friend WithEvents WithKitColumn As DataGridViewTextBoxColumn
 End Class
