@@ -357,7 +357,7 @@ Partial Class newBill
         Me.cbTypeOfNonRateSituation.Enabled = False
         Me.cbTypeOfNonRateSituation.FormattingEnabled = True
         Me.cbTypeOfNonRateSituation.Location = New System.Drawing.Point(374, 115)
-        Me.cbTypeOfNonRateSituation.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbTypeOfNonRateSituation.Margin = New System.Windows.Forms.Padding(2)
         Me.cbTypeOfNonRateSituation.Name = "cbTypeOfNonRateSituation"
         Me.cbTypeOfNonRateSituation.Size = New System.Drawing.Size(147, 21)
         Me.cbTypeOfNonRateSituation.TabIndex = 22

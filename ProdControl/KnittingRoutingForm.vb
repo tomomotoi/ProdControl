@@ -190,6 +190,46 @@
     End Function
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Try
+            ' Словарь полей и их пользовательских названий для проверки
+            Dim fields As New Dictionary(Of Control, String) From {
+                {cbKnittingPart, "Деталь"},
+                {cbKnittingMachine, "Станок"},
+                {cbModelPartAmount, "Количество деталей"},
+                {cbMachineCarriageAmount, "Количество кареток"},
+                {cbCoeff1, "Коэффициент 1"},
+                {cbCoeff2, "Коэффициент 2"},
+                {tbAvgValue, "Среднее значение"},
+                {tbWithCoefficient, "С коэффициентом"},
+                {tbWithKit, "С комплектом"}
+            }
 
+            ' Проверка каждого поля на заполненность
+            For Each item In fields
+                If String.IsNullOrWhiteSpace(item.Key.Text) Then
+                    MessageBox.Show($"Поле '{item.Value}' не заполнено!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    item.Key.Focus()
+                    Return
+                End If
+            Next
+
+            ' Добавление новой строки в DataGridView
+            Dim rowIndex As Integer = dataGridRouting.Rows.Add()
+            Dim row As DataGridViewRow = dataGridRouting.Rows(rowIndex)
+
+            ' Заполнение колонок
+            row.Cells(Me.PartColumn.Name).Value = cbKnittingPart.Text
+            row.Cells(Me.MachineColumn.Name).Value = cbKnittingMachine.Text
+            row.Cells(Me.ModelPartAmountColumn.Name).Value = cbModelPartAmount.Text
+            row.Cells(Me.MachineCarriageAmountColumn.Name).Value = cbMachineCarriageAmount.Text
+            row.Cells(Me.Coeff1Column.Name).Value = cbCoeff1.Text
+            row.Cells(Me.Coeff2Column.Name).Value = cbCoeff2.Text
+            row.Cells(Me.AvgValueColumn.Name).Value = tbAvgValue.Text
+            row.Cells(Me.WithCoefficientColumn.Name).Value = tbWithCoefficient.Text
+            row.Cells(Me.WithKitColumn.Name).Value = tbWithKit.Text
+
+        Catch ex As Exception
+            MessageBox.Show("Ошибка при добавлении строки в таблицу: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class
