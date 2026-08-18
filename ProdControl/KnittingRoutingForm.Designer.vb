@@ -57,7 +57,6 @@ Partial Class KnittingRoutingForm
         Me.CoefficientsTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.CoefficientsTableAdapter()
         Me.CoefficientsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.dataGridRouting = New System.Windows.Forms.DataGridView()
-        Me.btCancel = New System.Windows.Forms.Button()
         Me.btSave = New System.Windows.Forms.Button()
         Me.btnDel = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
@@ -339,20 +338,10 @@ Partial Class KnittingRoutingForm
         Me.dataGridRouting.Size = New System.Drawing.Size(776, 244)
         Me.dataGridRouting.TabIndex = 43
         '
-        'btCancel
-        '
-        Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btCancel.Location = New System.Drawing.Point(713, 165)
-        Me.btCancel.Name = "btCancel"
-        Me.btCancel.Size = New System.Drawing.Size(75, 23)
-        Me.btCancel.TabIndex = 47
-        Me.btCancel.Text = "Отменить"
-        Me.btCancel.UseVisualStyleBackColor = True
-        '
         'btSave
         '
         Me.btSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btSave.Location = New System.Drawing.Point(631, 165)
+        Me.btSave.Location = New System.Drawing.Point(713, 165)
         Me.btSave.Name = "btSave"
         Me.btSave.Size = New System.Drawing.Size(75, 23)
         Me.btSave.TabIndex = 46
@@ -362,7 +351,7 @@ Partial Class KnittingRoutingForm
         'btnDel
         '
         Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnDel.Location = New System.Drawing.Point(549, 165)
+        Me.btnDel.Location = New System.Drawing.Point(631, 165)
         Me.btnDel.Name = "btnDel"
         Me.btnDel.Size = New System.Drawing.Size(75, 23)
         Me.btnDel.TabIndex = 45
@@ -372,7 +361,7 @@ Partial Class KnittingRoutingForm
         'btnAdd
         '
         Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnAdd.Location = New System.Drawing.Point(467, 165)
+        Me.btnAdd.Location = New System.Drawing.Point(549, 165)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 44
@@ -445,7 +434,6 @@ Partial Class KnittingRoutingForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.btCancel)
         Me.Controls.Add(Me.btSave)
         Me.Controls.Add(Me.btnDel)
         Me.Controls.Add(Me.btnAdd)
@@ -520,7 +508,6 @@ Partial Class KnittingRoutingForm
     Friend WithEvents CoefficientsTableAdapter As OperationDBDataSet0TableAdapters.CoefficientsTableAdapter
     Friend WithEvents CoefficientsBindingSource1 As BindingSource
     Friend WithEvents dataGridRouting As DataGridView
-    Friend WithEvents btCancel As Button
     Friend WithEvents btSave As Button
     Friend WithEvents btnDel As Button
     Friend WithEvents btnAdd As Button

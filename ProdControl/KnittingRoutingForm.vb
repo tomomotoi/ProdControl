@@ -256,4 +256,130 @@
             MessageBox.Show("Ошибка при удалении строки: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub btSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
+        ' 1. Проверка выбора артикула
+        If cbArticle.SelectedValue Is Nothing OrElse String.IsNullOrWhiteSpace(cbArticle.SelectedValue.ToString()) Then
+            MessageBox.Show("Выберите артикул!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        ' 2. Проверка наличия строк в DataGridView
+        Dim hasRows As Boolean = False
+        For Each row As DataGridViewRow In dataGridRouting.Rows
+            If Not row.IsNewRow Then
+                hasRows = True
+                Exit For
+            End If
+        Next
+
+        If Not hasRows Then
+            MessageBox.Show("Таблица пуста. Нет данных для сохранения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        ' Получаем ID выбранного артикула
+        Dim articulId As Integer = Convert.ToInt32(cbArticle.SelectedValue)
+
+        ' Укажите вашу строку подключения к MS Access
+        Dim connectionString As String = My.Settings.OperationDBConnectionString
+
+        Using conn As New OleDbConnection(connectionString)
+            Try
+                conn.Open()
+
+                ' Использование транзакции: либо сохранятся все строки, либо произойдет откат
+                Using trans As OleDbTransaction = conn.BeginTransaction()
+                    Try
+                        ' SQL-запрос для вставки записи в KnittingRouting
+                        Dim insertSql As String = "INSERT INTO [KnittingRouting] " &
+                            "([articul_id], [clothing_part_id], [machine_id], [product_parts_amount], " &
+                            "[machine_parts_amount], [k1], [k2], [avg_rate], [coefficient_rate], [kit_rate]) " &
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+
+                        For Each row As DataGridViewRow In dataGridRouting.Rows
+                            If row.IsNewRow Then Continue For
+
+                            ' Извлечение текстовых названий из ячеек
+                            Dim partName As String = Convert.ToString(row.Cells(Me.PartColumn.Name).Value)
+                            Dim machineName As String = Convert.ToString(row.Cells(Me.MachineColumn.Name).Value)
+
+                            ' Поиск ID по текстовому названию (замените 'name' и 'id' на имена полей в ваших деталях/станках при необходимости)
+                            Dim partId As Integer = GetIdByName(conn, trans, "ClothingParts", "part_name", "id", partName)
+                            ' Для оборудования вызываем специальный метод поиска по составному имени
+                            Dim machineId As Integer = GetMachineIdByDisplayName(conn, trans, machineName)
+
+                            If partId = 0 OrElse machineId = 0 Then
+                                Throw New Exception($"Не удалось найти ID в базе для детали '{partName}' или оборудования '{machineName}'.")
+                            End If
+
+                            ' Заполнение параметров (в OLE DB важен строгий порядок полей!)
+                            Using cmd As New OleDbCommand(insertSql, conn, trans)
+                                ' 1. Ключи (Длинное целое / Long Integer)
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = articulId
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = partId
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = machineId
+
+                                ' 2. Количество деталей и кареток (Длинное целое / Long Integer)
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = Convert.ToInt32(GetDecimalValue(row.Cells(Me.ModelPartAmountColumn.Name).Value))
+                                cmd.Parameters.Add("?", OleDbType.Integer).Value = Convert.ToInt32(GetDecimalValue(row.Cells(Me.MachineCarriageAmountColumn.Name).Value))
+
+                                ' 3. Коэффициенты и нормы (Двойное с плавающей точкой / Double)
+                                cmd.Parameters.Add("?", OleDbType.Double).Value = Convert.ToDouble(GetDecimalValue(row.Cells(Me.Coeff1Column.Name).Value))
+                                cmd.Parameters.Add("?", OleDbType.Double).Value = Convert.ToDouble(GetDecimalValue(row.Cells(Me.Coeff2Column.Name).Value))
+                                cmd.Parameters.Add("?", OleDbType.Double).Value = Convert.ToDouble(GetDecimalValue(row.Cells(Me.AvgValueColumn.Name).Value))
+                                cmd.Parameters.Add("?", OleDbType.Double).Value = Convert.ToDouble(GetDecimalValue(row.Cells(Me.WithCoefficientColumn.Name).Value))
+                                cmd.Parameters.Add("?", OleDbType.Double).Value = Convert.ToDouble(GetDecimalValue(row.Cells(Me.WithKitColumn.Name).Value))
+
+                                cmd.ExecuteNonQuery()
+                            End Using
+                        Next
+
+                        ' Подтверждение успешной транзакции
+                        trans.Commit()
+                        MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    Catch ex As Exception
+                        trans.Rollback()
+                        Throw
+                    End Try
+                End Using
+
+            Catch ex As Exception
+                MessageBox.Show("Ошибка при сохранении в БД: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' Вспомогательная функция для получения ID по названию записи из справочника
+    ''' </summary>
+    Private Function GetIdByName(conn As OleDbConnection, trans As OleDbTransaction, tableName As String, nameColumn As String, idColumn As String, nameValue As String) As Integer
+        Dim sql As String = $"SELECT [{idColumn}] FROM [{tableName}] WHERE [{nameColumn}] = ?"
+        Using cmd As New OleDbCommand(sql, conn, trans)
+            cmd.Parameters.AddWithValue("?", nameValue)
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                Return Convert.ToInt32(result)
+            End If
+        End Using
+        Return 0
+    End Function
+
+    ''' <summary>
+    ''' Вспомогательный метод для поиска ID оборудования по составному имени (марка + модель)
+    ''' </summary>
+    Private Function GetMachineIdByDisplayName(conn As OleDbConnection, trans As OleDbTransaction, displayName As String) As Integer
+        ' Склеиваем machine_make и machine_model прямо в SQL-запросе MS Access
+        Dim sql As String = "SELECT [id] FROM [KnittingMachines] WHERE ([machine_make] & ' ' & [machine_model]) = ?"
+
+        Using cmd As New OleDbCommand(sql, conn, trans)
+            cmd.Parameters.AddWithValue("?", displayName)
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                Return Convert.ToInt32(result)
+            End If
+        End Using
+        Return 0
+    End Function
 End Class
