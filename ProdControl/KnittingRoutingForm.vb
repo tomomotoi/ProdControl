@@ -1,4 +1,7 @@
 ﻿Public Class KnittingRoutingForm
+    ' Флаг: были ли данные загружены из базы для текущего артикула
+    Private isLoadedFromDb As Boolean = False
+
     Private Sub KnittingRoutingForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: данная строка кода позволяет загрузить данные в таблицу "OperationDBDataSet0.Coefficients". При необходимости она может быть перемещена или удалена.
         Me.CoefficientsTableAdapter.Fill(Me.OperationDBDataSet0.Coefficients)
@@ -274,8 +277,20 @@
         Next
 
         If Not hasRows Then
-            MessageBox.Show("Таблица пуста. Нет данных для сохранения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            If isLoadedFromDb Then
+                ' Пользователь загрузил карту и удалил все строки
+                Dim confirmDelete As DialogResult = MessageBox.Show(
+                "Вы удалили все строки из загруженной карты. Удалить эту технологическую карту из базы данных?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question)
+
+                If confirmDelete <> DialogResult.Yes Then Return
+            Else
+                ' Карта не загружалась (новый артикул или пустой поиск)
+                MessageBox.Show("Таблица пуста. Нет данных для сохранения!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
         End If
 
         ' Получаем ID выбранного артикула
@@ -291,6 +306,16 @@
                 ' Использование транзакции: либо сохранятся все строки, либо произойдет откат
                 Using trans As OleDbTransaction = conn.BeginTransaction()
                     Try
+
+                        ' ==================== ДОБАВЛЕНО: УДАЛЕНИЕ СТАРЫХ ЗАПИСЕЙ ====================
+                        ' Перед добавлением актуальных строк очищаем все прежние записи артикула
+                        Dim deleteSql As String = "DELETE FROM [KnittingRouting] WHERE [articul_id] = ?"
+                        Using cmdDelete As New OleDbCommand(deleteSql, conn, trans)
+                            cmdDelete.Parameters.Add("?", OleDbType.Integer).Value = articulId
+                            cmdDelete.ExecuteNonQuery()
+                        End Using
+                        ' ============================================================================
+
                         ' SQL-запрос для вставки записи в KnittingRouting
                         Dim insertSql As String = "INSERT INTO [KnittingRouting] " &
                             "([articul_id], [clothing_part_id], [machine_id], [product_parts_amount], " &
@@ -337,6 +362,8 @@
 
                         ' Подтверждение успешной транзакции
                         trans.Commit()
+                        ' После сохранения/удаления обновляем флаг в зависимости от того, остались ли строки
+                        isLoadedFromDb = hasRows
                         MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     Catch ex As Exception
@@ -382,4 +409,95 @@
         End Using
         Return 0
     End Function
+
+    Private Sub btnSeachArt_Click(sender As Object, e As EventArgs) Handles btnSeachArt.Click
+        ' 1. Проверка выбора артикула
+        If cbArticle.SelectedValue Is Nothing OrElse String.IsNullOrWhiteSpace(cbArticle.SelectedValue.ToString()) Then
+            MessageBox.Show("Выберите артикул для поиска!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim articulId As Integer = Convert.ToInt32(cbArticle.SelectedValue)
+        Dim connectionString As String = My.Settings.OperationDBConnectionString
+
+        ' 2. Очищаем текущие строки в таблицы DataGridView перед загрузкой
+        isLoadedFromDb = False ' Сброс флага наличия записей в таблице
+        dataGridRouting.Rows.Clear()
+        tbTotal.Clear() ' Очистка итогового поля перед поиском
+
+        ' SQL-запрос с объединением таблиц (обратите внимание на скобки в FROM — это синтаксис MS Access)
+        Dim sql As String = "SELECT " &
+            "cp.[part_name], " &
+            "CStr(km.[machine_make] & ' ' & km.[machine_model]) AS machine_display_name, " &
+            "kr.[product_parts_amount], " &
+            "kr.[machine_parts_amount], " &
+            "kr.[k1], " &
+            "kr.[k2], " &
+            "kr.[avg_rate], " &
+            "kr.[coefficient_rate], " &
+            "kr.[kit_rate] " &
+            "FROM ([KnittingRouting] AS kr " &
+            "INNER JOIN [ClothingParts] AS cp ON kr.[clothing_part_id] = cp.[id]) " &
+            "INNER JOIN [KnittingMachines] AS km ON kr.[machine_id] = km.[id] " &
+            "WHERE kr.[articul_id] = ?"
+
+        Using conn As New OleDbConnection(connectionString)
+            Try
+                conn.Open()
+
+                Using cmd As New OleDbCommand(sql, conn)
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = articulId
+
+                    Using reader As OleDbDataReader = cmd.ExecuteReader()
+                        Dim recordsFound As Boolean = False
+
+                        Dim totalWithKit As Decimal = 0 ' Переменная-счетчик суммы
+
+                        While reader.Read()
+                            recordsFound = True
+                            Dim rowIndex As Integer = dataGridRouting.Rows.Add()
+                            Dim row As DataGridViewRow = dataGridRouting.Rows(rowIndex)
+
+                            ' Заполнение колонок строки
+                            row.Cells(Me.PartColumn.Name).Value = reader("part_name").ToString()
+                            row.Cells(Me.MachineColumn.Name).Value = reader("machine_display_name").ToString()
+                            row.Cells(Me.ModelPartAmountColumn.Name).Value = reader("product_parts_amount").ToString()
+                            row.Cells(Me.MachineCarriageAmountColumn.Name).Value = reader("machine_parts_amount").ToString()
+                            row.Cells(Me.Coeff1Column.Name).Value = reader("k1").ToString()
+                            row.Cells(Me.Coeff2Column.Name).Value = reader("k2").ToString()
+
+                            ' Расчет значения "Итого"
+                            Dim kitRate As Decimal = Convert.ToDecimal(reader("kit_rate"))
+                            totalWithKit += kitRate ' Прибавляем значение текущей строки к общей сумме
+
+                            ' Вывод дробных полей с форматированием до 3 знаков
+                            row.Cells(Me.AvgValueColumn.Name).Value = Convert.ToDecimal(reader("avg_rate")).ToString("F3")
+                            row.Cells(Me.WithCoefficientColumn.Name).Value = Convert.ToDecimal(reader("coefficient_rate")).ToString("F3")
+                            row.Cells(Me.WithKitColumn.Name).Value = Convert.ToDecimal(reader("kit_rate")).ToString("F3")
+                        End While
+
+                        ' Устанавливаем флаг успешной загрузки из базы
+                        isLoadedFromDb = recordsFound
+
+                        If recordsFound Then
+                            ' Выводим общую сумму с округлением до 2 знаков
+                            tbTotal.Text = totalWithKit.ToString("F2")
+                        Else
+                            tbTotal.Text = ""
+                            MessageBox.Show("Записи для указанного артикула не найдены.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
+                    End Using
+                End Using
+
+            Catch ex As Exception
+                MessageBox.Show("Ошибка при загрузке данных: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub cbArticle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbArticle.SelectedIndexChanged
+        dataGridRouting.Rows.Clear()
+        tbTotal.Clear() ' Очищаем поле Итого при переключении артикула
+        isLoadedFromDb = False
+    End Sub
 End Class
