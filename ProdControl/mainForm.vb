@@ -309,4 +309,8 @@ Public Class mainForm
         coefficientsForm.MdiParent = Me
         coefficientsForm.Show()
     End Sub
+
+    Private Sub НоваяВязальныйЦехToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles НоваяВязальныйЦехToolStripMenuItem.Click
+
+    End Sub
 End Class

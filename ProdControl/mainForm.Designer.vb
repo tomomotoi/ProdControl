@@ -49,6 +49,8 @@ Partial Class mainForm
         Me.СоздатьКопиюБДToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОчиститьАрхивКопийБДToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OperationLogTableAdapter1 = New ProdControl.DBSetTableAdapters.OperationLogTableAdapter()
+        Me.НоваяВязальныйЦехToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.НайтиВязальныйЦехToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -59,34 +61,38 @@ Partial Class mainForm
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(3, 1, 0, 1)
-        Me.MenuStrip1.Size = New System.Drawing.Size(888, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(888, 38)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'НакладныеToolStripMenuItem
         '
-        Me.НакладныеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.НоваяToolStripMenuItem, Me.НайтиToolStripMenuItem})
+        Me.НакладныеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.НоваяToolStripMenuItem, Me.НайтиToolStripMenuItem, Me.НоваяВязальныйЦехToolStripMenuItem, Me.НайтиВязальныйЦехToolStripMenuItem})
+        Me.НакладныеToolStripMenuItem.Image = CType(resources.GetObject("НакладныеToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НакладныеToolStripMenuItem.Name = "НакладныеToolStripMenuItem"
-        Me.НакладныеToolStripMenuItem.Size = New System.Drawing.Size(81, 22)
+        Me.НакладныеToolStripMenuItem.Size = New System.Drawing.Size(113, 36)
         Me.НакладныеToolStripMenuItem.Text = "Накладные"
         '
         'НоваяToolStripMenuItem
         '
+        Me.НоваяToolStripMenuItem.Image = CType(resources.GetObject("НоваяToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НоваяToolStripMenuItem.Name = "НоваяToolStripMenuItem"
-        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
-        Me.НоваяToolStripMenuItem.Text = "Новая"
+        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
+        Me.НоваяToolStripMenuItem.Text = "Новая (Швейный цех)"
         '
         'НайтиToolStripMenuItem
         '
+        Me.НайтиToolStripMenuItem.Image = CType(resources.GetObject("НайтиToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НайтиToolStripMenuItem.Name = "НайтиToolStripMenuItem"
-        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
-        Me.НайтиToolStripMenuItem.Text = "Найти"
+        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
+        Me.НайтиToolStripMenuItem.Text = "Найти (Швейный цех)"
         '
         'ОсновныеДанныеToolStripMenuItem
         '
         Me.ОсновныеДанныеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.АртикулToolStripMenuItem, Me.ОперацияToolStripMenuItem, Me.ТехкартаToolStripMenuItem, Me.ТехкартаВязаниеToolStripMenuItem, Me.ПроверкаРасценокРаботToolStripMenuItem, Me.СотрудникиToolStripMenuItem, Me.КоэффициентыДопЗатратToolStripMenuItem, Me.ДеталиИзделийToolStripMenuItem, Me.ОборудованиеToolStripMenuItem})
+        Me.ОсновныеДанныеToolStripMenuItem.Image = CType(resources.GetObject("ОсновныеДанныеToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ОсновныеДанныеToolStripMenuItem.Name = "ОсновныеДанныеToolStripMenuItem"
-        Me.ОсновныеДанныеToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.ОсновныеДанныеToolStripMenuItem.Size = New System.Drawing.Size(152, 36)
         Me.ОсновныеДанныеToolStripMenuItem.Text = "Основные данные"
         '
         'АртикулToolStripMenuItem
@@ -146,8 +152,9 @@ Partial Class mainForm
         'ОтчетыToolStripMenuItem
         '
         Me.ОтчетыToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.НормаВыроботкиToolStripMenuItem, Me.ОтчетПоСотрудникуToolStripMenuItem})
+        Me.ОтчетыToolStripMenuItem.Image = CType(resources.GetObject("ОтчетыToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ОтчетыToolStripMenuItem.Name = "ОтчетыToolStripMenuItem"
-        Me.ОтчетыToolStripMenuItem.Size = New System.Drawing.Size(60, 22)
+        Me.ОтчетыToolStripMenuItem.Size = New System.Drawing.Size(92, 36)
         Me.ОтчетыToolStripMenuItem.Text = "Отчеты"
         '
         'НормаВыроботкиToolStripMenuItem
@@ -164,15 +171,17 @@ Partial Class mainForm
         '
         'ВыходToolStripMenuItem
         '
+        Me.ВыходToolStripMenuItem.Image = CType(resources.GetObject("ВыходToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ВыходToolStripMenuItem.Name = "ВыходToolStripMenuItem"
-        Me.ВыходToolStripMenuItem.Size = New System.Drawing.Size(53, 22)
+        Me.ВыходToolStripMenuItem.Size = New System.Drawing.Size(85, 36)
         Me.ВыходToolStripMenuItem.Text = "Выход"
         '
         'УтилитыToolStripMenuItem
         '
         Me.УтилитыToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ОчисткаТаблицыOperationLogToolStripMenuItem, Me.ВосстановитьБДИзАрхиваToolStripMenuItem, Me.СоздатьКопиюБДToolStripMenuItem, Me.ОчиститьАрхивКопийБДToolStripMenuItem})
+        Me.УтилитыToolStripMenuItem.Image = CType(resources.GetObject("УтилитыToolStripMenuItem.Image"), System.Drawing.Image)
         Me.УтилитыToolStripMenuItem.Name = "УтилитыToolStripMenuItem"
-        Me.УтилитыToolStripMenuItem.Size = New System.Drawing.Size(66, 22)
+        Me.УтилитыToolStripMenuItem.Size = New System.Drawing.Size(98, 36)
         Me.УтилитыToolStripMenuItem.Text = "Утилиты"
         '
         'ОчисткаТаблицыOperationLogToolStripMenuItem
@@ -215,6 +224,20 @@ Partial Class mainForm
         'OperationLogTableAdapter1
         '
         Me.OperationLogTableAdapter1.ClearBeforeFill = True
+        '
+        'НоваяВязальныйЦехToolStripMenuItem
+        '
+        Me.НоваяВязальныйЦехToolStripMenuItem.Image = CType(resources.GetObject("НоваяВязальныйЦехToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.НоваяВязальныйЦехToolStripMenuItem.Name = "НоваяВязальныйЦехToolStripMenuItem"
+        Me.НоваяВязальныйЦехToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
+        Me.НоваяВязальныйЦехToolStripMenuItem.Text = "Новая (Вязальный цех)"
+        '
+        'НайтиВязальныйЦехToolStripMenuItem
+        '
+        Me.НайтиВязальныйЦехToolStripMenuItem.Image = CType(resources.GetObject("НайтиВязальныйЦехToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.НайтиВязальныйЦехToolStripMenuItem.Name = "НайтиВязальныйЦехToolStripMenuItem"
+        Me.НайтиВязальныйЦехToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
+        Me.НайтиВязальныйЦехToolStripMenuItem.Text = "Найти (Вязальный цех)"
         '
         'mainForm
         '
@@ -259,4 +282,6 @@ Partial Class mainForm
     Friend WithEvents ТехкартаВязаниеToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ДеталиИзделийToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ОборудованиеToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents НоваяВязальныйЦехToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents НайтиВязальныйЦехToolStripMenuItem As ToolStripMenuItem
 End Class

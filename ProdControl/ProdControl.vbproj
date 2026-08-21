@@ -436,12 +436,16 @@
     <Content Include="OperationDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\icons\data-gathering%281%29.png" />
+    <Content Include="resources\icons\data-gathering.png" />
+    <Content Include="resources\icons\documents.png" />
+    <Content Include="resources\icons\documents_new.png" />
+    <Content Include="resources\icons\documents_search.png" />
+    <Content Include="resources\icons\exit.png" />
     <Content Include="resources\icons\money.png" />
-    <Content Include="КОД_СПРАВКА.txt" />
-    <Content Include="ПОЛНОЕ_РЕШЕНИЕ.txt" />
-    <Content Include="РЕШЕНИЕ.txt" />
-    <Content Include="СТАТУС_ПРОЕКТА.txt" />
-    <Content Include="ФАЙЛЫ_ИЗМЕНЕНЫ.txt" />
+    <Content Include="resources\icons\seo-report%281%29.png" />
+    <Content Include="resources\icons\seo-report.png" />
+    <Content Include="resources\icons\utility.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
