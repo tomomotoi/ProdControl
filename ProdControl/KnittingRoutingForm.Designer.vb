@@ -69,6 +69,8 @@ Partial Class KnittingRoutingForm
         Me.AvgValueColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.WithCoefficientColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.WithKitColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tbRate = New System.Windows.Forms.TextBox()
+        Me.LabelRate = New System.Windows.Forms.Label()
         CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -429,11 +431,30 @@ Partial Class KnittingRoutingForm
         Me.WithKitColumn.ReadOnly = True
         Me.WithKitColumn.Width = 65
         '
+        'tbRate
+        '
+        Me.tbRate.Enabled = False
+        Me.tbRate.Location = New System.Drawing.Point(485, 167)
+        Me.tbRate.Name = "tbRate"
+        Me.tbRate.Size = New System.Drawing.Size(58, 20)
+        Me.tbRate.TabIndex = 48
+        '
+        'LabelRate
+        '
+        Me.LabelRate.AutoSize = True
+        Me.LabelRate.Location = New System.Drawing.Point(482, 151)
+        Me.LabelRate.Name = "LabelRate"
+        Me.LabelRate.Size = New System.Drawing.Size(44, 13)
+        Me.LabelRate.TabIndex = 47
+        Me.LabelRate.Text = "Норма:"
+        '
         'KnittingRoutingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.tbRate)
+        Me.Controls.Add(Me.LabelRate)
         Me.Controls.Add(Me.btSave)
         Me.Controls.Add(Me.btnDel)
         Me.Controls.Add(Me.btnAdd)
@@ -520,4 +541,6 @@ Partial Class KnittingRoutingForm
     Friend WithEvents AvgValueColumn As DataGridViewTextBoxColumn
     Friend WithEvents WithCoefficientColumn As DataGridViewTextBoxColumn
     Friend WithEvents WithKitColumn As DataGridViewTextBoxColumn
+    Friend WithEvents tbRate As TextBox
+    Friend WithEvents LabelRate As Label
 End Class

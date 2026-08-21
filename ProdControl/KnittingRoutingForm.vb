@@ -424,6 +424,7 @@
         isLoadedFromDb = False ' Сброс флага наличия записей в таблице
         dataGridRouting.Rows.Clear()
         tbTotal.Clear() ' Очистка итогового поля перед поиском
+        tbRate.Clear()
 
         ' SQL-запрос с объединением таблиц (обратите внимание на скобки в FROM — это синтаксис MS Access)
         Dim sql As String = "SELECT " &
@@ -482,8 +483,18 @@
                         If recordsFound Then
                             ' Выводим общую сумму с округлением до 2 знаков
                             tbTotal.Text = totalWithKit.ToString("F2")
+
+                            ' Считаем норму производства
+                            If totalWithKit > 0 Then
+                                ' Math.Floor округляет значение в меньшую сторону до целого числа
+                                Dim rateValue = (480D / totalWithKit).ToString("F1")
+                                tbRate.Text = rateValue.ToString()
+                            Else
+                                tbRate.Text = "0"
+                            End If
                         Else
                             tbTotal.Text = ""
+                            tbRate.Text = ""
                             MessageBox.Show("Записи для указанного артикула не найдены.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         End If
                     End Using
@@ -498,6 +509,7 @@
     Private Sub cbArticle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbArticle.SelectedIndexChanged
         dataGridRouting.Rows.Clear()
         tbTotal.Clear() ' Очищаем поле Итого при переключении артикула
+        tbRate.Clear()  ' Очищаем поле "Нормы за смену"
         isLoadedFromDb = False
     End Sub
 End Class
