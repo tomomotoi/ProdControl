@@ -311,6 +311,8 @@ Public Class mainForm
     End Sub
 
     Private Sub НоваяВязальныйЦехToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles НоваяВязальныйЦехToolStripMenuItem.Click
-
+        Dim newKnittingInvoiceForm = New NewKnittingInvoiceForm()
+        newKnittingInvoiceForm.MdiParent = Me
+        newKnittingInvoiceForm.Show()
     End Sub
 End Class

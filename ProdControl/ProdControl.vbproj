@@ -172,6 +172,12 @@
     <Compile Include="newBillWiz.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NewKnittingInvoiceForm.Designer.vb">
+      <DependentUpon>NewKnittingInvoiceForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewKnittingInvoiceForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OperationDBDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="newBillWiz.resx">
       <DependentUpon>newBillWiz.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewKnittingInvoiceForm.resx">
+      <DependentUpon>NewKnittingInvoiceForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperationForm.resx">
       <DependentUpon>OperationForm.vb</DependentUpon>
