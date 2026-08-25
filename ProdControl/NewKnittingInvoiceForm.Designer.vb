@@ -31,46 +31,47 @@ Partial Class NewKnittingInvoiceForm
         Me.labelCount = New System.Windows.Forms.Label()
         Me.tbCount = New System.Windows.Forms.TextBox()
         Me.cbOperation = New System.Windows.Forms.ComboBox()
+        Me.ClothingPartsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OperationDBDataSet0 = New ProdControl.OperationDBDataSet0()
         Me.labelOperation = New System.Windows.Forms.Label()
         Me.dtPickerOpDate = New System.Windows.Forms.DateTimePicker()
         Me.labelDate = New System.Windows.Forms.Label()
         Me.labelArticul = New System.Windows.Forms.Label()
         Me.cbArticul = New System.Windows.Forms.ComboBox()
+        Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.labelEmployee = New System.Windows.Forms.Label()
         Me.cbEmployee = New System.Windows.Forms.ComboBox()
+        Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.labelExecutionTime = New System.Windows.Forms.Label()
         Me.tbExecutionTime = New System.Windows.Forms.TextBox()
         Me.btnInsert = New System.Windows.Forms.Button()
         Me.dgOperationLog = New System.Windows.Forms.DataGridView()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.cbKnittingMachines = New System.Windows.Forms.ComboBox()
-        Me.labelKnittingMachines = New System.Windows.Forms.Label()
-        Me.OperationDBDataSet0 = New ProdControl.OperationDBDataSet0()
-        Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ArticulTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ArticulTableAdapter()
-        Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EmployeeTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.EmployeeTableAdapter()
-        Me.ClothingPartsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ClothingPartsTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ClothingPartsTableAdapter()
-        Me.KnittingMachinesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.KnittingMachinesTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.KnittingMachinesTableAdapter()
-        Me.labelMachinesInZone = New System.Windows.Forms.Label()
-        Me.tbMachinesInZone = New System.Windows.Forms.TextBox()
         Me.EmployeeName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LogNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LogDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ArticulName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PartName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KnittingMachine = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PartAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExecutionTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MachineNumberInZone = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.workDay = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgOperationLog, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.cbKnittingMachines = New System.Windows.Forms.ComboBox()
+        Me.KnittingMachinesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.labelKnittingMachines = New System.Windows.Forms.Label()
+        Me.ArticulTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ArticulTableAdapter()
+        Me.EmployeeTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.EmployeeTableAdapter()
+        Me.ClothingPartsTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ClothingPartsTableAdapter()
+        Me.KnittingMachinesTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.KnittingMachinesTableAdapter()
+        Me.labelMachinesInZone = New System.Windows.Forms.Label()
+        Me.tbMachinesInZone = New System.Windows.Forms.TextBox()
+        CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgOperationLog, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KnittingMachinesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -135,6 +136,16 @@ Partial Class NewKnittingInvoiceForm
         Me.cbOperation.TabIndex = 27
         Me.cbOperation.ValueMember = "id"
         '
+        'ClothingPartsBindingSource
+        '
+        Me.ClothingPartsBindingSource.DataMember = "ClothingParts"
+        Me.ClothingPartsBindingSource.DataSource = Me.OperationDBDataSet0
+        '
+        'OperationDBDataSet0
+        '
+        Me.OperationDBDataSet0.DataSetName = "OperationDBDataSet0"
+        Me.OperationDBDataSet0.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'labelOperation
         '
         Me.labelOperation.AutoSize = True
@@ -184,6 +195,11 @@ Partial Class NewKnittingInvoiceForm
         Me.cbArticul.TabIndex = 23
         Me.cbArticul.ValueMember = "ArticulID"
         '
+        'ArticulBindingSource
+        '
+        Me.ArticulBindingSource.DataMember = "Articul"
+        Me.ArticulBindingSource.DataSource = Me.OperationDBDataSet0
+        '
         'labelEmployee
         '
         Me.labelEmployee.AutoSize = True
@@ -206,6 +222,11 @@ Partial Class NewKnittingInvoiceForm
         Me.cbEmployee.TabIndex = 26
         Me.cbEmployee.ValueMember = "EmployeeID"
         '
+        'EmployeeBindingSource
+        '
+        Me.EmployeeBindingSource.DataMember = "Employee"
+        Me.EmployeeBindingSource.DataSource = Me.OperationDBDataSet0
+        '
         'labelExecutionTime
         '
         Me.labelExecutionTime.AutoSize = True
@@ -217,7 +238,6 @@ Partial Class NewKnittingInvoiceForm
         '
         'tbExecutionTime
         '
-        Me.tbExecutionTime.Enabled = False
         Me.tbExecutionTime.Location = New System.Drawing.Point(411, 118)
         Me.tbExecutionTime.Name = "tbExecutionTime"
         Me.tbExecutionTime.Size = New System.Drawing.Size(147, 20)
@@ -239,112 +259,12 @@ Partial Class NewKnittingInvoiceForm
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgOperationLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgOperationLog.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmployeeName, Me.LogNumber, Me.LogDate, Me.ArticulName, Me.PartName, Me.PartAmount, Me.ExecutionTime, Me.MachineNumberInZone, Me.workDay})
+        Me.dgOperationLog.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmployeeName, Me.LogNumber, Me.LogDate, Me.ArticulName, Me.PartName, Me.KnittingMachine, Me.PartAmount, Me.ExecutionTime, Me.MachineNumberInZone, Me.workDay})
         Me.dgOperationLog.Location = New System.Drawing.Point(12, 169)
         Me.dgOperationLog.Name = "dgOperationLog"
         Me.dgOperationLog.RowHeadersWidth = 82
         Me.dgOperationLog.Size = New System.Drawing.Size(776, 309)
         Me.dgOperationLog.TabIndex = 36
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDelete.Location = New System.Drawing.Point(632, 484)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
-        Me.btnDelete.TabIndex = 38
-        Me.btnDelete.Text = "Удалить"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.Location = New System.Drawing.Point(713, 484)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 37
-        Me.btnSave.Text = "Сохранить"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'cbKnittingMachines
-        '
-        Me.cbKnittingMachines.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.cbKnittingMachines.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbKnittingMachines.DataSource = Me.KnittingMachinesBindingSource
-        Me.cbKnittingMachines.DisplayMember = "machine_displayname"
-        Me.cbKnittingMachines.FormattingEnabled = True
-        Me.cbKnittingMachines.Location = New System.Drawing.Point(412, 92)
-        Me.cbKnittingMachines.Name = "cbKnittingMachines"
-        Me.cbKnittingMachines.Size = New System.Drawing.Size(147, 21)
-        Me.cbKnittingMachines.TabIndex = 39
-        Me.cbKnittingMachines.ValueMember = "id"
-        '
-        'labelKnittingMachines
-        '
-        Me.labelKnittingMachines.AutoSize = True
-        Me.labelKnittingMachines.Location = New System.Drawing.Point(328, 95)
-        Me.labelKnittingMachines.Name = "labelKnittingMachines"
-        Me.labelKnittingMachines.Size = New System.Drawing.Size(83, 13)
-        Me.labelKnittingMachines.TabIndex = 40
-        Me.labelKnittingMachines.Text = "Оборудование:"
-        '
-        'OperationDBDataSet0
-        '
-        Me.OperationDBDataSet0.DataSetName = "OperationDBDataSet0"
-        Me.OperationDBDataSet0.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ArticulBindingSource
-        '
-        Me.ArticulBindingSource.DataMember = "Articul"
-        Me.ArticulBindingSource.DataSource = Me.OperationDBDataSet0
-        '
-        'ArticulTableAdapter
-        '
-        Me.ArticulTableAdapter.ClearBeforeFill = True
-        '
-        'EmployeeBindingSource
-        '
-        Me.EmployeeBindingSource.DataMember = "Employee"
-        Me.EmployeeBindingSource.DataSource = Me.OperationDBDataSet0
-        '
-        'EmployeeTableAdapter
-        '
-        Me.EmployeeTableAdapter.ClearBeforeFill = True
-        '
-        'ClothingPartsBindingSource
-        '
-        Me.ClothingPartsBindingSource.DataMember = "ClothingParts"
-        Me.ClothingPartsBindingSource.DataSource = Me.OperationDBDataSet0
-        '
-        'ClothingPartsTableAdapter
-        '
-        Me.ClothingPartsTableAdapter.ClearBeforeFill = True
-        '
-        'KnittingMachinesBindingSource
-        '
-        Me.KnittingMachinesBindingSource.DataMember = "KnittingMachines"
-        Me.KnittingMachinesBindingSource.DataSource = Me.OperationDBDataSet0
-        '
-        'KnittingMachinesTableAdapter
-        '
-        Me.KnittingMachinesTableAdapter.ClearBeforeFill = True
-        '
-        'labelMachinesInZone
-        '
-        Me.labelMachinesInZone.AutoSize = True
-        Me.labelMachinesInZone.Location = New System.Drawing.Point(300, 147)
-        Me.labelMachinesInZone.Name = "labelMachinesInZone"
-        Me.labelMachinesInZone.Size = New System.Drawing.Size(111, 13)
-        Me.labelMachinesInZone.TabIndex = 42
-        Me.labelMachinesInZone.Text = "Машин в зоне обсл.:"
-        '
-        'tbMachinesInZone
-        '
-        Me.tbMachinesInZone.Enabled = False
-        Me.tbMachinesInZone.Location = New System.Drawing.Point(412, 144)
-        Me.tbMachinesInZone.Name = "tbMachinesInZone"
-        Me.tbMachinesInZone.Size = New System.Drawing.Size(147, 20)
-        Me.tbMachinesInZone.TabIndex = 41
         '
         'EmployeeName
         '
@@ -386,6 +306,12 @@ Partial Class NewKnittingInvoiceForm
         Me.PartName.ReadOnly = True
         Me.PartName.Width = 200
         '
+        'KnittingMachine
+        '
+        Me.KnittingMachine.HeaderText = "Вяз. машина"
+        Me.KnittingMachine.Name = "KnittingMachine"
+        Me.KnittingMachine.ReadOnly = True
+        '
         'PartAmount
         '
         Me.PartAmount.HeaderText = "Количество"
@@ -414,6 +340,85 @@ Partial Class NewKnittingInvoiceForm
         Me.workDay.MinimumWidth = 10
         Me.workDay.Name = "workDay"
         Me.workDay.Width = 200
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDelete.Location = New System.Drawing.Point(632, 484)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.TabIndex = 38
+        Me.btnDelete.Text = "Удалить"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSave.Location = New System.Drawing.Point(713, 484)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.TabIndex = 37
+        Me.btnSave.Text = "Сохранить"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'cbKnittingMachines
+        '
+        Me.cbKnittingMachines.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cbKnittingMachines.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbKnittingMachines.DataSource = Me.KnittingMachinesBindingSource
+        Me.cbKnittingMachines.DisplayMember = "machine_displayname"
+        Me.cbKnittingMachines.FormattingEnabled = True
+        Me.cbKnittingMachines.Location = New System.Drawing.Point(412, 92)
+        Me.cbKnittingMachines.Name = "cbKnittingMachines"
+        Me.cbKnittingMachines.Size = New System.Drawing.Size(147, 21)
+        Me.cbKnittingMachines.TabIndex = 39
+        Me.cbKnittingMachines.ValueMember = "id"
+        '
+        'KnittingMachinesBindingSource
+        '
+        Me.KnittingMachinesBindingSource.DataMember = "KnittingMachines"
+        Me.KnittingMachinesBindingSource.DataSource = Me.OperationDBDataSet0
+        '
+        'labelKnittingMachines
+        '
+        Me.labelKnittingMachines.AutoSize = True
+        Me.labelKnittingMachines.Location = New System.Drawing.Point(328, 95)
+        Me.labelKnittingMachines.Name = "labelKnittingMachines"
+        Me.labelKnittingMachines.Size = New System.Drawing.Size(83, 13)
+        Me.labelKnittingMachines.TabIndex = 40
+        Me.labelKnittingMachines.Text = "Оборудование:"
+        '
+        'ArticulTableAdapter
+        '
+        Me.ArticulTableAdapter.ClearBeforeFill = True
+        '
+        'EmployeeTableAdapter
+        '
+        Me.EmployeeTableAdapter.ClearBeforeFill = True
+        '
+        'ClothingPartsTableAdapter
+        '
+        Me.ClothingPartsTableAdapter.ClearBeforeFill = True
+        '
+        'KnittingMachinesTableAdapter
+        '
+        Me.KnittingMachinesTableAdapter.ClearBeforeFill = True
+        '
+        'labelMachinesInZone
+        '
+        Me.labelMachinesInZone.AutoSize = True
+        Me.labelMachinesInZone.Location = New System.Drawing.Point(300, 147)
+        Me.labelMachinesInZone.Name = "labelMachinesInZone"
+        Me.labelMachinesInZone.Size = New System.Drawing.Size(111, 13)
+        Me.labelMachinesInZone.TabIndex = 42
+        Me.labelMachinesInZone.Text = "Машин в зоне обсл.:"
+        '
+        'tbMachinesInZone
+        '
+        Me.tbMachinesInZone.Location = New System.Drawing.Point(412, 144)
+        Me.tbMachinesInZone.Name = "tbMachinesInZone"
+        Me.tbMachinesInZone.Size = New System.Drawing.Size(147, 20)
+        Me.tbMachinesInZone.TabIndex = 41
         '
         'NewKnittingInvoiceForm
         '
@@ -447,11 +452,11 @@ Partial Class NewKnittingInvoiceForm
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "NewKnittingInvoiceForm"
         Me.Text = "Новая накладная (Вязальный цех)"
-        CType(Me.dgOperationLog, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClothingPartsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgOperationLog, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.KnittingMachinesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -496,6 +501,7 @@ Partial Class NewKnittingInvoiceForm
     Friend WithEvents LogDate As DataGridViewTextBoxColumn
     Friend WithEvents ArticulName As DataGridViewTextBoxColumn
     Friend WithEvents PartName As DataGridViewTextBoxColumn
+    Friend WithEvents KnittingMachine As DataGridViewTextBoxColumn
     Friend WithEvents PartAmount As DataGridViewTextBoxColumn
     Friend WithEvents ExecutionTime As DataGridViewTextBoxColumn
     Friend WithEvents MachineNumberInZone As DataGridViewTextBoxColumn
