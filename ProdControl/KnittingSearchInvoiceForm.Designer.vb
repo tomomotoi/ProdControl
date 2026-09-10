@@ -22,6 +22,7 @@ Partial Class KnittingSearchInvoiceForm
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KnittingSearchInvoiceForm))
         Me.chckbxEditingMode = New System.Windows.Forms.CheckBox()
         Me.labelDateTo = New System.Windows.Forms.Label()
@@ -39,18 +40,30 @@ Partial Class KnittingSearchInvoiceForm
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.labelArticul = New System.Windows.Forms.Label()
         Me.cbArticul = New System.Windows.Forms.ComboBox()
+        Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OperationDBDataSet0 = New ProdControl.OperationDBDataSet0()
         Me.dgView = New System.Windows.Forms.DataGridView()
+        Me.LabelEmployee = New System.Windows.Forms.Label()
+        Me.cbEmployee = New System.Windows.Forms.ComboBox()
+        Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ArticulTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.ArticulTableAdapter()
+        Me.EmployeeTableAdapter = New ProdControl.OperationDBDataSet0TableAdapters.EmployeeTableAdapter()
         Me.LogId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmployeeName = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.OperationName = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.KnittingPartName = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.ArticulName = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.KnittingMachine = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DateExecution = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TimeExecution = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Count = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MachinesInZone = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DocumentNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.workDay = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.isChanged = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chckbxEditingMode
@@ -68,7 +81,7 @@ Partial Class KnittingSearchInvoiceForm
         'labelDateTo
         '
         Me.labelDateTo.AutoSize = True
-        Me.labelDateTo.Location = New System.Drawing.Point(455, 63)
+        Me.labelDateTo.Location = New System.Drawing.Point(455, 56)
         Me.labelDateTo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDateTo.Name = "labelDateTo"
         Me.labelDateTo.Size = New System.Drawing.Size(51, 13)
@@ -78,8 +91,7 @@ Partial Class KnittingSearchInvoiceForm
         '
         'datePickerTo
         '
-        Me.datePickerTo.Enabled = False
-        Me.datePickerTo.Location = New System.Drawing.Point(457, 84)
+        Me.datePickerTo.Location = New System.Drawing.Point(457, 77)
         Me.datePickerTo.Margin = New System.Windows.Forms.Padding(2)
         Me.datePickerTo.Name = "datePickerTo"
         Me.datePickerTo.Size = New System.Drawing.Size(183, 20)
@@ -89,7 +101,7 @@ Partial Class KnittingSearchInvoiceForm
         'labelDateFrom
         '
         Me.labelDateFrom.AutoSize = True
-        Me.labelDateFrom.Location = New System.Drawing.Point(455, 18)
+        Me.labelDateFrom.Location = New System.Drawing.Point(455, 11)
         Me.labelDateFrom.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDateFrom.Name = "labelDateFrom"
         Me.labelDateFrom.Size = New System.Drawing.Size(45, 13)
@@ -99,8 +111,7 @@ Partial Class KnittingSearchInvoiceForm
         '
         'datePickerFrom
         '
-        Me.datePickerFrom.Enabled = False
-        Me.datePickerFrom.Location = New System.Drawing.Point(457, 39)
+        Me.datePickerFrom.Location = New System.Drawing.Point(457, 32)
         Me.datePickerFrom.Margin = New System.Windows.Forms.Padding(2)
         Me.datePickerFrom.Name = "datePickerFrom"
         Me.datePickerFrom.Size = New System.Drawing.Size(183, 20)
@@ -110,7 +121,7 @@ Partial Class KnittingSearchInvoiceForm
         'labelFilter
         '
         Me.labelFilter.AutoSize = True
-        Me.labelFilter.Location = New System.Drawing.Point(203, 18)
+        Me.labelFilter.Location = New System.Drawing.Point(203, 10)
         Me.labelFilter.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelFilter.Name = "labelFilter"
         Me.labelFilter.Size = New System.Drawing.Size(50, 13)
@@ -121,7 +132,7 @@ Partial Class KnittingSearchInvoiceForm
         '
         Me.cbFilter.FormattingEnabled = True
         Me.cbFilter.Items.AddRange(New Object() {"По сотруднику", "По артикулу", "Сотрудник + артикул", "По номеру квитанции"})
-        Me.cbFilter.Location = New System.Drawing.Point(205, 38)
+        Me.cbFilter.Location = New System.Drawing.Point(205, 30)
         Me.cbFilter.Margin = New System.Windows.Forms.Padding(2)
         Me.cbFilter.Name = "cbFilter"
         Me.cbFilter.Size = New System.Drawing.Size(161, 21)
@@ -153,29 +164,26 @@ Partial Class KnittingSearchInvoiceForm
         '
         'txDocNum
         '
-        Me.txDocNum.Enabled = False
-        Me.txDocNum.Location = New System.Drawing.Point(11, 38)
+        Me.txDocNum.Location = New System.Drawing.Point(11, 30)
         Me.txDocNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txDocNum.Name = "txDocNum"
         Me.txDocNum.Size = New System.Drawing.Size(180, 20)
         Me.txDocNum.TabIndex = 28
-        Me.txDocNum.Visible = False
         '
         'labelDocNum
         '
         Me.labelDocNum.AutoSize = True
-        Me.labelDocNum.Location = New System.Drawing.Point(11, 18)
+        Me.labelDocNum.Location = New System.Drawing.Point(11, 10)
         Me.labelDocNum.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.labelDocNum.Name = "labelDocNum"
         Me.labelDocNum.Size = New System.Drawing.Size(100, 13)
         Me.labelDocNum.TabIndex = 27
         Me.labelDocNum.Text = "Номер квитанции:"
-        Me.labelDocNum.Visible = False
         '
         'chckbxByPeriod
         '
         Me.chckbxByPeriod.AutoSize = True
-        Me.chckbxByPeriod.Location = New System.Drawing.Point(379, 39)
+        Me.chckbxByPeriod.Location = New System.Drawing.Point(375, 32)
         Me.chckbxByPeriod.Margin = New System.Windows.Forms.Padding(2)
         Me.chckbxByPeriod.Name = "chckbxByPeriod"
         Me.chckbxByPeriod.Size = New System.Drawing.Size(78, 17)
@@ -219,6 +227,7 @@ Partial Class KnittingSearchInvoiceForm
         '
         Me.cbArticul.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.cbArticul.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbArticul.DataSource = Me.ArticulBindingSource
         Me.cbArticul.DisplayMember = "ArticulName"
         Me.cbArticul.FormattingEnabled = True
         Me.cbArticul.Location = New System.Drawing.Point(11, 83)
@@ -228,6 +237,16 @@ Partial Class KnittingSearchInvoiceForm
         Me.cbArticul.TabIndex = 22
         Me.cbArticul.ValueMember = "ArticulID"
         '
+        'ArticulBindingSource
+        '
+        Me.ArticulBindingSource.DataMember = "Articul"
+        Me.ArticulBindingSource.DataSource = Me.OperationDBDataSet0
+        '
+        'OperationDBDataSet0
+        '
+        Me.OperationDBDataSet0.DataSetName = "OperationDBDataSet0"
+        Me.OperationDBDataSet0.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'dgView
         '
         Me.dgView.AllowUserToAddRows = False
@@ -235,20 +254,55 @@ Partial Class KnittingSearchInvoiceForm
         Me.dgView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LogId, Me.EmployeeName, Me.OperationName, Me.ArticulName, Me.DateExecution, Me.TimeExecution, Me.Count, Me.DocumentNumber, Me.workDay, Me.isChanged})
+        Me.dgView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LogId, Me.EmployeeName, Me.KnittingPartName, Me.ArticulName, Me.KnittingMachine, Me.DateExecution, Me.TimeExecution, Me.Count, Me.MachinesInZone, Me.DocumentNumber, Me.workDay, Me.isChanged})
         Me.dgView.Location = New System.Drawing.Point(11, 140)
         Me.dgView.Margin = New System.Windows.Forms.Padding(2)
         Me.dgView.Name = "dgView"
         Me.dgView.ReadOnly = True
-        Me.dgView.RowHeadersWidth = 82
+        Me.dgView.RowHeadersWidth = 10
         Me.dgView.RowTemplate.Height = 33
         Me.dgView.Size = New System.Drawing.Size(628, 304)
         Me.dgView.TabIndex = 21
         '
+        'LabelEmployee
+        '
+        Me.LabelEmployee.AutoSize = True
+        Me.LabelEmployee.Location = New System.Drawing.Point(206, 64)
+        Me.LabelEmployee.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LabelEmployee.Name = "LabelEmployee"
+        Me.LabelEmployee.Size = New System.Drawing.Size(63, 13)
+        Me.LabelEmployee.TabIndex = 39
+        Me.LabelEmployee.Text = "Сотрудник:"
+        '
+        'cbEmployee
+        '
+        Me.cbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbEmployee.DataSource = Me.EmployeeBindingSource
+        Me.cbEmployee.DisplayMember = "EmployeeName"
+        Me.cbEmployee.FormattingEnabled = True
+        Me.cbEmployee.Location = New System.Drawing.Point(206, 83)
+        Me.cbEmployee.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbEmployee.Name = "cbEmployee"
+        Me.cbEmployee.Size = New System.Drawing.Size(160, 21)
+        Me.cbEmployee.TabIndex = 38
+        Me.cbEmployee.ValueMember = "EmployeeID"
+        '
+        'EmployeeBindingSource
+        '
+        Me.EmployeeBindingSource.DataMember = "Employee"
+        Me.EmployeeBindingSource.DataSource = Me.OperationDBDataSet0
+        '
+        'ArticulTableAdapter
+        '
+        Me.ArticulTableAdapter.ClearBeforeFill = True
+        '
+        'EmployeeTableAdapter
+        '
+        Me.EmployeeTableAdapter.ClearBeforeFill = True
+        '
         'LogId
         '
-        Me.LogId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.LogId.HeaderText = "LogId"
         Me.LogId.MinimumWidth = 10
         Me.LogId.Name = "LogId"
@@ -262,16 +316,16 @@ Partial Class KnittingSearchInvoiceForm
         Me.EmployeeName.Name = "EmployeeName"
         Me.EmployeeName.ReadOnly = True
         Me.EmployeeName.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.EmployeeName.Width = 170
+        Me.EmployeeName.Width = 10
         '
-        'OperationName
+        'KnittingPartName
         '
-        Me.OperationName.HeaderText = "Операция"
-        Me.OperationName.MinimumWidth = 10
-        Me.OperationName.Name = "OperationName"
-        Me.OperationName.ReadOnly = True
-        Me.OperationName.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.OperationName.Width = 150
+        Me.KnittingPartName.HeaderText = "Деталь"
+        Me.KnittingPartName.MinimumWidth = 10
+        Me.KnittingPartName.Name = "KnittingPartName"
+        Me.KnittingPartName.ReadOnly = True
+        Me.KnittingPartName.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.KnittingPartName.Width = 10
         '
         'ArticulName
         '
@@ -280,7 +334,16 @@ Partial Class KnittingSearchInvoiceForm
         Me.ArticulName.Name = "ArticulName"
         Me.ArticulName.ReadOnly = True
         Me.ArticulName.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ArticulName.Width = 120
+        Me.ArticulName.Width = 10
+        '
+        'KnittingMachine
+        '
+        Me.KnittingMachine.HeaderText = "Вяз. машина"
+        Me.KnittingMachine.Name = "KnittingMachine"
+        Me.KnittingMachine.ReadOnly = True
+        Me.KnittingMachine.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.KnittingMachine.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.KnittingMachine.Width = 10
         '
         'DateExecution
         '
@@ -290,7 +353,7 @@ Partial Class KnittingSearchInvoiceForm
         Me.DateExecution.ReadOnly = True
         Me.DateExecution.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DateExecution.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DateExecution.Width = 82
+        Me.DateExecution.Width = 10
         '
         'TimeExecution
         '
@@ -299,34 +362,44 @@ Partial Class KnittingSearchInvoiceForm
         Me.TimeExecution.Name = "TimeExecution"
         Me.TimeExecution.ReadOnly = True
         Me.TimeExecution.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.TimeExecution.Width = 70
+        Me.TimeExecution.Width = 10
         '
         'Count
         '
-        Me.Count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Count.FillWeight = 153.0018!
         Me.Count.HeaderText = "Количество"
         Me.Count.MinimumWidth = 10
         Me.Count.Name = "Count"
         Me.Count.ReadOnly = True
         Me.Count.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Count.Width = 10
+        '
+        'MachinesInZone
+        '
+        Me.MachinesInZone.HeaderText = "Маш. в зоне обсл."
+        Me.MachinesInZone.Name = "MachinesInZone"
+        Me.MachinesInZone.ReadOnly = True
+        Me.MachinesInZone.Width = 10
         '
         'DocumentNumber
         '
-        Me.DocumentNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DocumentNumber.FillWeight = 102.8805!
         Me.DocumentNumber.HeaderText = "Номер квитанции"
         Me.DocumentNumber.MinimumWidth = 10
         Me.DocumentNumber.Name = "DocumentNumber"
         Me.DocumentNumber.ReadOnly = True
         Me.DocumentNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DocumentNumber.Width = 10
         '
         'workDay
         '
-        Me.workDay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.workDay.FillWeight = 44.11765!
         Me.workDay.HeaderText = "Рабочий день"
         Me.workDay.MinimumWidth = 10
         Me.workDay.Name = "workDay"
         Me.workDay.ReadOnly = True
         Me.workDay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.workDay.Width = 10
         '
         'isChanged
         '
@@ -344,6 +417,8 @@ Partial Class KnittingSearchInvoiceForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(647, 485)
+        Me.Controls.Add(Me.LabelEmployee)
+        Me.Controls.Add(Me.cbEmployee)
         Me.Controls.Add(Me.chckbxEditingMode)
         Me.Controls.Add(Me.labelDateTo)
         Me.Controls.Add(Me.datePickerTo)
@@ -364,7 +439,10 @@ Partial Class KnittingSearchInvoiceForm
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "KnittingSearchInvoiceForm"
         Me.Text = "Найти накладную (вяз. цех.)"
+        CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OperationDBDataSet0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -387,13 +465,22 @@ Partial Class KnittingSearchInvoiceForm
     Friend WithEvents labelArticul As Label
     Friend WithEvents cbArticul As ComboBox
     Friend WithEvents dgView As DataGridView
+    Friend WithEvents LabelEmployee As Label
+    Friend WithEvents cbEmployee As ComboBox
+    Friend WithEvents OperationDBDataSet0 As OperationDBDataSet0
+    Friend WithEvents ArticulBindingSource As BindingSource
+    Friend WithEvents ArticulTableAdapter As OperationDBDataSet0TableAdapters.ArticulTableAdapter
+    Friend WithEvents EmployeeBindingSource As BindingSource
+    Friend WithEvents EmployeeTableAdapter As OperationDBDataSet0TableAdapters.EmployeeTableAdapter
     Friend WithEvents LogId As DataGridViewTextBoxColumn
     Friend WithEvents EmployeeName As DataGridViewComboBoxColumn
-    Friend WithEvents OperationName As DataGridViewComboBoxColumn
+    Friend WithEvents KnittingPartName As DataGridViewComboBoxColumn
     Friend WithEvents ArticulName As DataGridViewComboBoxColumn
+    Friend WithEvents KnittingMachine As DataGridViewComboBoxColumn
     Friend WithEvents DateExecution As DataGridViewTextBoxColumn
     Friend WithEvents TimeExecution As DataGridViewTextBoxColumn
     Friend WithEvents Count As DataGridViewTextBoxColumn
+    Friend WithEvents MachinesInZone As DataGridViewTextBoxColumn
     Friend WithEvents DocumentNumber As DataGridViewTextBoxColumn
     Friend WithEvents workDay As DataGridViewTextBoxColumn
     Friend WithEvents isChanged As DataGridViewCheckBoxColumn

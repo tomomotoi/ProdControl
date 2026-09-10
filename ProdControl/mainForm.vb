@@ -315,4 +315,10 @@ Public Class mainForm
         newKnittingInvoiceForm.MdiParent = Me
         newKnittingInvoiceForm.Show()
     End Sub
+
+    Private Sub НайтиВязальныйЦехToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles НайтиВязальныйЦехToolStripMenuItem.Click
+        Dim knittingSearchInvoiceForm = New KnittingSearchInvoiceForm()
+        knittingSearchInvoiceForm.MdiParent = Me
+        knittingSearchInvoiceForm.Show()
+    End Sub
 End Class

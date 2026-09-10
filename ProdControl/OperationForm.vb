@@ -141,7 +141,7 @@
         Dim sqlCommand As OleDb.OleDbCommand
         Dim queryResult As String = ""
 
-        connection = New OleDb.OleDbConnection(ProdControl.My.Settings.OperationDBConnectionString)
+        connection = New OleDb.OleDbConnection(My.Settings.OperationDBConnectionString)
 
         Try
             connection.Open()

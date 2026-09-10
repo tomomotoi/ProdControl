@@ -45,8 +45,8 @@ Public Class ReportViewer
             Exit Sub
         End If
 
-        Dim dataTable As ProdControl.OperationDBDataSet1.ReportEmployeeDataTable
-        dataTable = New ProdControl.OperationDBDataSet1.ReportEmployeeDataTable()
+        Dim dataTable As OperationDBDataSet1.ReportEmployeeDataTable
+        dataTable = New OperationDBDataSet1.ReportEmployeeDataTable()
         dataTable = Me.ReportEmployeeTableAdapter.GetEmployeeData(strEmployees, dfFrom, dfTo)
 
         If dataTable.Rows.Count <= 0 Then

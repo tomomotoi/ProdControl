@@ -25,12 +25,12 @@ Partial Class calculationForm
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(calculationForm))
         Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
+        Me.OperationDBDataSet1 = New OperationDBDataSet1()
         Me.dlgSave = New System.Windows.Forms.SaveFileDialog()
         Me.OperationLogBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EmployeeTableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter()
-        Me.OperationLog1TableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.OperationLog1TableAdapter()
-        Me.LogWorkDayTableAdapter1 = New ProdControl.OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter()
+        Me.EmployeeTableAdapter = New OperationDBDataSet1TableAdapters.EmployeeTableAdapter()
+        Me.OperationLog1TableAdapter = New OperationDBDataSet1TableAdapters.OperationLog1TableAdapter()
+        Me.LogWorkDayTableAdapter1 = New OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter()
         Me.dbGrid = New System.Windows.Forms.DataGridView()
         Me.EmployeeIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmployeeNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -268,13 +268,13 @@ Partial Class calculationForm
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents OperationDBDataSet1 As ProdControl.OperationDBDataSet1
+    Friend WithEvents OperationDBDataSet1 As OperationDBDataSet1
     Friend WithEvents EmployeeBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents EmployeeTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter
-    Friend WithEvents OperationLog1TableAdapter As ProdControl.OperationDBDataSet1TableAdapters.OperationLog1TableAdapter
+    Friend WithEvents EmployeeTableAdapter As OperationDBDataSet1TableAdapters.EmployeeTableAdapter
+    Friend WithEvents OperationLog1TableAdapter As OperationDBDataSet1TableAdapters.OperationLog1TableAdapter
     Friend WithEvents OperationLogBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents dlgSave As System.Windows.Forms.SaveFileDialog
-    Friend WithEvents LogWorkDayTableAdapter1 As ProdControl.OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter
+    Friend WithEvents LogWorkDayTableAdapter1 As OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter
     Friend WithEvents dbGrid As DataGridView
     Friend WithEvents EmployeeIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EmployeeNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

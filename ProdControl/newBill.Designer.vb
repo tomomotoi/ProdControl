@@ -50,7 +50,7 @@ Partial Class newBill
         Me.labelTypeOfNonRateSituation = New System.Windows.Forms.Label()
         Me.cbTypeOfNonRateSituation = New System.Windows.Forms.ComboBox()
         Me.IdleOperationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet12 = New ProdControl.OperationDBDataSet1()
+        Me.OperationDBDataSet12 = New OperationDBDataSet1()
         Me.lbWorkDay = New System.Windows.Forms.Label()
         Me.tbWorkday = New System.Windows.Forms.TextBox()
         Me.диДщпТгь = New System.Windows.Forms.Label()
@@ -82,14 +82,14 @@ Partial Class newBill
         Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OperationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OperationLogBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet11 = New ProdControl.OperationDBDataSet1()
-        Me.OperationLog1TableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.OperationLog1TableAdapter()
+        Me.OperationDBDataSet11 = New OperationDBDataSet1()
+        Me.OperationLog1TableAdapter = New OperationDBDataSet1TableAdapters.OperationLog1TableAdapter()
         Me.OperationDBDataSet12BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationTableAdapter1 = New ProdControl.OperationDBDataSet1TableAdapters.OperationTableAdapter()
-        Me.ArticulTableAdapter1 = New ProdControl.OperationDBDataSet1TableAdapters.ArticulTableAdapter()
-        Me.EmployeeTableAdapter1 = New ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter()
-        Me.LogWorkDayTableAdapter1 = New ProdControl.OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter()
-        Me.IdleOperationTableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.IdleOperationTableAdapter()
+        Me.OperationTableAdapter1 = New OperationDBDataSet1TableAdapters.OperationTableAdapter()
+        Me.ArticulTableAdapter1 = New OperationDBDataSet1TableAdapters.ArticulTableAdapter()
+        Me.EmployeeTableAdapter1 = New OperationDBDataSet1TableAdapters.EmployeeTableAdapter()
+        Me.LogWorkDayTableAdapter1 = New OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter()
+        Me.IdleOperationTableAdapter = New OperationDBDataSet1TableAdapters.IdleOperationTableAdapter()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgOperationLog, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -682,16 +682,16 @@ Partial Class newBill
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents pnlTop As System.Windows.Forms.Panel
     Friend WithEvents cbEmployee As System.Windows.Forms.ComboBox
-    Friend WithEvents OperationDBDataSet1 As ProdControl.OperationDBDataSet1
+    Friend WithEvents OperationDBDataSet1 As OperationDBDataSet1
     Friend WithEvents EmployeeBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents EmployeeTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter
+    Friend WithEvents EmployeeTableAdapter As OperationDBDataSet1TableAdapters.EmployeeTableAdapter
     Friend WithEvents elnEmpNumber As System.Windows.Forms.Label
     Friend WithEvents lbEmployee As System.Windows.Forms.Label
     Friend WithEvents OperationLogBindingSource As System.Windows.Forms.BindingSource
-    
-    Friend WithEvents OperationLog1TableAdapter As ProdControl.OperationDBDataSet1TableAdapters.OperationLog1TableAdapter
+
+    Friend WithEvents OperationLog1TableAdapter As OperationDBDataSet1TableAdapters.OperationLog1TableAdapter
     Friend WithEvents ArticulBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents ArticulTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.ArticulTableAdapter
+    Friend WithEvents ArticulTableAdapter As OperationDBDataSet1TableAdapters.ArticulTableAdapter
     Friend WithEvents LogIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmployeeIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents OperationIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -705,7 +705,7 @@ Partial Class newBill
     Friend WithEvents dtPickerOpDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents lbDate As System.Windows.Forms.Label
     Friend WithEvents OperationBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents OperationTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.OperationTableAdapter
+    Friend WithEvents OperationTableAdapter As OperationDBDataSet1TableAdapters.OperationTableAdapter
     Friend WithEvents tbOperationTime As System.Windows.Forms.TextBox
     Friend WithEvents cbIsStandard As System.Windows.Forms.CheckBox
     Friend WithEvents OperationBindingSource1 As System.Windows.Forms.BindingSource
@@ -713,18 +713,18 @@ Partial Class newBill
     Friend WithEvents OperationBindingSource2 As System.Windows.Forms.BindingSource
     Friend WithEvents OperationOperationLogBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents btnInsert As System.Windows.Forms.Button
-    Friend WithEvents OperationDBDataSet11 As ProdControl.OperationDBDataSet1
+    Friend WithEvents OperationDBDataSet11 As OperationDBDataSet1
     Friend WithEvents OperationLogBindingSource1 As System.Windows.Forms.BindingSource
     'Friend WithEvents OperationLog1TableAdapter As ProdControl.OperationDBDataSet1TableAdapters.OperationLog1TableAdapter
     Friend WithEvents cbOperation As System.Windows.Forms.ComboBox
     Friend WithEvents OperationDBDataSet12BindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents OperationDBDataSet12 As ProdControl.OperationDBDataSet1
+    Friend WithEvents OperationDBDataSet12 As OperationDBDataSet1
     Friend WithEvents OperationBindingSource3 As System.Windows.Forms.BindingSource
-    Friend WithEvents OperationTableAdapter1 As ProdControl.OperationDBDataSet1TableAdapters.OperationTableAdapter
+    Friend WithEvents OperationTableAdapter1 As OperationDBDataSet1TableAdapters.OperationTableAdapter
     Friend WithEvents ArticulBindingSource2 As System.Windows.Forms.BindingSource
-    Friend WithEvents ArticulTableAdapter1 As ProdControl.OperationDBDataSet1TableAdapters.ArticulTableAdapter
+    Friend WithEvents ArticulTableAdapter1 As OperationDBDataSet1TableAdapters.ArticulTableAdapter
     Friend WithEvents EmployeeBindingSource1 As System.Windows.Forms.BindingSource
-    Friend WithEvents EmployeeTableAdapter1 As ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter
+    Friend WithEvents EmployeeTableAdapter1 As OperationDBDataSet1TableAdapters.EmployeeTableAdapter
     Friend WithEvents lbCount As System.Windows.Forms.Label
     Friend WithEvents lbExecutionTime As System.Windows.Forms.Label
     Friend WithEvents tbCount As System.Windows.Forms.TextBox
@@ -736,7 +736,7 @@ Partial Class newBill
     Friend WithEvents tbLogNum As System.Windows.Forms.TextBox
     Friend WithEvents tbWorkday As System.Windows.Forms.TextBox
     Friend WithEvents lbWorkDay As System.Windows.Forms.Label
-    Friend WithEvents LogWorkDayTableAdapter1 As ProdControl.OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter
+    Friend WithEvents LogWorkDayTableAdapter1 As OperationDBDataSet1TableAdapters.LogWorkDayTableAdapter
     Friend WithEvents cEmployeeID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmployeeName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents LogNumber As System.Windows.Forms.DataGridViewTextBoxColumn

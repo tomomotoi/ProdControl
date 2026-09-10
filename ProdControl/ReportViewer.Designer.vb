@@ -26,7 +26,7 @@ Partial Class ReportViewer
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReportViewer))
         Me.ReportEmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
+        Me.OperationDBDataSet1 = New OperationDBDataSet1()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -45,8 +45,8 @@ Partial Class ReportViewer
         Me.EmployeeBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.panelReport = New System.Windows.Forms.Panel()
         Me.ReportByEmployeeViewer = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.ReportEmployeeTableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.ReportEmployeeTableAdapter()
-        Me.EmployeeTableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter()
+        Me.ReportEmployeeTableAdapter = New OperationDBDataSet1TableAdapters.ReportEmployeeTableAdapter()
+        Me.EmployeeTableAdapter = New OperationDBDataSet1TableAdapters.EmployeeTableAdapter()
         Me.ReportEmployeeBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.ReportEmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OperationDBDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -272,13 +272,13 @@ Partial Class ReportViewer
 
     End Sub
     Friend WithEvents ReportEmployeeBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents OperationDBDataSet1 As ProdControl.OperationDBDataSet1
-    Friend WithEvents ReportEmployeeTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.ReportEmployeeTableAdapter
+    Friend WithEvents OperationDBDataSet1 As OperationDBDataSet1
+    Friend WithEvents ReportEmployeeTableAdapter As OperationDBDataSet1TableAdapters.ReportEmployeeTableAdapter
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents OperationDBDataSet1BindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents btnLoadReport As System.Windows.Forms.Button
     Friend WithEvents EmployeeBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents EmployeeTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.EmployeeTableAdapter
+    Friend WithEvents EmployeeTableAdapter As OperationDBDataSet1TableAdapters.EmployeeTableAdapter
     Friend WithEvents dtpTo As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpFrom As System.Windows.Forms.DateTimePicker
     Friend WithEvents EmployeeBindingSource1 As System.Windows.Forms.BindingSource

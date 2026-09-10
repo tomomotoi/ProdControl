@@ -25,11 +25,11 @@ Partial Class RoutingForm
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoutingForm))
         Me.OperationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet1 = New ProdControl.OperationDBDataSet1()
+        Me.OperationDBDataSet1 = New OperationDBDataSet1()
         Me.ArticulBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet = New ProdControl.OperationDBDataSet()
-        Me.ArticulTableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.ArticulTableAdapter()
-        Me.OperationTableAdapter = New ProdControl.OperationDBDataSet1TableAdapters.OperationTableAdapter()
+        Me.OperationDBDataSet = New OperationDBDataSet()
+        Me.ArticulTableAdapter = New OperationDBDataSet1TableAdapters.ArticulTableAdapter()
+        Me.OperationTableAdapter = New OperationDBDataSet1TableAdapters.OperationTableAdapter()
         Me.spContainer = New System.Windows.Forms.SplitContainer()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lbRowsAmount = New System.Windows.Forms.Label()
@@ -37,7 +37,7 @@ Partial Class RoutingForm
         Me.labelCost = New System.Windows.Forms.Label()
         Me.cbDopCost = New System.Windows.Forms.ComboBox()
         Me.CoefficientsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet3 = New ProdControl.OperationDBDataSet3()
+        Me.OperationDBDataSet3 = New OperationDBDataSet3()
         Me.btnSeachArt = New System.Windows.Forms.Button()
         Me.lbLevel = New System.Windows.Forms.Label()
         Me.lbTimeRate = New System.Windows.Forms.Label()
@@ -66,12 +66,12 @@ Partial Class RoutingForm
         Me.isNew = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.isChanged = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.PositionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet4 = New ProdControl.OperationDBDataSet4()
+        Me.OperationDBDataSet4 = New OperationDBDataSet4()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OperationDBDataSet2 = New ProdControl.OperationDBDataSet2()
-        Me.RoutingTableAdapter = New ProdControl.OperationDBDataSet2TableAdapters.RoutingTableAdapter()
-        Me.CoefficientsTableAdapter = New ProdControl.OperationDBDataSet3TableAdapters.CoefficientsTableAdapter()
-        Me.PositionTableAdapter = New ProdControl.OperationDBDataSet4TableAdapters.PositionTableAdapter()
+        Me.OperationDBDataSet2 = New OperationDBDataSet2()
+        Me.RoutingTableAdapter = New OperationDBDataSet2TableAdapters.RoutingTableAdapter()
+        Me.CoefficientsTableAdapter = New OperationDBDataSet3TableAdapters.CoefficientsTableAdapter()
+        Me.PositionTableAdapter = New OperationDBDataSet4TableAdapters.PositionTableAdapter()
         CType(Me.OperationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OperationDBDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArticulBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -524,12 +524,12 @@ Partial Class RoutingForm
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents OperationDBDataSet As ProdControl.OperationDBDataSet
-    Friend WithEvents OperationDBDataSet1 As ProdControl.OperationDBDataSet1
+    Friend WithEvents OperationDBDataSet As OperationDBDataSet
+    Friend WithEvents OperationDBDataSet1 As OperationDBDataSet1
     Friend WithEvents ArticulBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents ArticulTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.ArticulTableAdapter
+    Friend WithEvents ArticulTableAdapter As OperationDBDataSet1TableAdapters.ArticulTableAdapter
     Friend WithEvents OperationBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents OperationTableAdapter As ProdControl.OperationDBDataSet1TableAdapters.OperationTableAdapter
+    Friend WithEvents OperationTableAdapter As OperationDBDataSet1TableAdapters.OperationTableAdapter
     Friend WithEvents spContainer As System.Windows.Forms.SplitContainer
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents btCancel As System.Windows.Forms.Button
@@ -551,8 +551,8 @@ Partial Class RoutingForm
     Friend WithEvents lbArticul As System.Windows.Forms.Label
     Friend WithEvents btnSeachArt As System.Windows.Forms.Button
     Friend WithEvents BindingSource1 As System.Windows.Forms.BindingSource
-    Friend WithEvents OperationDBDataSet2 As ProdControl.OperationDBDataSet2
-    Friend WithEvents RoutingTableAdapter As ProdControl.OperationDBDataSet2TableAdapters.RoutingTableAdapter
+    Friend WithEvents OperationDBDataSet2 As OperationDBDataSet2
+    Friend WithEvents RoutingTableAdapter As OperationDBDataSet2TableAdapters.RoutingTableAdapter
     Friend WithEvents cbDopCost As ComboBox
     Friend WithEvents OperationDBDataSet3 As OperationDBDataSet3
     Friend WithEvents CoefficientsBindingSource As BindingSource

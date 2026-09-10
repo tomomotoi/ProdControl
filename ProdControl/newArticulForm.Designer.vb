@@ -29,8 +29,8 @@ Partial Class newArticulForm
         Me.lbDesc = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.DBSet = New ProdControl.DBSet()
-        Me.ArticulTableAdapter1 = New ProdControl.DBSetTableAdapters.ArticulTableAdapter()
+        Me.DBSet = New DBSet()
+        Me.ArticulTableAdapter1 = New DBSetTableAdapters.ArticulTableAdapter()
         CType(Me.DBSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -118,6 +118,6 @@ Partial Class newArticulForm
     Friend WithEvents lbDesc As System.Windows.Forms.Label
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
-    Friend WithEvents ArticulTableAdapter1 As ProdControl.DBSetTableAdapters.ArticulTableAdapter
-    Friend WithEvents DBSet As ProdControl.DBSet
+    Friend WithEvents ArticulTableAdapter1 As DBSetTableAdapters.ArticulTableAdapter
+    Friend WithEvents DBSet As DBSet
 End Class
