@@ -35,225 +35,151 @@ Public Class calculationForm
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
-        Dim conn As OleDb.OleDbConnection
-        Dim exeCom As OleDb.OleDbCommand
-        Dim rout As OleDb.OleDbCommand
         Dim selectedRows As Integer = dbGrid.SelectedRows().Count
-        Dim i As Integer
-        Dim strEmployees As String = ""
-        Dim row As DataGridViewRow
-
-        Dim emplID As String
-        Dim opID As String
-        Dim artID As String
-        Dim itmsCount As String
-        Dim execTime As Double = 0
-        Dim res As Hashtable
-        Dim sl As Hashtable
-        Dim calcTable As Hashtable
-
-        Dim exTime As Double = 0
-        Dim exRate As Double
-        Dim timeRate As Double
-        Dim resArr(1) As String
-        Dim docNum As String
-        Dim dummyDouble As Double = 0
-        Dim dtExec As Date
-
         If selectedRows = 0 Then
-            MessageBox.Show("Выберите сотрудника для расчета")
+            MessageBox.Show("Выберите сотрудника для расчета", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
-        For i = 0 To selectedRows - 1
-            row = dbGrid.SelectedRows().Item(i)
-            strEmployees = strEmployees + row.Cells.Item(0).Value.ToString() + ", "
-        Next
+        Dim conn As OleDb.OleDbConnection = OperationLog1TableAdapter.Connection
+        Dim res As New Hashtable()
+        Dim calcTable As New Hashtable()
 
-        strEmployees = strEmployees.Substring(0, Len(strEmployees) - 2)
-        '1
-        conn = OperationLog1TableAdapter.Connection()
+        For i As Integer = 0 To selectedRows - 1
+            Dim row As DataGridViewRow = dbGrid.SelectedRows().Item(i)
+            Dim emplID As Integer = Convert.ToInt32(row.Cells.Item(0).Value)
+            Dim posId As Integer = GetEmployeePositionId(emplID)
 
-        res = New Hashtable()
-        sl = New Hashtable()
-        calcTable = New Hashtable()
+            If posId = 9 Then
+                ' --- РАСЧЕТ ДЛЯ ВЯЗАЛЬЩИЦЫ ---
+                CalculateKnittingSalary(emplID, row)
 
-        calculateSalaryNew() 'new way to calculate salary (depends on WorkLevel)
-
-        Try
-            ' Выбираем сотрудников, для которых будет расчиитана зп и норма выработки
-            exeCom = conn.CreateCommand()
-            If cbDateRange.Checked Then 'если выбран интервал дат
-                exeCom.CommandText = "SELECT LogID AS [Log ID], EmployeeID AS [Employee ID], OperationID AS [Operation ID], ArticulID AS [Articul ID], DateExecution AS [DateEX], TimeExecution AS [Time Execution], Count, DocumentNumber FROM OperationLog WHERE (EmployeeID IN (@Empls)) AND (DateExecution BETWEEN @FROM AND @TO) ORDER BY EmployeeID"
-
-                exeCom.Parameters.AddWithValue("@Empls", strEmployees)
-                exeCom.Parameters.AddWithValue("@FROM", dtFrom.Value.Date).DbType = DbType.Date
-                exeCom.Parameters.AddWithValue("@TO", dtTo.Value.Date).DbType = DbType.Date
-
-            Else 'за дату
-                exeCom.CommandText = "SELECT LogID AS [Log ID], EmployeeID AS [Employee ID], OperationID AS [Operation ID], ArticulID AS [Articul ID], DateExecution AS [DateEX], TimeExecution AS [Time Execution], Count, DocumentNumber  FROM OperationLog WHERE (EmployeeID IN (@Empls)) AND (DateExecution = @Dt) ORDER BY EmployeeID"
-
-                exeCom.Parameters.AddWithValue("@Empls", strEmployees)
-                exeCom.Parameters.AddWithValue("@Dt", dtFrom.Value.Date).DbType = DbType.Date
-            End If
-
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-            conn.Open()
-            Dim db_reader As OleDb.OleDbDataReader = exeCom.ExecuteReader()
-
-            If db_reader.HasRows Then 'проходим по тетрадке выбранных сотрудников
-
-                rout = conn.CreateCommand()
-                rout.CommandText = "SELECT ArticulID, OperationID, DopCost, TimeExecute, RateExecute, PositionLevel FROM Routing WHERE ArticulID = @Art AND OperationID = @Op"
-
-                'первый проход для расчета времени выполнения
-                While db_reader.Read()
-
-                    emplID = db_reader("Employee ID").ToString()
-                    opID = db_reader("Operation ID").ToString()
-                    artID = db_reader("Articul ID").ToString()
-                    itmsCount = db_reader("Count").ToString()
-                    execTime = db_reader("Time Execution")
-                    docNum = db_reader("DocumentNumber").ToString()
-                    dtExec = CType(db_reader("DateEX"), Date)
-
-                    'прочитать значения из техкарты
-                    rout.Parameters.Clear()                     'очистить значения параметров
-
-                    rout.Parameters.AddWithValue("@Art", artID)
-                    rout.Parameters.AddWithValue("@Op", opID)
-
-                    If Not (conn.State = ConnectionState.Open) Then
-                        conn.Open()
-                    End If
-
-                    Dim routRead As OleDb.OleDbDataReader = rout.ExecuteReader()
-
-                    If routRead.HasRows Then
-
-                        While routRead.Read()
-                            If execTime = 0 Then
-                                exTime = routRead("TimeExecute")
-                                exTime = Math.Round(exTime * itmsCount, 6)
-                            Else
-                                exTime = execTime
-                                dummyDouble = routRead("TimeExecute") 'need an read action in order to contunue reading
-                            End If
-
-                            Try
-                                exRate = EmployeeTableAdapter.GetEmployeeRate(emplID)
-                            Catch ex As Exception
-                                MessageBox.Show("Для сотрудника не указан разряд в таблице Сотрудники", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                Exit Sub
-                            End Try
-
-
-                            If res.Contains(emplID) Then
-                                res(emplID) = res(emplID) + exTime
-                            Else
-                                res.Add(emplID, exTime)
-                            End If
-
-                            'If sl.Contains(emplID) Then
-                            '    sl(emplID) = sl(emplID) + Math.Round((exTime * exRate), 6)
-                            'Else
-                            '    sl.Add(emplID, Math.Round((exTime * exRate), 6))
-                            'End If
-
-                            emplID = ""
-                            opID = ""
-                            artID = ""
-                            itmsCount = ""
-                            execTime = 0
-                            docNum = ""
-                            exTime = 0
-                            exRate = 0
-                            timeRate = 0
-                        End While
-
-                        routRead.Close()
-                    Else
-                        routRead.Close()
-                    End If
-                End While
-
-                ' второй проход для расчета зп
-                Dim resItem As DictionaryEntry
-                Dim rItem As DictionaryEntry
-
-                Dim dtWorkDays As DataTable
-                Dim dtDates As DataTable
-                Dim wdRes As Integer
-                Dim wdDuration As Integer
-                Dim rowDW As DataRow
-                Dim htHours As Hashtable
-                Dim htDates As Hashtable
-
-
-
-                For Each resItem In res
-                    emplID = resItem.Key
-                    timeRate = resItem.Value
-                    If cbDateRange.Checked Then ' расчет за период
-
-                        htHours = New Hashtable
-                        htDates = New Hashtable
-
-
-                        dtWorkDays = OperationLog1TableAdapter.GetWorkDays(emplID, dtFrom.Value.Date, dtTo.Value.Date)
-                        If dtWorkDays.Rows.Count > 0 Then
-
-                            For Each rowDW In dtWorkDays.Rows
-                                wdDuration = rowDW("workDay")
-                                dtDates = OperationLog1TableAdapter.GetWorkDaysDates(emplID, dtFrom.Value.Date, dtTo.Value.Date, wdDuration)
-                                htHours.Add(wdDuration, dtDates.Rows.Count)
-                            Next
-                            wdRes = 0
-                            For Each rItem In htHours
-                                wdRes = wdRes + (rItem.Key * rItem.Value)
-                            Next
-
-                        End If
-
-                    Else ' расчет на дату
-                        dtWorkDays = OperationLog1TableAdapter.GetWDPerDay(emplID, dtFrom.Value.Date.ToString)
-                        If dtWorkDays.Rows.Count > 0 Then
-                            wdRes = dtWorkDays.Rows(0).Item("workDay")
+                ' Расчет суммарного эффективного времени для нормы выработки
+                Dim totalEffectiveTime As Double = 0
+                Try
+                    If conn.State = ConnectionState.Open Then conn.Close()
+                    conn.Open()
+                    Using cmd As OleDb.OleDbCommand = conn.CreateCommand()
+                        Dim sql As String = "SELECT time_execution, machines_in_zone FROM KnittingOperationLog WHERE employee_id = @EmpID"
+                        If cbDateRange.Checked Then
+                            sql &= " AND (date_execution BETWEEN @FROM AND @TO)"
+                            cmd.Parameters.AddWithValue("@EmpID", emplID)
+                            cmd.Parameters.AddWithValue("@FROM", dtFrom.Value.Date).DbType = DbType.Date
+                            cmd.Parameters.AddWithValue("@TO", dtTo.Value.Date).DbType = DbType.Date
                         Else
-                            wdRes = 480
+                            sql &= " AND (date_execution = @Dt)"
+                            cmd.Parameters.AddWithValue("@EmpID", emplID)
+                            cmd.Parameters.AddWithValue("@Dt", dtFrom.Value.Date).DbType = DbType.Date
+                        End If
+                        cmd.CommandText = sql
+                        Using rdr As OleDb.OleDbDataReader = cmd.ExecuteReader()
+                            While rdr.Read()
+                                Dim tExec As Double = If(IsDBNull(rdr("time_execution")), 0, Convert.ToDouble(rdr("time_execution")))
+                                Dim mZone As Integer = If(IsDBNull(rdr("machines_in_zone")) OrElse Convert.ToInt32(rdr("machines_in_zone")) = 0, 1, Convert.ToInt32(rdr("machines_in_zone")))
+                                totalEffectiveTime += (tExec / mZone)
+                            End While
+                        End Using
+                    End Using
+                Finally
+                    If conn.State = ConnectionState.Open Then conn.Close()
+                End Try
+
+                res(emplID.ToString()) = totalEffectiveTime
+
+                ' Расчет отработанных минут (рабочего дня)
+                Dim wdRes As Integer = 480
+                Dim dtWorkDays As DataTable
+                If cbDateRange.Checked Then
+                    dtWorkDays = OperationLog1TableAdapter.GetWorkDays(emplID.ToString(), dtFrom.Value.Date, dtTo.Value.Date)
+                    If dtWorkDays.Rows.Count > 0 Then
+                        wdRes = 0
+                        For Each rowDW As DataRow In dtWorkDays.Rows
+                            Dim wdDuration As Integer = rowDW("workDay")
+                            Dim dtDates As DataTable = OperationLog1TableAdapter.GetWorkDaysDates(emplID.ToString(), dtFrom.Value.Date, dtTo.Value.Date, wdDuration)
+                            wdRes += (wdDuration * dtDates.Rows.Count)
+                        Next
+                    End If
+                Else
+                    dtWorkDays = OperationLog1TableAdapter.GetWDPerDay(emplID.ToString(), dtFrom.Value.Date.ToString())
+                    If dtWorkDays.Rows.Count > 0 Then wdRes = dtWorkDays.Rows(0).Item("workDay")
+                End If
+
+                calcTable(emplID.ToString()) = If(wdRes > 0, totalEffectiveTime / wdRes, 0)
+
+            Else
+                ' --- РАСЧЕТ ДЛЯ ШВЕЙ (И ОСТАЛЬНЫХ ДОЛЖНОСТЕЙ) ---
+                calculateSalaryNewRow(emplID, row)
+
+                ' Первичный проход расчета времени выполнения швеи
+                Dim exTimeSum As Double = 0
+                Try
+                    If conn.State = ConnectionState.Open Then conn.Close()
+                    conn.Open()
+                    Using exeCom As OleDb.OleDbCommand = conn.CreateCommand()
+                        If cbDateRange.Checked Then
+                            exeCom.CommandText = "SELECT OperationID, ArticulID, TimeExecution, Count FROM OperationLog WHERE EmployeeID = @EmpID AND (DateExecution BETWEEN @FROM AND @TO)"
+                            exeCom.Parameters.AddWithValue("@EmpID", emplID)
+                            exeCom.Parameters.AddWithValue("@FROM", dtFrom.Value.Date).DbType = DbType.Date
+                            exeCom.Parameters.AddWithValue("@TO", dtTo.Value.Date).DbType = DbType.Date
+                        Else
+                            exeCom.CommandText = "SELECT OperationID, ArticulID, TimeExecution, Count FROM OperationLog WHERE EmployeeID = @EmpID AND DateExecution = @Dt"
+                            exeCom.Parameters.AddWithValue("@EmpID", emplID)
+                            exeCom.Parameters.AddWithValue("@Dt", dtFrom.Value.Date).DbType = DbType.Date
                         End If
 
+                        Using db_reader As OleDb.OleDbDataReader = exeCom.ExecuteReader()
+                            While db_reader.Read()
+                                Dim execTime As Double = db_reader("TimeExecution")
+                                Dim itmsCount As Double = Convert.ToDouble(db_reader("Count"))
+                                Dim artID As String = db_reader("ArticulID").ToString()
+                                Dim opID As String = db_reader("OperationID").ToString()
+
+                                If execTime = 0 Then
+                                    Using rout As OleDb.OleDbCommand = conn.CreateCommand()
+                                        rout.CommandText = "SELECT TimeExecute FROM Routing WHERE ArticulID = @Art AND OperationID = @Op"
+                                        rout.Parameters.AddWithValue("@Art", artID)
+                                        rout.Parameters.AddWithValue("@Op", opID)
+                                        Dim tObj = rout.ExecuteScalar()
+                                        If tObj IsNot Nothing AndAlso Not IsDBNull(tObj) Then
+                                            exTimeSum += Math.Round(Convert.ToDouble(tObj) * itmsCount, 6)
+                                        End If
+                                    End Using
+                                Else
+                                    exTimeSum += execTime
+                                End If
+                            End While
+                        End Using
+                    End Using
+                Finally
+                    If conn.State = ConnectionState.Open Then conn.Close()
+                End Try
+
+                res(emplID.ToString()) = exTimeSum
+
+                Dim wdRes As Integer = 480
+                Dim dtWorkDays As DataTable
+                If cbDateRange.Checked Then
+                    dtWorkDays = OperationLog1TableAdapter.GetWorkDays(emplID.ToString(), dtFrom.Value.Date, dtTo.Value.Date)
+                    If dtWorkDays.Rows.Count > 0 Then
+                        wdRes = 0
+                        For Each rowDW As DataRow In dtWorkDays.Rows
+                            Dim wdDuration As Integer = rowDW("workDay")
+                            Dim dtDates As DataTable = OperationLog1TableAdapter.GetWorkDaysDates(emplID.ToString(), dtFrom.Value.Date, dtTo.Value.Date, wdDuration)
+                            wdRes += (wdDuration * dtDates.Rows.Count)
+                        Next
                     End If
+                Else
+                    dtWorkDays = OperationLog1TableAdapter.GetWDPerDay(emplID.ToString(), dtFrom.Value.Date.ToString())
+                    If dtWorkDays.Rows.Count > 0 Then wdRes = dtWorkDays.Rows(0).Item("workDay")
+                End If
 
-                    If calcTable.Contains(emplID) Then
-                        calcTable(emplID) = calcTable(emplID) + timeRate / wdRes
-                    Else
-                        calcTable.Add(emplID, timeRate / wdRes)
-                    End If
-
-                Next
-
+                calcTable(emplID.ToString()) = If(wdRes > 0, exTimeSum / wdRes, 0)
             End If
 
-
-            db_reader.Close()
-            conn.Close()
-
-
-            For i = 0 To selectedRows - 1
-                row = dbGrid.SelectedRows().Item(i)
-                row.Cells.Item(6).Value = Format(calcTable(row.Cells.Item(0).Value.ToString()) * 100, "###0.00")
-                'row.Cells.Item(5).Value = Format(sl(row.Cells.Item(0).Value.ToString()), "##0.00")
-                row.Cells.Item(7).Value = Format(res(row.Cells.Item(0).Value.ToString()), "##0.00")
-            Next
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            conn.Close()
-        End Try
+            ' Заполнение колонок таблицы для текущей строки
+            row.Cells.Item(6).Value = Format(Convert.ToDouble(calcTable(emplID.ToString())) * 100, "###0.00")
+            row.Cells.Item(7).Value = Format(Convert.ToDouble(res(emplID.ToString())), "##0.00")
+        Next
     End Sub
 
     Private Sub cbDateRange_CheckedChanged(sender As Object, e As EventArgs) Handles cbDateRange.CheckedChanged
@@ -372,20 +298,9 @@ Public Class calculationForm
 
     End Sub
 
-    Private Sub calculateSalaryNew()
-        Dim connection As OleDb.OleDbConnection
+    Private Sub calculateSalaryNewRow(selectedEmployeeId As Integer, selectedRow As DataGridViewRow)
+        Dim connection As OleDb.OleDbConnection = OperationLog1TableAdapter.Connection
         Dim sqlCommand As OleDb.OleDbCommand
-        Dim rowIsSelected As Boolean = dbGrid.SelectedRows().Count > 0
-
-        If Not rowIsSelected Then
-            MessageBox.Show("Выберете сотрудника для расчета")
-            Return
-        End If
-
-        Dim selectedRow As DataGridViewRow = dbGrid.SelectedRows().Item(0)
-        Dim selectedEmployeeId As Integer = selectedRow.Cells.Item(0).Value
-
-        connection = OperationLog1TableAdapter.Connection
 
         Try
             Dim dateFromToCommand As String
@@ -406,40 +321,33 @@ Public Class calculationForm
 
             sqlCommand.CommandText = String.Format("SELECT OperationLog.Count, Routing.Tariff, OperationLog.TimeExecution, OperationLog.ArticulID FROM OperationLog INNER JOIN Routing ON OperationLog.ArticulID = Routing.ArticulID AND OperationLog.OperationID = Routing.OperationID WHERE OperationLog.EmployeeID = {0} AND {1}", selectedEmployeeId, dateFromToCommand)
 
-            If connection.State.Equals(ConnectionState.Open) Then
+            If connection.State = ConnectionState.Open Then
                 connection.Close()
-            Else
-                connection.Open()
             End If
-
+            connection.Open()
 
             Dim dbReader As OleDb.OleDbDataReader = sqlCommand.ExecuteReader()
-            Dim resultList As List(Of Object) = New List(Of Object)
+            Dim resultList As New List(Of Object())
 
             If dbReader.HasRows Then
                 While dbReader.Read()
-                    Dim selectValue As Object() = New Object() {dbReader("Count"),
-                                                        dbReader("Tariff"),
-                                                        dbReader("TimeExecution"),
-                                                        dbReader("ArticulID")}
+                    Dim selectValue As Object() = New Object() {
+                    dbReader("Count"),
+                    dbReader("Tariff"),
+                    dbReader("TimeExecution"),
+                    dbReader("ArticulID")
+                }
                     resultList.Add(selectValue)
                 End While
             End If
 
-            'salary calculation
-            'obj(0) - Count
-            'obj(1) - Tariff
-            'obj(2) - TimeExecution
-            'obj(3) - ArticulID
             Dim salary As Double = 0D
-
             For Each obj As Object() In resultList
                 Dim nonRatedTimeArticulId = 74
-
-                If Not (obj(3) = nonRatedTimeArticulId) Then
-                    salary += obj(0) * obj(1)
+                If Not (Convert.ToInt32(obj(3)) = nonRatedTimeArticulId) Then
+                    salary += Convert.ToDouble(obj(0)) * Convert.ToDouble(obj(1))
                 Else
-                    salary += getCurrentEmployeeTariffPerMinute(selectedEmployeeId) * obj(2)
+                    salary += getCurrentEmployeeTariffPerMinute(selectedEmployeeId) * Convert.ToDouble(obj(2))
                 End If
             Next
 
@@ -448,7 +356,7 @@ Public Class calculationForm
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
-            connection.Close()
+            If connection.State = ConnectionState.Open Then connection.Close()
         End Try
     End Sub
 
@@ -481,7 +389,78 @@ Public Class calculationForm
         Return employeeTariffPerMinute
     End Function
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
 
+    Private Function GetEmployeePositionId(employeeId As Integer) As Integer
+        Dim posId As Integer = 0
+        Dim conn As OleDb.OleDbConnection = EmployeeTableAdapter.Connection
+        Try
+            If conn.State <> ConnectionState.Open Then conn.Open()
+            Using cmd As OleDb.OleDbCommand = conn.CreateCommand()
+                cmd.CommandText = "SELECT PositionID FROM Employee WHERE EmployeeID = @EmpID"
+                cmd.Parameters.AddWithValue("@EmpID", employeeId)
+                Dim result = cmd.ExecuteScalar()
+                If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                    posId = Convert.ToInt32(result)
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Ошибка при определении должности: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If conn.State = ConnectionState.Open Then conn.Close()
+        End Try
+        Return posId
+    End Function
+
+    Private Sub CalculateKnittingSalary(emplID As Integer, row As DataGridViewRow)
+        Dim conn As OleDb.OleDbConnection = OperationLog1TableAdapter.Connection
+        Dim totalSalary As Double = 0
+
+        Try
+            If conn.State = ConnectionState.Open Then conn.Close()
+            conn.Open()
+
+            Dim cmd As OleDb.OleDbCommand = conn.CreateCommand()
+
+            ' Группируем по количеству машин в зоне обслуживания
+            Dim sql As String = "SELECT machines_in_zone, SUM(time_execution) AS zone_time " &
+                            "FROM KnittingOperationLog WHERE employee_id = @EmpID "
+
+            If cbDateRange.Checked Then
+                sql &= " AND (date_execution BETWEEN @FROM AND @TO)"
+                cmd.Parameters.AddWithValue("@EmpID", emplID)
+                cmd.Parameters.AddWithValue("@FROM", dtFrom.Value.Date).DbType = DbType.Date
+                cmd.Parameters.AddWithValue("@TO", dtTo.Value.Date).DbType = DbType.Date
+            Else
+                sql &= " AND (date_execution = @Dt)"
+                cmd.Parameters.AddWithValue("@EmpID", emplID)
+                cmd.Parameters.AddWithValue("@Dt", dtFrom.Value.Date).DbType = DbType.Date
+            End If
+
+            sql &= " GROUP BY machines_in_zone"
+            cmd.CommandText = sql
+
+            Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader()
+
+            ' Для каждого подблока машин делим набранную сумму времени на их количество и прибавляем к итоговой ЗП
+            While reader.Read()
+                Dim zoneTime As Double = If(IsDBNull(reader("zone_time")), 0, Convert.ToDouble(reader("zone_time")))
+                Dim mZone As Integer = If(IsDBNull(reader("machines_in_zone")) OrElse Convert.ToInt32(reader("machines_in_zone")) = 0, 1, Convert.ToInt32(reader("machines_in_zone")))
+
+                ' Формула: (Сумма времени зоны_1 / Зона_1) + (Сумма времени зоны_2 / Зона_2) + ...
+                totalSalary += (zoneTime / mZone)
+            End While
+            reader.Close()
+
+            Dim finalValue As String = Format(Math.Round(totalSalary, 2), "0.00")
+
+            row.Cells.Item(5).Value = finalValue ' Заработная плата
+            row.Cells.Item(6).Value = finalValue ' Норма Выработки
+            row.Cells.Item(7).Value = finalValue ' Время выполнения
+
+        Catch ex As Exception
+            MessageBox.Show("Ошибка расчета для вязальщицы: " & ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If conn.State = ConnectionState.Open Then conn.Close()
+        End Try
     End Sub
 End Class
