@@ -77,28 +77,28 @@ Partial Class mainForm
         '
         Me.НоваяToolStripMenuItem.Image = CType(resources.GetObject("НоваяToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НоваяToolStripMenuItem.Name = "НоваяToolStripMenuItem"
-        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.НоваяToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
         Me.НоваяToolStripMenuItem.Text = "Новая (Швейный цех)"
         '
         'НайтиToolStripMenuItem
         '
         Me.НайтиToolStripMenuItem.Image = CType(resources.GetObject("НайтиToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НайтиToolStripMenuItem.Name = "НайтиToolStripMenuItem"
-        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.НайтиToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
         Me.НайтиToolStripMenuItem.Text = "Найти (Швейный цех)"
         '
         'НоваяВязальныйЦехToolStripMenuItem
         '
         Me.НоваяВязальныйЦехToolStripMenuItem.Image = CType(resources.GetObject("НоваяВязальныйЦехToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НоваяВязальныйЦехToolStripMenuItem.Name = "НоваяВязальныйЦехToolStripMenuItem"
-        Me.НоваяВязальныйЦехToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.НоваяВязальныйЦехToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
         Me.НоваяВязальныйЦехToolStripMenuItem.Text = "Новая (Вязальный цех)"
         '
         'НайтиВязальныйЦехToolStripMenuItem
         '
         Me.НайтиВязальныйЦехToolStripMenuItem.Image = CType(resources.GetObject("НайтиВязальныйЦехToolStripMenuItem.Image"), System.Drawing.Image)
         Me.НайтиВязальныйЦехToolStripMenuItem.Name = "НайтиВязальныйЦехToolStripMenuItem"
-        Me.НайтиВязальныйЦехToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.НайтиВязальныйЦехToolStripMenuItem.Size = New System.Drawing.Size(216, 38)
         Me.НайтиВязальныйЦехToolStripMenuItem.Text = "Найти (Вязальный цех)"
         '
         'ОсновныеДанныеToolStripMenuItem

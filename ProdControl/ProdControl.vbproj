@@ -118,6 +118,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DetailsForm.Designer.vb">
+      <DependentUpon>DetailsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DetailsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EmployeesForm.Designer.vb">
       <DependentUpon>EmployeesForm.vb</DependentUpon>
     </Compile>
@@ -134,6 +140,12 @@
       <DependentUpon>KnittingSearchInvoiceForm.vb</DependentUpon>
     </Compile>
     <Compile Include="KnittingSearchInvoiceForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MachinesForm.Designer.vb">
+      <DependentUpon>MachinesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MachinesForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mainForm.vb">
@@ -279,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KnittingSearchInvoiceForm.resx">
       <DependentUpon>KnittingSearchInvoiceForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachinesForm.resx">
+      <DependentUpon>MachinesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.vb</DependentUpon>

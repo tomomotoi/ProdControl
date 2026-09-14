@@ -321,4 +321,16 @@ Public Class mainForm
         knittingSearchInvoiceForm.MdiParent = Me
         knittingSearchInvoiceForm.Show()
     End Sub
+
+    Private Sub ОборудованиеToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ОборудованиеToolStripMenuItem.Click
+        Dim machinesForm = New MachinesForm()
+        machinesForm.MdiParent = Me
+        machinesForm.Show()
+    End Sub
+
+    Private Sub ДеталиИзделийToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ДеталиИзделийToolStripMenuItem.Click
+        Dim detailsForm = New DetailsForm()
+        detailsForm.MdiParent = Me
+        detailsForm.Show()
+    End Sub
 End Class
