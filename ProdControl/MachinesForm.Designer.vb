@@ -171,7 +171,7 @@ Partial Class MachinesForm
         Me.Controls.Add(Me.labelList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MachinesForm"
-        Me.Text = "MachinesForm"
+        Me.Text = "Оборудование"
         CType(Me.dgvMachines, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gboxMachineParameters.ResumeLayout(False)
         Me.gboxMachineParameters.PerformLayout()

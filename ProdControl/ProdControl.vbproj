@@ -283,6 +283,9 @@
     <EmbeddedResource Include="CoefficientsForm.resx">
       <DependentUpon>CoefficientsForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailsForm.resx">
+      <DependentUpon>DetailsForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.vb</DependentUpon>
     </EmbeddedResource>
