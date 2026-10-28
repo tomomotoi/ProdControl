@@ -1,0 +1,188 @@
+﻿<UserControl x:Class="ProdControlWPF.Views.SearchBillView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="560"
+             d:DesignWidth="920">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="{StaticResource AppSurfaceBrush}"
+                BorderBrush="{StaticResource AppBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="12">
+            <StackPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock Text="Фильтр:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <ComboBox ItemsSource="{Binding FilterOptions}"
+                              SelectedIndex="{Binding SelectedFilterIndex, Mode=TwoWay}"
+                              Width="180"
+                              Margin="0,0,16,0" />
+
+                    <CheckBox Content="За период"
+                              IsChecked="{Binding IsByPeriod, Mode=TwoWay}"
+                              VerticalAlignment="Center"
+                              Margin="0,0,16,0" />
+
+                    <TextBlock Text="Дата с:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0"
+                               Visibility="{Binding IsByPeriod, Converter={StaticResource BoolToVisibility}}" />
+                    <DatePicker SelectedDate="{Binding DateFrom, Mode=TwoWay}"
+                                Width="130"
+                                Margin="0,0,16,0"
+                                Visibility="{Binding IsByPeriod, Converter={StaticResource BoolToVisibility}}" />
+
+                    <TextBlock Text="Дата по:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0"
+                               Visibility="{Binding IsByPeriod, Converter={StaticResource BoolToVisibility}}" />
+                    <DatePicker SelectedDate="{Binding DateTo, Mode=TwoWay}"
+                                Width="130"
+                                Margin="0,0,16,0"
+                                Visibility="{Binding IsByPeriod, Converter={StaticResource BoolToVisibility}}" />
+                </WrapPanel>
+
+                <DockPanel Margin="0,10,0,0">
+                    <StackPanel DockPanel.Dock="Right"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Button Content="Найти все"
+                                Command="{Binding SearchAllCommand}"
+                                Margin="0,0,8,0" />
+                        <Button Content="Найти"
+                                Command="{Binding SearchCommand}" />
+                    </StackPanel>
+
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBlock Text="Сотрудник:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"
+                                   Visibility="{Binding IsEmployeeFilterVisible, Converter={StaticResource BoolToVisibility}}" />
+                        <ComboBox ItemsSource="{Binding Employees}"
+                                  DisplayMemberPath="EmployeeName"
+                                  SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
+                                  Width="180"
+                                  Margin="0,0,16,0"
+                                  Visibility="{Binding IsEmployeeFilterVisible, Converter={StaticResource BoolToVisibility}}" />
+
+                        <TextBlock Text="Артикул:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"
+                                   Visibility="{Binding IsArticulFilterVisible, Converter={StaticResource BoolToVisibility}}" />
+                        <ComboBox ItemsSource="{Binding Articuls}"
+                                  DisplayMemberPath="ArticulName"
+                                  SelectedItem="{Binding SelectedArticul, Mode=TwoWay}"
+                                  Width="180"
+                                  Margin="0,0,16,0"
+                                  Visibility="{Binding IsArticulFilterVisible, Converter={StaticResource BoolToVisibility}}" />
+
+                        <TextBlock Text="Номер квитанции:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"
+                                   Visibility="{Binding IsDocumentNumberVisible, Converter={StaticResource BoolToVisibility}}" />
+                        <TextBox Text="{Binding DocumentNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Width="180"
+                                 Margin="0,0,16,0"
+                                 Visibility="{Binding IsDocumentNumberVisible, Converter={StaticResource BoolToVisibility}}" />
+                    </WrapPanel>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Row="1"
+                  Margin="0,12,0,0"
+                  ItemsSource="{Binding Rows}"
+                  SelectedItem="{Binding SelectedRow, Mode=TwoWay}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  HeadersVisibility="Column"
+                  IsReadOnly="{Binding IsGridReadOnly}"
+                  Background="{StaticResource AppSurfaceBrush}"
+                  BorderBrush="{StaticResource AppBorderBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="LogId"
+                                    Binding="{Binding LogId}"
+                                    IsReadOnly="True"
+                                    Width="70" />
+                <DataGridTextColumn Header="Сотрудник"
+                                    Binding="{Binding EmployeeName}"
+                                    IsReadOnly="True"
+                                    Width="*" />
+                <DataGridTextColumn Header="Операция"
+                                    Binding="{Binding OperationName}"
+                                    IsReadOnly="True"
+                                    Width="*" />
+                <DataGridTextColumn Header="Артикул"
+                                    Binding="{Binding ArticulName}"
+                                    IsReadOnly="True"
+                                    Width="*" />
+                <DataGridTemplateColumn Header="Дата выполнения"
+                                        Width="120"
+                                        CanUserSort="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DateExecution, StringFormat=d}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateExecution, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Время выполнения"
+                                    Binding="{Binding TimeExecution, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                    CanUserSort="False"
+                                    Width="*" />
+                <DataGridTextColumn Header="Количество"
+                                    Binding="{Binding Count, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                    CanUserSort="False"
+                                    Width="*" />
+                <DataGridTextColumn Header="Номер квитанции"
+                                    Binding="{Binding DocumentNumber}"
+                                    IsReadOnly="True"
+                                    CanUserSort="False"
+                                    Width="*" />
+                <DataGridTextColumn Header="Рабочий день"
+                                    Binding="{Binding WorkDay, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                    CanUserSort="False"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2"
+              Margin="0,12,0,0">
+            <CheckBox Content="Режим редактирования"
+                      IsChecked="{Binding IsEditingMode, Mode=TwoWay}"
+                      VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Content="Удалить"
+                        Command="{Binding DeleteCommand}"
+                        IsEnabled="{Binding IsEditingMode}"
+                        Margin="0,0,8,0" />
+                <Button Content="Сохранить"
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding IsEditingMode}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

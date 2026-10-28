@@ -1,0 +1,480 @@
+<UserControl x:Class="ProdControlWPF.Views.WorkOrdersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="620"
+             d:DesignWidth="1100">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Background="{StaticResource AppSurfaceBrush}"
+                    BorderBrush="{StaticResource AppBorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="6"
+                    Padding="12">
+                <StackPanel>
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{Binding Title}"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource AppAccentBrush}" />
+                            <TextBlock Text="{Binding Description}"
+                                       Margin="0,2,0,0"
+                                       Foreground="#5B6B7A" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding RowCountText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Foreground="#5B6B7A" />
+                    </DockPanel>
+
+                    <WrapPanel Margin="0,10,0,0">
+                        <TextBlock Text="Поиск:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0" />
+                        <TextBox Width="240"
+                                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Margin="0,0,16,0" />
+
+                        <CheckBox Content="За период"
+                                  IsChecked="{Binding IsByDate, Mode=TwoWay}"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,12,0" />
+
+                        <TextBlock Text="с:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,6,0"
+                                   Visibility="{Binding IsByDate, Converter={StaticResource BoolToVisibility}}" />
+                        <DatePicker Width="130"
+                                    SelectedDate="{Binding DateFrom, Mode=TwoWay}"
+                                    Margin="0,0,12,0"
+                                    Visibility="{Binding IsByDate, Converter={StaticResource BoolToVisibility}}" />
+
+                        <TextBlock Text="по:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,6,0"
+                                   Visibility="{Binding IsByDate, Converter={StaticResource BoolToVisibility}}" />
+                        <DatePicker Width="130"
+                                    SelectedDate="{Binding DateTo, Mode=TwoWay}"
+                                    Margin="0,0,12,0"
+                                    Visibility="{Binding IsByDate, Converter={StaticResource BoolToVisibility}}" />
+
+                        <Button Content="Сбросить"
+                                Command="{Binding ResetFilterCommand}"
+                                Margin="0,0,8,0" />
+                        <Button Content="Обновить"
+                                Command="{Binding ReloadCommand}" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="1" Margin="0,12,0,0">
+                <DataGrid x:Name="OrdersGrid"
+                          ItemsSource="{Binding Rows}"
+                          SelectedItem="{Binding SelectedRow, Mode=TwoWay}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserReorderColumns="True"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow"
+                          HeadersVisibility="Column"
+                          IsReadOnly="True"
+                          EnableRowVirtualization="True"
+                          Background="{StaticResource AppSurfaceBrush}"
+                          BorderBrush="{StaticResource AppBorderBrush}"
+                          MouseDoubleClick="OnOrdersGridMouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Код наряда"
+                                            Binding="{Binding Code}"
+                                            Width="135" />
+                        <DataGridTextColumn Header="Дата"
+                                            Binding="{Binding OrderDate, StringFormat=dd.MM.yyyy}"
+                                            Width="90" />
+                        <DataGridTextColumn Header="Заказ"
+                                            Binding="{Binding OrderNumber}"
+                                            Width="90" />
+                        <DataGridTextColumn Header="Заказчик"
+                                            Binding="{Binding CustomerName}"
+                                            Width="140" />
+                        <DataGridTextColumn Header="Артикул"
+                                            Binding="{Binding ArticleName}"
+                                            Width="110" />
+                        <DataGridTextColumn Header="Машина"
+                                            Binding="{Binding Machine}"
+                                            Width="70" />
+                        <DataGridTextColumn Header="Рост"
+                                            Binding="{Binding HeightDisplay}"
+                                            Width="60" />
+                        <DataGridTextColumn Header="Размер"
+                                            Binding="{Binding SizeDisplay}"
+                                            Width="70" />
+                        <DataGridTextColumn Header="План"
+                                            Binding="{Binding PlanQuantity}"
+                                            Width="55" />
+                        <DataGridTextColumn Header="Факт"
+                                            Binding="{Binding FactQuantity}"
+                                            Width="55" />
+                        <DataGridTextColumn Header="Осталось"
+                                            Binding="{Binding RemainingQuantity}"
+                                            Width="70" />
+                        <DataGridTemplateColumn Header="Выполнение"
+                                                Width="130"
+                                                CanUserSort="False">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <ProgressBar Height="14"
+                                                     Value="{Binding ProgressPercent, Mode=OneWay}"
+                                                     Maximum="100"
+                                                     Foreground="#3C7A5B"
+                                                     Background="#E8EDF1" />
+                                        <TextBlock Text="{Binding ProgressText}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="10"
+                                                   Foreground="{StaticResource AppAccentBrush}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Статус"
+                                            Binding="{Binding StatusText}"
+                                            Width="90" />
+                        <DataGridTextColumn Header="Вязальщицы"
+                                            Binding="{Binding Knitter1Name}"
+                                            Width="120" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Text="{Binding EmptyMessage}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="#5B6B7A"
+                           IsHitTestVisible="False"
+                           Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVisibility}}" />
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0,12,0,0">
+                <TextBlock Text="Двойной щелчок по строке открывает карточку наряда."
+                           VerticalAlignment="Center"
+                           Foreground="#5B6B7A" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Content="Открыть наряд"
+                            Command="{Binding OpenCommand}"
+                            Margin="0,0,8,0" />
+                    <Button Content="Обновить"
+                            Command="{Binding ReloadCommand}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Border Panel.ZIndex="10"
+                Background="{StaticResource AppBackgroundBrush}"
+                BorderBrush="{StaticResource AppBorderBrush}"
+                BorderThickness="1"
+                Visibility="{Binding IsEditorOpen, Converter={StaticResource BoolToVisibility}}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="16">
+                    <DockPanel>
+                        <Button DockPanel.Dock="Left"
+                                Content="← К списку"
+                                Command="{Binding CancelEditCommand}"
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Top" />
+                        <StackPanel>
+                            <TextBlock Text="{Binding Editor.Code, StringFormat=Наряд {0}}"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource AppAccentBrush}" />
+                            <TextBlock Text="{Binding Editor.StatusText}"
+                                       Margin="0,2,0,0"
+                                       Foreground="#5B6B7A" />
+                        </StackPanel>
+                    </DockPanel>
+
+                    <Border Background="{StaticResource AppSurfaceBrush}"
+                            BorderBrush="{StaticResource AppBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="12"
+                            Margin="0,12,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Заказ:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Editor.OrderNumber}" Margin="0,0,20,6" />
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Дата наряда:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding Editor.OrderDate, StringFormat=dd.MM.yyyy}" Margin="0,0,0,6" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Заказчик:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Editor.CustomerName}" Margin="0,0,20,6" />
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Артикул:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Editor.ArticleName}" Margin="0,0,0,6" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Цвет:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Editor.ColorName}" Margin="0,0,20,6" />
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="Оборудование:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Editor.EquipmentName}" Margin="0,0,0,6" />
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Машина:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Editor.Machine}" Margin="0,0,20,6" />
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="Рост / размер:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Margin="0,0,0,6">
+                                <TextBlock Text="{Binding Editor.Height}" />
+                                <TextBlock Text=" / " />
+                                <TextBlock Text="{Binding Editor.Size}" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="План:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Editor.PlanQuantity}" Margin="0,0,20,6" />
+                            <TextBlock Grid.Row="4" Grid.Column="2" Text="Факт:" Margin="0,0,8,6" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding Editor.FactQuantity}" Margin="0,0,0,6" />
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="Осталось:" Margin="0,0,8,0" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Editor.RemainingQuantity}" Margin="0,0,20,0" />
+                            <TextBlock Grid.Row="5" Grid.Column="2" Text="Выполнение:" Margin="0,0,8,0" Foreground="#5B6B7A" />
+                            <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding Editor.ProgressText}" />
+                        </Grid>
+                    </Border>
+
+                    <Border Background="{StaticResource AppSurfaceBrush}"
+                            BorderBrush="{StaticResource AppBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="12"
+                            Margin="0,12,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Сводка по заказу"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource AppAccentBrush}" />
+                            <WrapPanel Margin="0,8,0,0">
+                                <StackPanel Width="125" Margin="0,0,12,8">
+                                    <TextBlock Text="Заказано" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.Ordered}" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Width="125" Margin="0,0,12,8">
+                                    <TextBlock Text="Выдано" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.Issued}" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Width="125" Margin="0,0,12,8">
+                                    <TextBlock Text="Связано" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.Fact}" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Width="135" Margin="0,0,12,8">
+                                    <TextBlock Text="Осталось выдать" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.RemainingToIssue}" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Width="135" Margin="0,0,12,8">
+                                    <TextBlock Text="Осталось связать" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.RemainingToKnit}" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Width="110" Margin="0,0,12,8">
+                                    <TextBlock Text="В цеху" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.InShop}" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Width="150" Margin="0,0,12,8">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Editor.Summary.Overproduced}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock Text="Перевыполнение" Foreground="#5B6B7A" />
+                                    <TextBlock Text="{Binding Editor.Summary.OverproducedText}"
+                                               FontSize="16"
+                                               Foreground="#3C7A5B" />
+                                </StackPanel>
+                                <StackPanel Width="160" Margin="0,0,0,8">
+                                    <TextBlock Text="Выполнение заказа" Foreground="#5B6B7A" />
+                                    <ProgressBar Height="16"
+                                                 Value="{Binding Editor.Summary.ProgressPercent, Mode=OneWay}"
+                                                 Maximum="100"
+                                                 Foreground="#3C7A5B"
+                                                 Background="#E8EDF1"
+                                                 Margin="0,4,0,0" />
+                                    <TextBlock Text="{Binding Editor.Summary.ProgressText}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="11" />
+                                </StackPanel>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{StaticResource AppSurfaceBrush}"
+                            BorderBrush="{StaticResource AppBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="12"
+                            Margin="0,12,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Фактические данные и исполнители"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource AppAccentBrush}" />
+
+                            <Grid Margin="0,10,0,0"
+                                  PreviewTextInput="OnNumericPreviewTextInput"
+                                  DataObject.Pasting="OnNumericPasting">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Факт. количество:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <TextBox Grid.Row="0" Grid.Column="1" Tag="int"
+                                         Text="{Binding Editor.FactQuantityText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,20,8" />
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Факт. вес:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <TextBox Grid.Row="0" Grid.Column="3" Tag="decimal"
+                                         Text="{Binding Editor.FactWeightText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,0,8" />
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Дата вязания:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <DatePicker Grid.Row="1" Grid.Column="1"
+                                            SelectedDate="{Binding Editor.FactDate, Mode=TwoWay}"
+                                            Margin="0,0,20,8" />
+                                <TextBlock Grid.Row="1" Grid.Column="2" Text="Рост (новый):" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <TextBox Grid.Row="1" Grid.Column="3"
+                                         Text="{Binding Editor.HeightNew, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,0,8" />
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Размер (новый):" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <TextBox Grid.Row="2" Grid.Column="1"
+                                         Text="{Binding Editor.SizeNew, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,20,8" />
+
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Вязальщица 1:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <ComboBox Grid.Row="3" Grid.Column="1"
+                                          ItemsSource="{Binding Knitters}"
+                                          DisplayMemberPath="Name"
+                                          SelectedItem="{Binding Editor.Knitter1, Mode=TwoWay}"
+                                          Margin="0,0,8,8" />
+                                <TextBox Grid.Row="3" Grid.Column="2" Tag="decimal" Width="55"
+                                         Text="{Binding Editor.Knitter1PercentText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,8,8" />
+                                <TextBlock Grid.Row="3" Grid.Column="3" Text="%" VerticalAlignment="Center" Margin="0,0,0,8" />
+
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Вязальщица 2:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <ComboBox Grid.Row="4" Grid.Column="1"
+                                          ItemsSource="{Binding Knitters}"
+                                          DisplayMemberPath="Name"
+                                          SelectedItem="{Binding Editor.Knitter2, Mode=TwoWay}"
+                                          Margin="0,0,8,8" />
+                                <TextBox Grid.Row="4" Grid.Column="2" Tag="decimal" Width="55"
+                                         Text="{Binding Editor.Knitter2PercentText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,8,8" />
+                                <TextBlock Grid.Row="4" Grid.Column="3" Text="%" VerticalAlignment="Center" Margin="0,0,0,8" />
+
+                                <TextBlock Grid.Row="5" Grid.Column="0" Text="Вязальщица 3:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <ComboBox Grid.Row="5" Grid.Column="1"
+                                          ItemsSource="{Binding Knitters}"
+                                          DisplayMemberPath="Name"
+                                          SelectedItem="{Binding Editor.Knitter3, Mode=TwoWay}"
+                                          Margin="0,0,8,8" />
+                                <TextBox Grid.Row="5" Grid.Column="2" Tag="decimal" Width="55"
+                                         Text="{Binding Editor.Knitter3PercentText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Margin="0,0,8,8" />
+                                <TextBlock Grid.Row="5" Grid.Column="3" Text="%" VerticalAlignment="Center" Margin="0,0,0,8" />
+                            </Grid>
+
+                            <Grid Margin="0,4,0,0"
+                                  PreviewTextInput="OnNumericPreviewTextInput"
+                                  DataObject.Pasting="OnNumericPasting">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="ВТО:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <ComboBox Grid.Row="0" Grid.Column="1"
+                                          ItemsSource="{Binding FormationWorkers}"
+                                          DisplayMemberPath="Name"
+                                          SelectedItem="{Binding Editor.VtoWorker, Mode=TwoWay}"
+                                          Margin="0,0,20,8" />
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Дата ВТО:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <DatePicker Grid.Row="0" Grid.Column="3"
+                                            SelectedDate="{Binding Editor.VtoDate, Mode=TwoWay}"
+                                            Margin="0,0,0,8" />
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Стирка:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <ComboBox Grid.Row="1" Grid.Column="1"
+                                          ItemsSource="{Binding FormationWorkers}"
+                                          DisplayMemberPath="Name"
+                                          SelectedItem="{Binding Editor.WashWorker, Mode=TwoWay}"
+                                          Margin="0,0,20,8" />
+                                <TextBlock Grid.Row="1" Grid.Column="2" Text="Дата стирки:" Margin="0,0,8,8" VerticalAlignment="Center" />
+                                <DatePicker Grid.Row="1" Grid.Column="3"
+                                            SelectedDate="{Binding Editor.WashDate, Mode=TwoWay}"
+                                            Margin="0,0,0,8" />
+                            </Grid>
+
+                            <TextBlock Text="Для выбранной вязальщицы укажите процент от 0 до 100."
+                                       Foreground="#5B6B7A"
+                                       Margin="0,4,0,0" />
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,12,0,0">
+                                <Button Content="Отметить выполненным"
+                                        Command="{Binding MarkCompletedCommand}"
+                                        Margin="0,0,8,0" />
+                                <Button Content="Сохранить"
+                                        Command="{Binding SaveCommand}"
+                                        Margin="0,0,8,0" />
+                                <Button Content="Отмена"
+                                        Command="{Binding CancelEditCommand}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

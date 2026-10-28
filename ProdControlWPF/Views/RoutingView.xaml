@@ -1,0 +1,166 @@
+<UserControl x:Class="ProdControlWPF.Views.RoutingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="620"
+             d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="{StaticResource AppSurfaceBrush}"
+                BorderBrush="{StaticResource AppBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="12">
+            <StackPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock Text="Артикул"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <ComboBox ItemsSource="{Binding Articuls}"
+                              DisplayMemberPath="ArticulName"
+                              SelectedItem="{Binding SelectedArticul, Mode=TwoWay}"
+                              Width="200"
+                              Margin="0,0,8,0" />
+                    <Button Content="Найти"
+                            Command="{Binding SearchCommand}"
+                            Margin="0,0,24,0" />
+
+                    <TextBlock Text="Операция"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <ComboBox ItemsSource="{Binding Operations}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedOperation, Mode=TwoWay}"
+                              Width="200"
+                              Margin="0,0,24,0" />
+
+                    <TextBlock Text="Доп. затраты"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <ComboBox ItemsSource="{Binding Coefficients}"
+                              DisplayMemberPath="Display"
+                              SelectedItem="{Binding SelectedCoefficient, Mode=TwoWay}"
+                              Width="110" />
+                </WrapPanel>
+
+                <WrapPanel Orientation="Horizontal"
+                           Margin="0,10,0,0">
+                    <TextBlock Text="Норма времени"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <TextBox x:Name="RateTextBox"
+                             Text="{Binding Rate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Width="110"
+                             Margin="0,0,24,0"
+                             PreviewTextInput="OnDecimalPreviewTextInput"
+                             DataObject.Pasting="OnDecimalPasting" />
+
+                    <TextBlock Text="Разряд"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <ComboBox ItemsSource="{Binding Levels}"
+                              SelectedItem="{Binding SelectedLevel, Mode=TwoWay}"
+                              Width="80"
+                              Margin="0,0,24,0" />
+
+                    <TextBlock Text="Время выполнения"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <TextBox Text="{Binding ExecutionTime, Mode=OneWay}"
+                             IsReadOnly="True"
+                             Width="110"
+                             Margin="0,0,24,0"
+                             Background="{StaticResource AppBackgroundBrush}" />
+
+                    <TextBlock Text="Расценка"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <TextBox Text="{Binding Cost, Mode=OneWay}"
+                             IsReadOnly="True"
+                             Width="110"
+                             Background="{StaticResource AppBackgroundBrush}" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Row="1"
+                  Margin="0,12,0,0"
+                  ItemsSource="{Binding Rows}"
+                  SelectedItem="{Binding SelectedRow, Mode=TwoWay}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  HeadersVisibility="Column"
+                  Background="{StaticResource AppSurfaceBrush}"
+                  BorderBrush="{StaticResource AppBorderBrush}"
+                  PreviewTextInput="OnGridPreviewTextInput"
+                  DataObject.Pasting="OnGridPasting">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="RoutingID"
+                                    Binding="{Binding RoutingId}"
+                                    IsReadOnly="True"
+                                    Visibility="Collapsed" />
+                <DataGridTextColumn Header="ArticulID"
+                                    Binding="{Binding ArticulId}"
+                                    IsReadOnly="True"
+                                    Visibility="Collapsed" />
+                <DataGridTextColumn Header="Операция"
+                                    Binding="{Binding OperationName}"
+                                    IsReadOnly="True"
+                                    Width="*" />
+                <DataGridTextColumn Header="Коэф. уч. доп затра"
+                                    Binding="{Binding DopCost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="130" />
+                <DataGridTextColumn Header="Время с уч.коэф"
+                                    Binding="{Binding ExecutionTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="120" />
+                <DataGridTextColumn Header="Норма выработки"
+                                    Binding="{Binding RateExecute, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="120" />
+                <DataGridTextColumn Header="Разряд"
+                                    Binding="{Binding Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="70" />
+                <DataGridTextColumn Header="Расценка"
+                                    Binding="{Binding Cost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="120" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2"
+              Margin="0,12,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="{Binding RowsCountText}"
+                       VerticalAlignment="Center" />
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <Button Content="Добавить"
+                        Command="{Binding AddCommand}"
+                        Margin="0,0,8,0" />
+                <Button Content="Удалить"
+                        Command="{Binding DeleteCommand}"
+                        Margin="0,0,8,0" />
+                <Button Content="Сохранить"
+                        Command="{Binding SaveCommand}"
+                        Margin="0,0,8,0" />
+                <Button Content="Отменить"
+                        Command="{Binding CloseCommand}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

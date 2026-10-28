@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4004069-F91B-4290-AADF-72EBF256B27E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProdControlWPF</RootNamespace>
+    <AssemblyName>ProdControlWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\ProdControl\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\ProdControl\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\ProdControl\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\ProdControl\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MessageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewBillView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SearchBillView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewKnittingInvoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KnittingSearchInvoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewArticulView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OperationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EmployeesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CoefficientsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DetailsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MachinesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RoutingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KnittingRoutingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkOrdersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TariffsCheckView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CalculationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportViewerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PromptWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\ICoefficientsRepository.cs" />
+    <Compile Include="Data\ICalculationRepository.cs" />
+    <Compile Include="Data\IDbConnectionFactory.cs" />
+    <Compile Include="Data\IDetailsRepository.cs" />
+    <Compile Include="Data\IMachinesRepository.cs" />
+    <Compile Include="Data\IEmployeesRepository.cs" />
+    <Compile Include="Data\IKnittingInvoiceRepository.cs" />
+    <Compile Include="Data\IKnittingRoutingRepository.cs" />
+    <Compile Include="Data\IKnittingSearchRepository.cs" />
+    <Compile Include="Data\IWorkOrderRepository.cs" />
+    <Compile Include="Data\INewArticulRepository.cs" />
+    <Compile Include="Data\INewBillRepository.cs" />
+    <Compile Include="Data\IOperationLogRepository.cs" />
+    <Compile Include="Data\IOperationRepository.cs" />
+    <Compile Include="Data\IRoutingRepository.cs" />
+    <Compile Include="Data\IReportRepository.cs" />
+    <Compile Include="Data\ISearchBillRepository.cs" />
+    <Compile Include="Data\CoefficientsRepository.cs" />
+    <Compile Include="Data\CalculationRepository.cs" />
+    <Compile Include="Data\DetailsRepository.cs" />
+    <Compile Include="Data\MachinesRepository.cs" />
+    <Compile Include="Data\EmployeesRepository.cs" />
+    <Compile Include="Data\KnittingInvoiceRepository.cs" />
+    <Compile Include="Data\KnittingRoutingRepository.cs" />
+    <Compile Include="Data\KnittingSearchRepository.cs" />
+    <Compile Include="Data\WorkOrderRepository.cs" />
+    <Compile Include="Data\NewArticulRepository.cs" />
+    <Compile Include="Data\NewBillRepository.cs" />
+    <Compile Include="Data\OleDbConnectionFactory.cs" />
+    <Compile Include="Data\OperationLogRepository.cs" />
+    <Compile Include="Data\OperationRepository.cs" />
+    <Compile Include="Data\RoutingRepository.cs" />
+    <Compile Include="Data\ReportRepository.cs" />
+    <Compile Include="Data\SearchBillRepository.cs" />
+    <Compile Include="Data\TariffsCheckRepository.cs" />
+    <Compile Include="Data\ITariffsCheckRepository.cs" />
+    <Compile Include="Controls\ReportViewerHost.cs" />
+    <Compile Include="Domain\BillRules.cs" />
+    <Compile Include="Domain\CalculationRules.cs" />
+    <Compile Include="Domain\KnittingRoutingRules.cs" />
+    <Compile Include="Domain\RoutingRules.cs" />
+    <Compile Include="Domain\TariffsCheckRules.cs" />
+    <Compile Include="Domain\WorkOrderRules.cs" />
+    <Compile Include="Infrastructure\ObservableObject.cs" />
+    <Compile Include="Infrastructure\RelayCommand.cs" />
+    <Compile Include="Models\CoefficientsModels.cs" />
+    <Compile Include="Models\CalculationModels.cs" />
+    <Compile Include="Models\DetailsModels.cs" />
+    <Compile Include="Models\MachinesModels.cs" />
+    <Compile Include="Models\EmployeesModels.cs" />
+    <Compile Include="Models\KnittingInvoiceModels.cs" />
+    <Compile Include="Models\KnittingRoutingModels.cs" />
+    <Compile Include="Models\KnittingSearchModels.cs" />
+    <Compile Include="Models\NewBillModels.cs" />
+    <Compile Include="Models\OperationModels.cs" />
+    <Compile Include="Models\ReportModels.cs" />
+    <Compile Include="Models\RoutingModels.cs" />
+    <Compile Include="Models\SearchBillModels.cs" />
+    <Compile Include="Models\TariffsCheckModels.cs" />
+    <Compile Include="Models\WorkOrderModels.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\ApplicationService.cs" />
+    <Compile Include="Services\CurrentDayStore.cs" />
+    <Compile Include="Services\DatabaseMaintenanceService.cs" />
+    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\IApplicationService.cs" />
+    <Compile Include="Services\ICurrentDayStore.cs" />
+    <Compile Include="Services\IDatabaseMaintenanceService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="ViewModels\CoefficientsViewModel.cs" />
+    <Compile Include="ViewModels\CalculationViewModel.cs" />
+    <Compile Include="ViewModels\DetailsViewModel.cs" />
+    <Compile Include="ViewModels\MachinesViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\NewArticulViewModel.cs" />
+    <Compile Include="ViewModels\NewBillViewModel.cs" />
+    <Compile Include="ViewModels\NewKnittingInvoiceViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesViewModel.cs" />
+    <Compile Include="ViewModels\KnittingSearchInvoiceViewModel.cs" />
+    <Compile Include="ViewModels\KnittingRoutingViewModel.cs" />
+    <Compile Include="ViewModels\OperationViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewerViewModel.cs" />
+    <Compile Include="ViewModels\RoutingViewModel.cs" />
+    <Compile Include="ViewModels\SearchBillViewModel.cs" />
+    <Compile Include="ViewModels\TariffsCheckViewModel.cs" />
+    <Compile Include="ViewModels\WorkOrdersViewModel.cs" />
+    <Compile Include="Views\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\NewBillView.xaml.cs">
+      <DependentUpon>NewBillView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\SearchBillView.xaml.cs">
+      <DependentUpon>SearchBillView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\NewKnittingInvoiceView.xaml.cs">
+      <DependentUpon>NewKnittingInvoiceView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\KnittingSearchInvoiceView.xaml.cs">
+      <DependentUpon>KnittingSearchInvoiceView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\WorkOrdersView.xaml.cs">
+      <DependentUpon>WorkOrdersView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\NewArticulView.xaml.cs">
+      <DependentUpon>NewArticulView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\OperationView.xaml.cs">
+      <DependentUpon>OperationView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeesView.xaml.cs">
+      <DependentUpon>EmployeesView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\CoefficientsView.xaml.cs">
+      <DependentUpon>CoefficientsView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\DetailsView.xaml.cs">
+      <DependentUpon>DetailsView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\MachinesView.xaml.cs">
+      <DependentUpon>MachinesView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\RoutingView.xaml.cs">
+      <DependentUpon>RoutingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\KnittingRoutingView.xaml.cs">
+      <DependentUpon>KnittingRoutingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\TariffsCheckView.xaml.cs">
+      <DependentUpon>TariffsCheckView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\CalculationView.xaml.cs">
+      <DependentUpon>CalculationView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ReportViewerView.xaml.cs">
+      <DependentUpon>ReportViewerView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\PromptWindow.xaml.cs">
+      <DependentUpon>PromptWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\ReportEmployee.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="..\ProdControl\ProdControl\OperationDB.mdb">
+      <Link>OperationDB.mdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
